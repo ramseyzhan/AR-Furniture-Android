@@ -48,7 +48,8 @@ public class HelloSceneformActivity extends AppCompatActivity {
   @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
   // CompletableFuture requires api level 24
   // FutureReturnValueIgnored is not valid
-  protected void onCreate(Bundle savedInstanceState) {
+  protected void onCreate(Bundle savedInstanceState) 
+  {
     super.onCreate(savedInstanceState);
 
     if (!checkIsSupportedDeviceOrFinish(this)) {
