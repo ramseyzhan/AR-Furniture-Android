@@ -15,9 +15,15 @@
  */
 package com.google.ar.sceneform.samples.hellosceneform;
 
+import android.net.Uri;
+
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+
+import android.view.MotionEvent;
+import android.view.View;
+
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -25,7 +31,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
+
 import android.widget.Toast;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
@@ -46,6 +57,19 @@ public class HelloSceneformActivity extends AppCompatActivity {
   private ModelRenderable chairRenderable;
   private int flag=0;
 
+  private Anchor ourAnchor;
+
+    private Uri tardObject;
+    private enum AnchorState {
+        NONE,
+        HOSTING,
+        HOSTED,
+        RESOLVING,
+        RESOLVED
+    }
+    private AnchorState ourAnchorState = AnchorState.NONE;
+    private CustomArFragment ARfragment;
+
     @Override
   @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
   // CompletableFuture requires api level 24
@@ -56,11 +80,34 @@ public class HelloSceneformActivity extends AppCompatActivity {
     if (!checkIsSupportedDeviceOrFinish(this)) {
       return;
     }
-
     setContentView(R.layout.activity_ux);
-    arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
-    // When you build a Renderable, Sceneform loads its resources in the background while returning
+    ARfragment = (CustomArFragment) getSupportFragmentManager().findFragmentById(R.id.sceneform_fragment);
+    ARfragment.getPlaneDiscoveryController().hide();  // Hide initial hand gesture
+    ARfragment.getArSceneView().getScene().setOnUpdateListener(this::onUpdateFrame);
+
+    createGallery();
+
+    Button clearButton = findViewById(R.id.clear_button);
+    clearButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setourAnchor(null);
+        }
+    });
+
+    Button resolveButton = findViewById(R.id.resolve_button);
+
+    resolveButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (ourAnchor != null) {
+                return;
+            }
+        }
+    });
+
+        // When you build a Renderable, Sceneform loads its resources in the background while returning
     // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
     ModelRenderable.builder()
         .setSource(this, R.raw.andy)
@@ -147,4 +194,23 @@ public class HelloSceneformActivity extends AppCompatActivity {
     }
     return true;
   }
+
+    private void setourAnchor (Anchor newAnchor) {
+        if (ourAnchor != null) {
+            ourAnchor.detach();
+        }
+
+        ourAnchor = newAnchor;
+        ourAnchorState = AnchorState.NONE;
+    }
+
+    private void createGallery() {
+        LinearLayout gallery = findViewById(R.id.gallery_layout);
+
+        ImageView chair = new ImageView( this );
+        chair.setImageResource(R.drawable.ic_launcher);
+        chair.setContentDescription("chair");
+        chair.setOnClickListener(view -> {tardObject = Uri.parse("chair.sfb");});
+        gallery.addView(chair);
+    }
 }
