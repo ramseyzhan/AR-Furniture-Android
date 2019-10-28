@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="5dp"
-        android:text="Product Submission Form"
+        android:text="Sign Up"
         android:textSize="35sp" />
 
 
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Product Name"
+        android:hint="Full Name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -29,7 +29,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Product Description"
+        android:hint="Gender"
         android:inputType="textPostalAddress" />
 
     <EditText
@@ -38,7 +38,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Product Price"
+        android:hint="Age"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -47,7 +47,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Product Styles"
+        android:hint="Phone Number"
         android:inputType="phone" />
 
     <EditText
@@ -56,9 +56,37 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Shipping Information"
+        android:hint="Home Address"
         android:inputType="textPostalAddress" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:hint="Username"
+        android:inputType="textWebEditText" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:hint="Password"
+        android:inputType="textWebEditText|textPassword|numberPassword|textWebPassword"
+        android:visibility="visible" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:hint="Confirm Password"
+        android:inputType="numberPassword|textWebPassword"
+        android:visibility="visible" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

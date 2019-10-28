@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="5dp"
-        android:text="Product Submission Form"
+        android:text="Register Your Company"
         android:textSize="35sp" />
 
 
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Product Name"
+        android:hint="Company Name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -29,7 +29,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Product Description"
+        android:hint="Registered Office Address"
         android:inputType="textPostalAddress" />
 
     <EditText
@@ -38,7 +38,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Product Price"
+        android:hint="Email"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -47,7 +47,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Product Styles"
+        android:hint="Phone"
         android:inputType="phone" />
 
     <EditText
@@ -56,8 +56,17 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Shipping Information"
+        android:hint="Postal Address (if applicable)"
         android:inputType="textPostalAddress" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:hint="Website (if applicable)"
+        android:inputType="textWebEditText" />
 
     <Button
         android:layout_width="wrap_content"
