@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "54471652855",
+    "firebase_url": "https://ar-furniture-eecs-441.firebaseio.com",
+    "project_id": "ar-furniture-eecs-441",
+    "storage_bucket": "ar-furniture-eecs-441.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54471652855:android:e1eb99ad1631d17478eaf2",
+        "android_client_info": {
+          "package_name": "com.bongjlee.arfurnitureapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54471652855-0s1jib5ljqpudu5rqgla1l6tsolsvljt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnApDI2ZXxURZR9oKrpye8NFCZbI8r4eY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54471652855-0s1jib5ljqpudu5rqgla1l6tsolsvljt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
