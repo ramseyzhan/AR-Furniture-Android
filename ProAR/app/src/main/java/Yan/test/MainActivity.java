@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
     private MyArFragment arFragment;
     private Uri tarObject;
+    private Anchor mainAnchor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
 
         arFragment = (MyArFragment) getSupportFragmentManager().findFragmentById(R.id.sceneform_fragment);
 
+        Button clearButton = findViewById(R.id.clear_button);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setmainAnchor(null);
+            }
+        });
+
         createGallery();
 
         arFragment.setOnTapArPlaneListener(
@@ -61,11 +71,20 @@ public class MainActivity extends AppCompatActivity {
                          return;
                      }
 
-                     Anchor anchor = hitResult.createAnchor();
+                    Anchor newAnchor = hitResult.createAnchor();
 
-                     placeObject(arFragment, anchor, tarObject);
+                    setmainAnchor(newAnchor);
+                    placeObject(arFragment, mainAnchor, tarObject);
                 }
         );
+    }
+
+    private void setmainAnchor (Anchor newAnchor) {
+        if (mainAnchor != null) {
+            mainAnchor.detach();
+        }
+
+        mainAnchor = newAnchor;
     }
 
     private void createGallery() {
@@ -106,12 +125,12 @@ public class MainActivity extends AppCompatActivity {
 
     // Place the object on AR
     private void addNodeToScene(ArFragment arFragment, Anchor anchor, Renderable renderable) {
-        AnchorNode anchorNode = new AnchorNode(anchor);
-        TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
-        node.setRenderable(renderable);
-        node.setParent(anchorNode);
-        arFragment.getArSceneView().getScene().addChild(anchorNode);
-        node.select();
+        AnchorNode mainanchorNode = new AnchorNode(anchor);
+        TransformableNode mainnode = new TransformableNode(arFragment.getTransformationSystem());
+        mainnode.setRenderable(renderable);
+        mainnode.setParent(mainanchorNode);
+        arFragment.getArSceneView().getScene().addChild(mainanchorNode);
+        mainnode.select();
     }
 
     public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {
