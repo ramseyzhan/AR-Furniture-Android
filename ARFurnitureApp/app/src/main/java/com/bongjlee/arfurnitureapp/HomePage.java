@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -15,7 +14,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -57,7 +55,7 @@ public class HomePage extends AppCompatActivity {
                 HomePage.this.startActivity(myIntent);
                 return true;
             case R.id.product_submission:
-                myIntent = new Intent(HomePage.this, MainActivity.class);
+                myIntent = new Intent(HomePage.this, ProductSubmissionForm.class);
                 myIntent.putExtra("toProductSub", R.id.product_submission);
                 HomePage.this.startActivity(myIntent);
             case R.id.acc_page:

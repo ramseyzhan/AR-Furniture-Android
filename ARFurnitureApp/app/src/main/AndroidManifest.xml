@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".CompanyRegistrationForm" />
         <activity android:name=".UserAccountPage" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ProductSubmissionForm"></activity>
     </application>
 
 </manifest>
