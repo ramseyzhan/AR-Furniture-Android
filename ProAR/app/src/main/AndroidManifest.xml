@@ -9,13 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ProductPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivity"
+            android:parentActivityName=".ProductPage" >
+            <meta-data
+                android:name="com.google.android.ar.API_KEY"
+                android:value="AIzaSyCgBupTFkgQQ1lg-bSCG8d40f6HE869YqU" />
+
+            <meta-data android:name="com.google.ar.core" android:value="required" />
+        </activity>
+
         <meta-data
             android:name="com.google.android.ar.API_KEY"
             android:value="AIzaSyCgBupTFkgQQ1lg-bSCG8d40f6HE869YqU" />
