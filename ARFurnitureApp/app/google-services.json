@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "54471652855-uc2cjtg3uan5gui018t1argc2nu6fbav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bongjlee.arfurnitureapp",
+            "certificate_hash": "48cdfdf5bbcd36c8b71b1beee0b39ae9b2ea62ac"
+          }
+        },
+        {
           "client_id": "54471652855-0s1jib5ljqpudu5rqgla1l6tsolsvljt.apps.googleusercontent.com",
           "client_type": 3
         }

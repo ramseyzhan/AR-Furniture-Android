@@ -17,6 +17,7 @@
 
 
     <EditText
+        android:id="@+id/product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
@@ -24,37 +25,41 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/product_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Product Description"
         android:inputType="textPostalAddress" />
 
     <EditText
+        android:id="@+id/product_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Product Price"
         android:inputType="textEmailAddress" />
 
     <EditText
+        android:id="@+id/product_styles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Product Styles"
         android:inputType="phone" />
 
     <EditText
+        android:id="@+id/shipping_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Shipping Information"
         android:inputType="textPostalAddress" />
@@ -62,10 +67,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
         android:background="@color/colorPrimaryDark"
         android:elevation="4dp"
+        android:onClick="sendInfo"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
         android:text="Submit"
