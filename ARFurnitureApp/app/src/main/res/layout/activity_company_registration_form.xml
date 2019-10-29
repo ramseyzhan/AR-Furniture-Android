@@ -17,6 +17,7 @@
 
 
     <EditText
+        android:id="@+id/company_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
@@ -24,46 +25,51 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/company_office_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Registered Office Address"
         android:inputType="textPostalAddress" />
 
     <EditText
+        android:id="@+id/company_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Email"
         android:inputType="textEmailAddress" />
 
     <EditText
+        android:id="@+id/company_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Phone"
         android:inputType="phone" />
 
     <EditText
+        android:id="@+id/company_postal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Postal Address (if applicable)"
         android:inputType="textPostalAddress" />
 
     <EditText
+        android:id="@+id/company_website"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Website (if applicable)"
         android:inputType="textWebEditText" />
@@ -71,10 +77,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
         android:background="@color/colorPrimaryDark"
         android:elevation="4dp"
+        android:onClick="sendInfo"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
         android:text="Submit"
