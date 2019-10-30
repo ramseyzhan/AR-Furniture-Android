@@ -20,6 +20,7 @@
 
 
     <EditText
+        android:id="@+id/person_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
@@ -27,24 +28,27 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Gender"
-        android:inputType="textPostalAddress" />
+        android:inputType="text" />
 
     <EditText
+        android:id="@+id/age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Age"
-        android:inputType="textEmailAddress" />
+        android:inputType="number" />
 
     <EditText
+        android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -54,41 +58,45 @@
         android:inputType="phone" />
 
     <EditText
+        android:id="@+id/postal_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Home Address"
-        android:inputType="textPostalAddress" />
+        android:inputType="text" />
 
     <EditText
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Username"
-        android:inputType="textWebEditText" />
+        android:inputType="text" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Password"
-        android:inputType="textWebEditText|textPassword|numberPassword|textWebPassword"
+        android:inputType="textPassword"
         android:visibility="visible" />
 
     <EditText
+        android:id="@+id/confirm_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Confirm Password"
-        android:inputType="numberPassword|textWebPassword"
+        android:inputType="textPassword"
         android:visibility="visible" />
     <Button
         android:layout_width="wrap_content"
@@ -97,6 +105,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimaryDark"
         android:elevation="4dp"
+        android:onClick="sendInfo"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
         android:text="Submit"
