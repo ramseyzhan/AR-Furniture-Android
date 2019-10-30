@@ -10,19 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".UserSignUp"></activity>
-        <activity android:name=".HomePage"></activity>
-        <activity android:name=".CompanyRegistrationForm" />
-        <activity android:name=".UserAccountPage" />
-        <activity android:name=".ProductSubmissionForm"></activity>
-        <activity android:name=".ProductPage">
+        <activity android:name=".HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CompanyRegistrationForm" />
+        <activity android:name=".UserAccountPage" />
+        <activity android:name=".ProductSubmissionForm"></activity>
+        <activity android:name=".ProductPage"></activity>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".ARViewPage"
             android:parentActivityName=".ProductPage" >
             <meta-data
                 android:name="com.google.android.ar.API_KEY"

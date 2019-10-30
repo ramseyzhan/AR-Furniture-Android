@@ -71,6 +71,10 @@ public class HomePage extends AppCompatActivity {
                 myIntent = new Intent(HomePage.this, UserSignUp.class);
                 myIntent.putExtra("signUp", R.id.sign_up_page);
                 HomePage.this.startActivity(myIntent);
+            case R.id.product_page:
+                myIntent = new Intent(HomePage.this, ProductPage.class);
+                myIntent.putExtra("productPage", R.id.product_page);
+                HomePage.this.startActivity(myIntent);
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

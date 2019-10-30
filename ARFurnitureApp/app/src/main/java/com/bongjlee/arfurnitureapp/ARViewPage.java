@@ -16,8 +16,6 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.MotionEvent;
 
 import android.widget.Toast;
 import android.widget.Button;
@@ -34,8 +32,8 @@ import com.google.ar.sceneform.rendering.Renderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
+public class ARViewPage extends AppCompatActivity {
+    private static final String TAG = ARViewPage.class.getSimpleName();
     private static final double MIN_OPENGL_VERSION = 3.0;
 
     private MyArFragment arFragment;
