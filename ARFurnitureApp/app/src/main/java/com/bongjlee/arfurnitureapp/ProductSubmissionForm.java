@@ -43,6 +43,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
         text = (EditText)findViewById(R.id.shipping_info);
         newProductDetails.put("ShippingInfo", text.getText().toString());
         newProduct.put("productInfo", newProductDetails);
+        //Submit data into Firebase cloud
         db.collection("products")
                 .add(newProduct)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

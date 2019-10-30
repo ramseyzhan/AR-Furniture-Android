@@ -16,6 +16,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.*;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class HomePage extends AppCompatActivity {
     private static final String TAG = HomePage.class.getSimpleName();
@@ -23,6 +26,8 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        //RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
+        //rv.setHasFixedSize(true);
         Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
