@@ -14,4 +14,7 @@
     <item android:id="@+id/sign_up_page"
         android:title="Sign Up"
         app:showAsAction="never"/>
+    <item android:title="Product Page"
+        android:id="@+id/product_page"
+        app:showAsAction="never"/>
 </menu>
