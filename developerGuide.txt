@@ -1,0 +1,67 @@
+Developer Guide
+
+This guide specifies how contributions to the application should be made by each
+developer on the team. The purpose of this guide is to organize the development process,
+enforce code reviews, and reduce the likelihood of merge conflicts down the line.
+
+Agile Board Link: https://trello.com/b/MclkNIfO/the-procrastinators-now
+
+
+Section A: Setting up the environment
+
+Before making any contributions to the repo, you need to make sure that you are working with the
+latest stable code. We will organize our coding repository as follows.
+
+Master branch -> The production ready code.
+
+Development branch -> The bleeding edge of the code. This branch should store the latest
+                       approved merges.
+
+Any other branches -> This represents works in progress. Code here represents current stories
+                       being worked on and preparing to be merged with develop.
+
+
+Therefore, based on the categories above, before making any new contributions or beginning work
+on tackling a new user story, make sure to switch to branch develop and pull to most recent work.
+
+Terminal commands to achieve this:
+
+git checkout develop
+git pull origin develop
+
+
+Section B: Creating a branch off develop
+
+When beginning work on an assigned user story, a developer on the team should
+create a new branch off of develop in order to work on their tasks. This is so any volatile code
+that is pushed in doesn't effect previously done code without going through a review and vetting process.
+
+Suppose the new feature branch is name <your feature branch>,
+the following commands goes through this process.
+
+--Starting on branch develop,
+(you can see branches with "git branch -l")
+
+Terminal commands to achieve this:
+
+git checkout -b <your feature branch>
+
+DO WORK
+
+git add .
+git commit -m "<your commit message>"
+git push -u origin <your feature branch>
+
+
+Section C: Creating a pull request
+
+After a feature is complete and you are ready to expose your work to the rest of the team with
+the eventual intention of merging the work into develop, you can create a pull request into
+develop by comparing the two branches <your feature branch> and develop on the github GUI.
+
+Once a pull request is created, you should make sure to specify which user story you have tackled
+in the title and have a link to the Trello board posting in the description. Also
+it is necessary to add members on your team to review the code. Merging will be blocked unless there is
+at least one approving review.
+
+Once your code has been reviewed, merge into Develop and then delete the feature branch.
