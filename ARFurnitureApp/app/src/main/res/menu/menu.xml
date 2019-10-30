@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/company_registration"
+        android:title="Company Registration"
+        app:showAsAction="never"/>
+    <item android:id="@+id/product_submission"
+        android:title="Product Submission"
+        app:showAsAction="never"/>
+    <item android:id="@+id/acc_page"
+        android:title="Account"
+        app:showAsAction="never"/>
+    <item android:id="@+id/sign_up_page"
+        android:title="Sign Up"
+        app:showAsAction="never"/>
+</menu>
