@@ -10,16 +10,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".UserSignUp"></activity>
-        <activity android:name=".HomePage">
+        <activity android:name=".HomePage"></activity>
+        <activity android:name=".CompanyRegistrationForm" />
+        <activity android:name=".UserAccountPage" />
+        <activity android:name=".ProductSubmissionForm"></activity>
+        <activity android:name=".ProductPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CompanyRegistrationForm" />
-        <activity android:name=".UserAccountPage" />
-        <activity android:name=".ProductSubmissionForm"></activity>
-    </application>
 
+        <activity android:name=".MainActivity"
+            android:parentActivityName=".ProductPage" >
+            <meta-data
+                android:name="com.google.android.ar.API_KEY"
+                android:value="AIzaSyCgBupTFkgQQ1lg-bSCG8d40f6HE869YqU" />
+
+            <meta-data android:name="com.google.ar.core" android:value="required" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.ar.API_KEY"
+            android:value="AIzaSyCgBupTFkgQQ1lg-bSCG8d40f6HE869YqU" />
+
+        <meta-data android:name="com.google.ar.core" android:value="required" />
+    </application>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
