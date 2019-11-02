@@ -1,20 +1,13 @@
 package com.bongjlee.arfurnitureapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
+import com.bongjlee.arfurnitureapp.data.Product;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -25,39 +18,38 @@ public class ProductSubmissionForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_submission);
-        Intent intent = getIntent();
-        String value = intent.getStringExtra("toProductSub");
+//        Intent intent = getIntent();
+//        String value = intent.getStringExtra("toProductSub");
     }
     public void sendInfo(View view){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Map<String, Object> newProduct = new HashMap<>();
-        EditText text = (EditText)findViewById(R.id.product_name);
-        newProduct.put("ProductName", text.getText().toString());
-        Map<String, Object> newProductDetails = new HashMap<>();
-        text = (EditText)findViewById(R.id.product_description);
-        newProductDetails.put("ProductDescription", text.getText().toString());
-        text = (EditText)findViewById(R.id.product_price);
-        newProductDetails.put("ProductPrice", text.getText().toString());
-        text = (EditText)findViewById(R.id.product_styles);
-        newProductDetails.put("ProductStyles", text.getText().toString());
-        text = (EditText)findViewById(R.id.shipping_info);
-        newProductDetails.put("ShippingInfo", text.getText().toString());
-        newProduct.put("productInfo", newProductDetails);
-        //Submit data into Firebase cloud
+
+        Product product             = new Product();
+        EditText productName        = findViewById(R.id.product_name);
+        EditText productDescription = findViewById(R.id.product_description);
+        EditText productPrice       = findViewById(R.id.product_price);
+        EditText productStyles      = findViewById(R.id.product_styles);
+        EditText shippingInfo       = findViewById(R.id.shipping_info);
+
+        product.setProductName(productName.getText().toString());
+        product.setProductDescription(productDescription.getText().toString());
+        product.setProductPrice(productPrice.getText().toString());
+        product.setProductStyles(productStyles.getText().toString());
+        product.setShippingInfo(shippingInfo.getText().toString());
+
+        //Submit data into FireBase cloud
         db.collection("products")
-                .add(newProduct)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
+                .add(product)
+                .addOnSuccessListener(
+                        documentReference ->
+                                Log.d(
+                                        TAG,
+                                        "DocumentSnapshot added with ID: " + documentReference.getId()
+                                )
+                )
+                .addOnFailureListener(
+                        e -> Log.w(TAG, "Error adding document", e)
+                );
 
     }
 }
