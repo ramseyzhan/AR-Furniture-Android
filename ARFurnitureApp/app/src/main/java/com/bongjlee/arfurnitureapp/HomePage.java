@@ -16,6 +16,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import static com.bongjlee.arfurnitureapp.UserLogin.loggedInUser;
+
 import androidx.fragment.app.*;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,10 +72,6 @@ public class HomePage extends AppCompatActivity {
                 myIntent.putExtra(  "toAccount", R.id.acc_page);
                 HomePage.this.startActivity(myIntent);
                 return true;
-            case R.id.sign_up_page:
-                myIntent = new Intent(HomePage.this, UserSignUp.class);
-                myIntent.putExtra("signUp", R.id.sign_up_page);
-                HomePage.this.startActivity(myIntent);
             case R.id.login_page:
                 myIntent = new Intent(HomePage.this, UserLogin.class);
                 myIntent.putExtra("login", R.id.login_page);
@@ -88,5 +87,14 @@ public class HomePage extends AppCompatActivity {
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
+
+
+        /*
+        case R.id.sign_up_page:
+        myIntent = new Intent(HomePage.this, UserSignUp.class);
+        myIntent.putExtra("signUp", R.id.sign_up_page);
+        HomePage.this.startActivity(myIntent);
+        return true;
+        */
     }
 }
