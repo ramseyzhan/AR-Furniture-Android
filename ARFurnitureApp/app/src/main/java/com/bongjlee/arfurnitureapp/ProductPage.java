@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.bongjlee.arfurnitureapp.data.Cartprods;
+
 
 public class ProductPage extends AppCompatActivity {
 
@@ -20,8 +22,9 @@ public class ProductPage extends AppCompatActivity {
 
 
     public void postChatt(View view) {
-        Log.e("asd", "postChatt: sdsd");
         Intent intent = new Intent(this, ARViewPage.class);
+        Cartprods.name1 ="sofa";
+        Cartprods.name2 ="chair";
         startActivity(intent);
     }
 }

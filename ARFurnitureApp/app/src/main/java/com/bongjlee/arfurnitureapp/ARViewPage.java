@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
+import com.bongjlee.arfurnitureapp.data.Cartprods;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
@@ -32,6 +33,8 @@ import com.google.ar.sceneform.rendering.Renderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
+import java.util.ArrayList;
+
 public class ARViewPage extends AppCompatActivity {
     private static final String TAG = ARViewPage.class.getSimpleName();
     private static final double MIN_OPENGL_VERSION = 3.0;
@@ -40,11 +43,9 @@ public class ARViewPage extends AppCompatActivity {
     private Uri tarObject;
     private Anchor mainAnchor;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (!checkIsSupportedDeviceOrFinish(this)) {
             return;
         }
@@ -53,13 +54,12 @@ public class ARViewPage extends AppCompatActivity {
 
         arFragment = (MyArFragment) getSupportFragmentManager().findFragmentById(R.id.sceneform_fragment);
 
-        Button clearButton = findViewById(R.id.clear_button);
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setmainAnchor(null);
-            }
-        });
+//        Button clearButton = findViewById(R.id.clear_button);
+//        clearButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            }
+//        });
 
         createGallery();
 
@@ -87,25 +87,45 @@ public class ARViewPage extends AppCompatActivity {
 
     private void createGallery() {
         LinearLayout gallery = findViewById(R.id.gallery_layout);
+        if(Cartprods.name1 != null){
+            ImageView product_t = new ImageView( this );
+            product_t.setImageResource(R.drawable.chair_thumb);
+            product_t.setContentDescription(Cartprods.name1);
+            product_t.setOnClickListener(view -> {tarObject = Uri.parse(Cartprods.name1+".sfb");});
+            gallery.addView(product_t);
+        }
 
-        ImageView chair = new ImageView( this );
-        chair.setImageResource(R.drawable.chair_thumb);
-        chair.setContentDescription("chair");
-        chair.setOnClickListener(view -> {tarObject = Uri.parse("chair.sfb");});
-        gallery.addView(chair);
-
-        ImageView sofa = new ImageView( this );
-        sofa.setImageResource(R.drawable.sofa_thumb);
-        sofa.setContentDescription("sofa");
-        sofa.setOnClickListener(view -> {tarObject = Uri.parse("sofa.sfb");});
-        gallery.addView(sofa);
+        if(Cartprods.name2!=null) {
+            ImageView product_t = new ImageView(this);
+            product_t.setImageResource(R.drawable.sofa_thumb);
+            product_t.setContentDescription(Cartprods.name2);
+            product_t.setOnClickListener(view -> {
+                tarObject = Uri.parse(Cartprods.name2+".sfb");
+            });
+            gallery.addView(product_t);
+        }
+        if(Cartprods.name3!=null){
+            ImageView product_t = new ImageView(this);
+            product_t.setImageResource(R.drawable.sofa_thumb);
+            product_t.setContentDescription(Cartprods.name3);
+            product_t.setOnClickListener(view -> {
+                tarObject = Uri.parse(Cartprods.name3+".sfb");
+            });
+            gallery.addView(product_t);
+        }
+        if(Cartprods.name4!=null){
+            ImageView product_t = new ImageView(this);
+            product_t.setImageResource(R.drawable.sofa_thumb);
+            product_t.setContentDescription(Cartprods.name4);
+            product_t.setOnClickListener(view -> {
+                tarObject = Uri.parse(Cartprods.name4+".sfb");
+            });
+            gallery.addView(product_t);
+        }
+        
 
     }
 
-    // placeObject() takes the position and orientation of an object to be rendered as
-    // an anchor and starts async loading the object. Once the builder built the object,
-    // addNodeToScene() will be called, and that will actually create the object in
-    // the camera view.
     private void placeObject(ArFragment arFragment, Anchor anchor, Uri model) {
         ModelRenderable.builder()
                 .setSource(arFragment.getContext(), model)
@@ -121,7 +141,6 @@ public class ARViewPage extends AppCompatActivity {
                 }));
     }
 
-    // Place the object on AR
     private void addNodeToScene(ArFragment arFragment, Anchor anchor, Renderable renderable) {
         AnchorNode mainanchorNode = new AnchorNode(anchor);
         TransformableNode mainnode = new TransformableNode(arFragment.getTransformationSystem());
@@ -150,5 +169,12 @@ public class ARViewPage extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    public void clearAnchor(View view) {
+        setmainAnchor(null);
+    }
+    public void exitAct(View view) {
+        this.finish();
     }
 }
