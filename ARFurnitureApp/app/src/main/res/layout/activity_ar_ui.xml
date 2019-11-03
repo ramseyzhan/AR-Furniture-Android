@@ -21,13 +21,17 @@
             android:id="@+id/clear_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clear" />
+            android:text="Clear"
+            android:onClick="clearAnchor"
+            />
 
         <Button
             android:id="@+id/resolve_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Exit" />
+            android:text="Exit"
+            android:onClick="exitAct"
+            />
 
     </LinearLayout>
 
@@ -45,7 +49,7 @@
     <LinearLayout
         android:id="@+id/gallery_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sceneform_fragment"
