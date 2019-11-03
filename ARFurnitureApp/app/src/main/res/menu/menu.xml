@@ -14,4 +14,10 @@
     <item android:id="@+id/sign_up_page"
         android:title="Sign Up"
         app:showAsAction="never"/>
+    <item android:id="@+id/login_page"
+        android:title = "Login"
+        app:showAsAction="never" />
+    <item android:id="@+id/product_page"
+        android:title="Product Page"
+        app:showAsAction="never"/>
 </menu>

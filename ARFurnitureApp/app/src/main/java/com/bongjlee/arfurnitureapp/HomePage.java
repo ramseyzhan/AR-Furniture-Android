@@ -63,19 +63,30 @@ public class HomePage extends AppCompatActivity {
                 myIntent = new Intent(HomePage.this, ProductSubmissionForm.class);
                 myIntent.putExtra("toProductSub", R.id.product_submission);
                 HomePage.this.startActivity(myIntent);
+                return true;
             case R.id.acc_page:
                 myIntent = new Intent(HomePage.this, UserAccountPage.class);
                 myIntent.putExtra(  "toAccount", R.id.acc_page);
                 HomePage.this.startActivity(myIntent);
+                return true;
             case R.id.sign_up_page:
                 myIntent = new Intent(HomePage.this, UserSignUp.class);
                 myIntent.putExtra("signUp", R.id.sign_up_page);
                 HomePage.this.startActivity(myIntent);
+            case R.id.login_page:
+                myIntent = new Intent(HomePage.this, UserLogin.class);
+                myIntent.putExtra("login", R.id.login_page);
+                HomePage.this.startActivity(myIntent);
+                return true;
+            case R.id.product_page:
+                myIntent = new Intent(HomePage.this, ProductPage.class);
+                myIntent.putExtra("productPage", R.id.product_page);
+                HomePage.this.startActivity(myIntent);
+                return true;
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
-
         }
     }
 }

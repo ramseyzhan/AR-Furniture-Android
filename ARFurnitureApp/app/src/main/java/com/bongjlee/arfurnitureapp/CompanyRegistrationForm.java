@@ -1,17 +1,13 @@
 package com.bongjlee.arfurnitureapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
+import com.bongjlee.arfurnitureapp.data.Company;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -23,39 +19,45 @@ public class CompanyRegistrationForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_registration_form);
-        Intent intent = getIntent();
-        String value = intent.getStringExtra("toCompanyReg");
+        // Intent intent = getIntent();
+        // String value = intent.getStringExtra("toCompanyReg");
     }
+
     public void sendInfo(View view){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Map<String, Object> newCompany = new HashMap<>();
-        EditText text = (EditText)findViewById(R.id.company_name);
-        newCompany.put("CompanyName", text.getText().toString());
-        Map<String, Object> companyDetails = new HashMap<>();
-        text = (EditText)findViewById(R.id.company_office_address);
-        companyDetails.put("CompanyOfficeAddress", text.getText().toString());
-        text = (EditText)findViewById(R.id.company_email);
-        companyDetails.put("CompanyEmail", text.getText().toString());
-        text = (EditText)findViewById(R.id.company_phone);
-        companyDetails.put("CompanyPhone", text.getText().toString());
-        text = (EditText)findViewById(R.id.company_postal);
-        companyDetails.put("CompanyPostal", text.getText().toString());
-        text = (EditText)findViewById(R.id.company_website);
-        companyDetails.put("CompanyWebsite", text.getText().toString());
-        newCompany.put("CompanyDetails", companyDetails);
+        Map<String, String> companyDetails = new HashMap<>();
+
+        EditText companyName            = findViewById(R.id.company_name);
+        EditText companyOfficeAddress   = findViewById(R.id.company_office_address);
+        EditText companyEmail           = findViewById(R.id.company_email);
+        EditText companyPhone           = findViewById(R.id.company_phone);
+        EditText companyPostal          = findViewById(R.id.company_postal);
+        EditText companyWebsite         = findViewById(R.id.company_website);
+
+        companyDetails.put("CompanyOfficeAddress", companyOfficeAddress.getText().toString());
+        companyDetails.put("CompanyEmail", companyEmail.getText().toString());
+        companyDetails.put("CompanyPhone", companyPhone.getText().toString());
+        companyDetails.put("CompanyPostal", companyPostal.getText().toString());
+        companyDetails.put("CompanyWebsite", companyWebsite.getText().toString());
+
+        Company company = new Company(
+                companyDetails,
+                companyName.getText().toString()
+        );
+
         db.collection("company")
-                .add(newCompany)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
+                .add(company)
+                .addOnSuccessListener(
+                        documentReference -> {
+                            Log.d(
+                                    TAG,
+                                    "DocumentSnapshot added with ID: " + documentReference.getId()
+                            );
+
+                        }
+                )
+                .addOnFailureListener(
+                        e -> Log.w(TAG, "Error adding document", e)
+                );
     }
 }
