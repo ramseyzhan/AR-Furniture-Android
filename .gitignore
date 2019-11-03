@@ -1,6 +1,5 @@
 *.iml
-.gradle
-<<<<<<< HEAD
+.gradl
 local.properties
 .idea/workspace.xml
 .idea/libraries
@@ -8,13 +7,4 @@ local.properties
 build
 captures
 .externalNativeBuild
-=======
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
-/build
-/captures
-.externalNativeBuild
 .idea
->>>>>>> d35bed2104bcc14533f4093070331f3e4cc9df27
