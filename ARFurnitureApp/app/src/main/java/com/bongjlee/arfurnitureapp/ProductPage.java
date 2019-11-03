@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.bongjlee.arfurnitureapp.data.Cartprods;
 
 
 public class ProductPage extends AppCompatActivity {
@@ -43,8 +44,9 @@ public class ProductPage extends AppCompatActivity {
         productLinkViewData = findViewById(R.id.product_link);
     }
     public void postChatt(View view) {
-        Log.e("asd", "postChatt: sdsd");
         Intent intent = new Intent(this, ARViewPage.class);
+        Cartprods.name1 ="sofa";
+        Cartprods.name2 ="chair";
         startActivity(intent);
     }
     public void generateProductPage (View view) {
