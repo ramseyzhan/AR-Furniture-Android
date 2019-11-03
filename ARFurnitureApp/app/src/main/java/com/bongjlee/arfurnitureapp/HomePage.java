@@ -52,13 +52,28 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
+        if (loggedInUser != null) {
+            inflater.inflate(R.menu.post_menu, menu);
+        } else {
+            inflater.inflate(R.menu.pre_menu, menu);
+        }
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent myIntent;
         switch (item.getItemId()) {
+            case R.id.product_page:
+                myIntent = new Intent(HomePage.this, ProductPage.class);
+                myIntent.putExtra("productPage", R.id.product_page);
+                HomePage.this.startActivity(myIntent);
+                return true;
+            case R.id.login_page:
+                myIntent = new Intent(HomePage.this, UserLogin.class);
+                myIntent.putExtra("login", R.id.login_page);
+                HomePage.this.startActivity(myIntent);
+                return true;
             case R.id.company_registration:
-                Intent myIntent = new Intent(HomePage.this, CompanyRegistrationForm.class);
+                myIntent = new Intent(HomePage.this, CompanyRegistrationForm.class);
                 myIntent.putExtra("toCompanyReg", R.id.company_registration);
                 HomePage.this.startActivity(myIntent);
                 return true;
@@ -67,34 +82,23 @@ public class HomePage extends AppCompatActivity {
                 myIntent.putExtra("toProductSub", R.id.product_submission);
                 HomePage.this.startActivity(myIntent);
                 return true;
-            case R.id.acc_page:
+            case R.id.account_page:
                 myIntent = new Intent(HomePage.this, UserAccountPage.class);
-                myIntent.putExtra(  "toAccount", R.id.acc_page);
+                myIntent.putExtra(  "toAccount", R.id.account_page);
                 HomePage.this.startActivity(myIntent);
                 return true;
-            case R.id.login_page:
-                myIntent = new Intent(HomePage.this, UserLogin.class);
-                myIntent.putExtra("login", R.id.login_page);
+            case R.id.edit_account_page:
+                myIntent = new Intent(HomePage.this, UserEdit.class);
+                myIntent.putExtra("edit", R.id.edit_account_page);
                 HomePage.this.startActivity(myIntent);
                 return true;
-            case R.id.product_page:
-                myIntent = new Intent(HomePage.this, ProductPage.class);
-                myIntent.putExtra("productPage", R.id.product_page);
+            case R.id.log_off_page:
+                myIntent = new Intent(HomePage.this, UserLogout.class);
+                myIntent.putExtra("logOff", R.id.log_off_page);
                 HomePage.this.startActivity(myIntent);
                 return true;
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
-
-
-        /*
-        case R.id.sign_up_page:
-        myIntent = new Intent(HomePage.this, UserSignUp.class);
-        myIntent.putExtra("signUp", R.id.sign_up_page);
-        HomePage.this.startActivity(myIntent);
-        return true;
-        */
     }
 }
