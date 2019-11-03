@@ -17,22 +17,23 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserSignUp extends AppCompatActivity {
-    private static final String TAG = UserSignUp.class.getSimpleName();
-    String password;
-    String confirm_password;
+public class UserEdit extends AppCompatActivity {
+    private static final String TAG = UserEdit.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_sign_up);
         Intent intent = getIntent();
-        String value = intent.getStringExtra("signUp");
+        String value = intent.getStringExtra("editUser");
     }
     public void sendInfo(View view) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Object> newUser = new HashMap<>();
-        EditText text = findViewById(R.id.username);
-        newUser.put("UserName", text.getText().toString());
+
+        EditText text = findViewById(R.id.email);
+        newUser.put("Email", text.getText().toString());
+
         Map<String, Object> userDetails = new HashMap<>();
         text = findViewById(R.id.person_name);
         userDetails.put("Name", text.getText().toString());
@@ -44,15 +45,6 @@ public class UserSignUp extends AppCompatActivity {
         userDetails.put("PhoneNumber", text.getText().toString());
         text = findViewById(R.id.postal_address);
         userDetails.put("PostalAddress", text.getText().toString());
-        text = findViewById(R.id.password);
-        password = text.getText().toString();
-        userDetails.put("Password", text.getText().toString());
-        text = findViewById(R.id.confirm_password);
-        confirm_password = text.getText().toString();
-        if (!password.equals(confirm_password)) {
-            Log.w(TAG, "Passwords don't match.");
-            return;
-        }
 
         // Store
         newUser.put("UserDetails", userDetails);
