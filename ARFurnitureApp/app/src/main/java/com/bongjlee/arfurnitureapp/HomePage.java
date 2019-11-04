@@ -110,7 +110,7 @@ public class HomePage extends AppCompatActivity {
                             name1 = documentSnapshot.getString("DocId");
                             nameViewData.setText("Name: " + name);
                             priceViewData.setText("Price: " + price);
-                            productLinkViewData.setText("Product Page: "+ name1);
+                            productLinkViewData.setText("Description: "+ productDescription);
                             //photoViewData.set
                             //DescriptionViewData.setText("Description: " + productDescription);
                             //styleViewData.setText("Style: " + style);
