@@ -1,4 +1,20 @@
-ARFurnitureApp
+AR Furniture 
+
+===========================
+
+|Author|Procastinators Now|
+|---|---
+|E-mail|best441team@umich.edu 
+****
+`Java` `Android` `Firebase`
+
+* [ARFurnitureApp]
+* [Database Generate]
+* [ProAR]
+****
+
+
+## ARFurnitureApp
 
 This is the place where we hold our demo product. 
 When you start the application you would be in HomePage.java and view the products are guest.
@@ -10,11 +26,11 @@ We have done the users sign-up and sign in system in the UserLogin.java and User
 After sign-in and register at CompanyRegistrationForm.java, you can uoload the furnitures to our data base.
 
 
-Database_generate
+## Database Generate
 
 This is the place We arrange our firebase and generate some sample data.
 
 
-ProAR
+## ProAR
 
 It is a simple version that only contain the basic functions for the AR.
