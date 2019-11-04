@@ -20,6 +20,7 @@ This is the place where we hold our demo AR Furniture App.
 
 File Structure:
 
+<pre>
 |-- app
         |-- java
             |-- com.bongjlee.arfurnitureapp
@@ -47,6 +48,7 @@ File Structure:
 |-- Gradle Scripts
         |-- build.gradle
         |-- settings.gradle
+</pre>
 
 Java files will handle all the behaviors of the app while interacting with Firebase and providing value
 to the xml files.
@@ -55,7 +57,7 @@ Xml files display all the frontend layout and component of the application.
 
 Gradle files handle the external library dependencies and project settings that the app utilize.
 
-*** Instructions: ***
+***Instructions:***
 
 When you start the application (build and run the app on HomePage.java),
 you would be on the home page and view the products as a guest.
