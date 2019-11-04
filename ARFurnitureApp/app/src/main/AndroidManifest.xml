@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".UserEdit"></activity>
+        <activity android:name=".UserSignUp"></activity>
         <activity android:name=".UserLogin"></activity>
         <activity android:name=".HomePage">
             <intent-filter>
@@ -41,5 +41,5 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
 
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

@@ -206,6 +206,10 @@ public class HomePage extends AppCompatActivity {
                 myIntent = new Intent(HomePage.this, UserEdit.class);
                 myIntent.putExtra("edit", R.id.edit_account_page);
                 HomePage.this.startActivity(myIntent);
+            case R.id.login_page:
+                myIntent = new Intent(HomePage.this, UserLogin.class);
+                myIntent.putExtra("login", R.id.login_page);
+                HomePage.this.startActivity(myIntent);
                 return true;
             case R.id.log_off_page:
                 myIntent = new Intent(HomePage.this, UserLogout.class);

@@ -14,11 +14,11 @@ import java.util.Arrays;
 
 public class UserLogin extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
-    public static FirebaseUser loggedInUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_login);
         Intent intent = getIntent();
         String value = intent.getStringExtra("login");
 
@@ -46,10 +46,8 @@ public class UserLogin extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
-                loggedInUser = FirebaseAuth.getInstance().getCurrentUser();
-                // Redirect to home screen
-                Intent i = new Intent(UserLogin.this, HomePage.class);
-                startActivity(i);
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                // ...
             } else {
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check
