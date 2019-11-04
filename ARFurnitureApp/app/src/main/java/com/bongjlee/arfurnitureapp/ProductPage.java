@@ -73,9 +73,7 @@ public class ProductPage extends AppCompatActivity {
                             //photoViewData.set
                             DescriptionViewData.setText("Description: " + productDescription);
                             styleViewData.setText("Style: " + style);
-                            shippingInfoViewData.setText("Shipping: " + shippinginfo);
-
-                        }else {
+                            shippingInfoViewData.setText("Connection information: " + shippinginfo);
 
                         }
                     }
