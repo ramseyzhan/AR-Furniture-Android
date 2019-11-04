@@ -16,21 +16,63 @@ AR Furniture
 
 ## ARFurnitureApp
 
-This is the place where we hold our demo product. 
-When you start the application you would be in HomePage.java and view the products are guest.
+This is the place where we hold our demo AR Furniture App.
 
-By click the product card, you would be view the ProductPage.java and enter the AR mode on the MyArFragment.java.
+File Structure:
+
+|-- app
+        |-- java
+            |-- com.bongjlee.arfurnitureapp
+                |-- ARViewPage.java
+                |-- CompanyRegistrationForm.java
+                |-- HomePage.java
+                |-- MyArFragment.java
+                |-- ProductPage.java
+                |-- ProductSubmissionForm.java
+                |-- UserAccountPage.java
+                |-- UserEdit.java
+                |-- UserLogin.java
+                |-- UserLogout.java
+        |-- res
+            |-- layout
+                |-- activity_ar_ui.xml
+                |-- activity_comapny_registration_form.xml
+                |-- activity_home_page.xml
+                |-- activity_product.xml
+                |-- activity_product_submission.xml
+                |-- activity_user_account_page.xml
+                |-- activity_user_login.xml
+                |-- activity_user_sign_up.xml
+                |-- toolbar.xml
+|-- Gradle Scripts
+        |-- build.gradle
+        |-- settings.gradle
+
+Java files will handle all the behaviors of the app while interacting with Firebase and providing value
+to the xml files.
+
+Xml files display all the frontend layout and component of the application.
+
+Gradle files handle the external library dependencies and project settings that the app utilize.
+
+*** Instructions: ***
+
+When you start the application (build and run the app on HomePage.java),
+you would be on the home page and view the products as a guest.
+
+By click the product card, you would be able to view the ProductPage.java and enter the AR mode
+on the MyArFragment.java.
 
 We have done the users sign-up and sign in system in the UserLogin.java and UserEdit.java.
 
-After sign-in and register at CompanyRegistrationForm.java, you can uoload the furnitures to our data base.
+After sign-in and register at CompanyRegistrationForm.java, you can upload the furniture details to our database.
 
 
 ## Database Generate
 
-This is the place We arrange our firebase and generate some sample data.
+This is the place where we arrange our Firebase and generate sample data for testing.
 
 
 ## ProAR
 
-It is a simple version that only contain the basic functions for the AR.
+This is a simple version that only contains the basic functions of the AR.
