@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bongjlee.arfurnitureapp">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".UserEdit"></activity>
-        <activity android:name=".UserLogin"></activity>
+        <activity android:name=".BuyingPage"></activity>
+        <activity android:name=".UserEdit" />
+        <activity android:name=".UserLogin" />
         <activity android:name=".HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,26 +27,25 @@
         </activity>
         <activity android:name=".CompanyRegistrationForm" />
         <activity android:name=".UserAccountPage" />
-        <activity android:name=".ProductSubmissionForm"></activity>
-        <activity android:name=".ProductPage"></activity>
-
-        <activity android:name=".ARViewPage"
-            android:parentActivityName=".ProductPage" >
+        <activity android:name=".ProductSubmissionForm" />
+        <activity android:name=".ProductPage" />
+        <activity
+            android:name=".ARViewPage"
+            android:parentActivityName=".ProductPage">
             <meta-data
                 android:name="com.google.android.ar.API_KEY"
                 android:value="AIzaSyCgBupTFkgQQ1lg-bSCG8d40f6HE869YqU" />
-
-            <meta-data android:name="com.google.ar.core" android:value="required" />
+            <meta-data
+                android:name="com.google.ar.core"
+                android:value="required" />
         </activity>
 
         <meta-data
             android:name="com.google.android.ar.API_KEY"
             android:value="AIzaSyCgBupTFkgQQ1lg-bSCG8d40f6HE869YqU" />
-
-        <meta-data android:name="com.google.ar.core" android:value="required" />
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
     </application>
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
-
 
 </manifest>

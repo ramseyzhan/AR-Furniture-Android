@@ -22,14 +22,13 @@
 <!--        app:srcCompat="@mipmap/ic_launcher_round" />-->
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="232dp"
         android:id="@+id/card_view"
+        android:layout_width="401dp"
+        android:layout_height="720dp"
         android:layout_gravity="center"
-        app:cardCornerRadius="4dp">
+        app:cardCornerRadius="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp">
 
         <ImageView
             android:id="@+id/product_photo"
@@ -40,56 +39,68 @@
 
         <TextView
             android:id="@+id/product_name"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="70dp"
             android:layout_width="150dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="70dp"
             android:text="product name" />
 
         <TextView
             android:id="@+id/product_price"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="130dp"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
             android:text="price" />
+
         <TextView
             android:id="@+id/product_styles"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="190dp"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
             android:text="style" />
+
         <TextView
             android:id="@+id/shipping_info"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="250dp"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
             android:text="shipping info" />
+
         <TextView
             android:id="@+id/product_description"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="310dp"
             android:layout_width="150dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="310dp"
             android:text="description" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="400dp"
             android:onClick="back"
-            android:text="back"
-            />
+            android:text="back" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
             android:layout_marginTop="400dp"
+            android:layout_marginRight="100dp"
             android:onClick="GeneratAR"
-            android:text="AR"
-            />
+            android:text="AR" />
+
+        <Button
+            android:id="@+id/purchase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="400dp"
+            android:onClick="Purchase"
+            android:text="Purchase" />
 
     </androidx.cardview.widget.CardView>
 
