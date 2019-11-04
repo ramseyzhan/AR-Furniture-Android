@@ -103,6 +103,9 @@ public class ProductPage extends AppCompatActivity {
         }
         startActivity(intent);
     }
+    public void Purchase (View view){
+        startActivity(new Intent(ProductPage.this, BuyingPage.class));
+    }
     public void back (View view) {
         this.finish();
     }

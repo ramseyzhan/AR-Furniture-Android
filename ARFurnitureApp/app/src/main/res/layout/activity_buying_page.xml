@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuyingPage">
+
+    <TextView
+        android:id="@+id/CompanyName"
+        android:layout_width="411dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="36dp"
+        android:background="#03A9F4"
+        android:gravity="center|center_horizontal"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/CompanyEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CompanyEmail"
+        android:layout_width="409dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/CompanyPhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CompanyName" />
+
+    <TextView
+        android:id="@+id/CompanyPhone"
+        android:layout_width="411dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/CompanyWeb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CompanyEmail" />
+
+    <TextView
+        android:id="@+id/CompanyWeb"
+        android:layout_width="406dp"
+        android:layout_height="81dp"
+        android:autoLink="all"
+        android:gravity="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/CompanyAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CompanyPhone" />
+
+    <TextView
+        android:id="@+id/CompanyAddress"
+        android:layout_width="410dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="243dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CompanyWeb" />
+</androidx.constraintlayout.widget.ConstraintLayout>
