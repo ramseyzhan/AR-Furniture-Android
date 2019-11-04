@@ -89,7 +89,7 @@ public class ARViewPage extends AppCompatActivity {
         LinearLayout gallery = findViewById(R.id.gallery_layout);
         if(Cartprods.name1 != null){
             ImageView product_t = new ImageView( this );
-            product_t.setImageResource(R.drawable.chair_thumb);
+            product_t.setImageResource(R.drawable.num1);
             product_t.setContentDescription(Cartprods.name1);
             product_t.setOnClickListener(view -> {tarObject = Uri.parse(Cartprods.name1+".sfb");});
             gallery.addView(product_t);
@@ -97,7 +97,7 @@ public class ARViewPage extends AppCompatActivity {
 
         if(Cartprods.name2!=null) {
             ImageView product_t = new ImageView(this);
-            product_t.setImageResource(R.drawable.sofa_thumb);
+            product_t.setImageResource(R.drawable.num2);
             product_t.setContentDescription(Cartprods.name2);
             product_t.setOnClickListener(view -> {
                 tarObject = Uri.parse(Cartprods.name2+".sfb");
