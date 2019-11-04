@@ -24,7 +24,7 @@ public class BuyingPage extends AppCompatActivity {
         setContentView(R.layout.activity_buying_page);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("company").document(
-                "6IyAVIELJxa3RmfuiKyZ");
+                "1866317041");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
