@@ -1,57 +1,50 @@
 package com.bongjlee.arfurnitureapp.data;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import androidx.annotation.NonNull;
+
 
 public class Product {
-    private String productName;
-    private String productPrice;
-    private String productDescription;
-    private String productStyles;
-    private String shippingInfo;
-    private Integer photoId;
+    public String id;
+    public String name;
+    public String price;
+    public String description;
+    public String style;
+    public String shippingInfo;
+    public String photoId;
 
-    public Product() {}
+    public Product(String prod_id,FirebaseFirestore db) {
+        this.id = prod_id;
+        DocumentReference docRef = db.collection("products").document("1939035510");
+        docRef.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            photoId = documentSnapshot.getString("photoID");
+                            description = documentSnapshot.getString("productDescription");
+                            name = documentSnapshot.getString("productName");
+                            style = documentSnapshot.getString("productStyles");
+                            shippingInfo = documentSnapshot.getString("shippingInfo");
+                            price = documentSnapshot.getString("ProductPrice");
+                        }else {
 
-    public String getProductName() {
-        return productName;
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public void setProductPrice(String productPrice) {
-        this.productPrice = productPrice;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
-    public String getProductStyles() {
-        return productStyles;
-    }
-
-    public void setProductStyles(String productStyles) {
-        this.productStyles = productStyles;
-    }
-
-    public String getShippingInfo() {
-        return shippingInfo;
-    }
-
-    public void setShippingInfo(String shippingInfo) {
-        this.shippingInfo = shippingInfo;
-    }
-
-    public Integer getPhotoId() {
-        return photoId;
-    }
-
-    public void setPhotoId(Integer photoId) {
-        this.photoId = photoId;
-    }
 }

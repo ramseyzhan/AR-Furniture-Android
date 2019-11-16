@@ -25,18 +25,20 @@ public class ProductSubmissionForm extends AppCompatActivity {
     public void sendInfo( View view ) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        Product product = new Product();
+        Product product = new Product("123",db);
         String productName = ( (EditText) findViewById( R.id.product_name ) ).getText().toString();
         String productDescription = ( (EditText) findViewById( R.id.product_description ) ).getText().toString();
         String productPrice = ( (EditText) findViewById( R.id.product_price ) ).getText().toString();
         String productStyles = ( (EditText) findViewById( R.id.product_styles ) ).getText().toString();
         String shippingInfo = ( (EditText) findViewById( R.id.shipping_info ) ).getText().toString();
 
-        product.setProductName( productName );
-        product.setProductDescription( productDescription );
-        product.setProductPrice( productPrice );
-        product.setProductStyles( productStyles );
-        product.setShippingInfo( shippingInfo );
+
+//        TODO: set up the upload
+//        product.setProductName( productName );
+//        product.setProductDescription( productDescription );
+//        product.setProductPrice( productPrice );
+//        product.setProductStyles( productStyles );
+//        product.setShippingInfo( shippingInfo );
 
         //Submit data into FireBase cloud
         db.collection( "products" )
