@@ -48,6 +48,9 @@ import com.bongjlee.arfurnitureapp.data.Product;
 import com.bongjlee.arfurnitureapp.utils.productAdapter;
 
 import com.google.firebase.firestore.model.Document;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 
 
@@ -69,7 +72,6 @@ public class HomePage extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         db = FirebaseFirestore.getInstance();
 
-
         db.collection("users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -86,7 +88,7 @@ public class HomePage extends AppCompatActivity {
                 });
 
         prodArrayList = new ArrayList<Product>();
-        prodAdapter = new productAdapter(this, prodArrayList);
+        prodAdapter = new productAdapter(this, prodArrayList,FirebaseStorage.getInstance().getReference());
         ListView lView = (ListView) findViewById(R.id.chattListView);
         lView.setAdapter(prodAdapter);
         refreshTimeline();
