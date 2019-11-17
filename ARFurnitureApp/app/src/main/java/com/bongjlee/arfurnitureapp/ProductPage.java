@@ -49,7 +49,7 @@ public class ProductPage extends AppCompatActivity {
         //productLinkViewData = findViewById(R.id.product_link);
         priceViewData = findViewById(R.id.product_price);
         photoViewData = findViewById(R.id.product_photo);
-        productLinkViewData = findViewById(R.id.product_link);
+//        productLinkViewData = findViewById(R.id.product_link);
 
 
 
