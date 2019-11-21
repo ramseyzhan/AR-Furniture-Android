@@ -2,6 +2,7 @@ package com.bongjlee.arfurnitureapp;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,10 +18,15 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.bongjlee.arfurnitureapp.data.Cartprods;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class ProductPage extends AppCompatActivity {
-    private static final String TAG = HomePage.class.getSimpleName();
     private TextView nameViewData;
     private TextView DescriptionViewData;
     private TextView styleViewData;
@@ -29,16 +35,15 @@ public class ProductPage extends AppCompatActivity {
     private TextView priceViewData;
     private ImageView photoViewData;
 
+    private String docId_t;
 
-    private String name_t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
         Intent intent = getIntent();
-//        String value = intent.getStringExtra("productPage");
-        String docId_t = getIntent().getStringExtra("p_id");
+        this.docId_t = getIntent().getStringExtra("p_id");
 
         nameViewData = findViewById(R.id.product_name);
         DescriptionViewData = findViewById(R.id.product_description);
@@ -50,7 +55,6 @@ public class ProductPage extends AppCompatActivity {
 //        productLinkViewData = findViewById(R.id.product_link);
 
 
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("products").document(docId_t);
         docRef.get()
@@ -58,21 +62,36 @@ public class ProductPage extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            String id = documentSnapshot.getString("photoID");
+                            String photoId = documentSnapshot.getString("photoId");
                             String productDescription = documentSnapshot.getString("productDescription");
                             String name = documentSnapshot.getString("productName");
                             String style = documentSnapshot.getString("productStyles");
                             String shippinginfo = documentSnapshot.getString("shippingInfo");
                             String price = documentSnapshot.getString("ProductPrice");
-                            name_t = name;
                             nameViewData.setText("Name: " + name);
                             priceViewData.setText("Price: " + price);
-                            //productLinkViewData.setText("Product Page: ");
-                            //photoViewData.set
                             DescriptionViewData.setText("Description: " + productDescription);
                             styleViewData.setText("Style: " + style);
                             shippingInfoViewData.setText("Connection information: " + shippinginfo);
+                            FirebaseStorage storage = FirebaseStorage.getInstance();
+                            StorageReference storageRef = storage.getReference();
 
+                            StorageReference spaceRef = storageRef.child("images/"+photoId+".jpg");
+                            try{
+                                File localFile = File.createTempFile("images", "jpg");
+                                spaceRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                        photoViewData.setImageURI(Uri.fromFile(localFile));
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception exception) {
+                                    }
+                                });
+                            }
+                            catch (IOException e){
+                            }
                         }
                     }
                 })
@@ -85,20 +104,13 @@ public class ProductPage extends AppCompatActivity {
     }
     public void GeneratAR(View view) {
         Intent intent = new Intent(this, ARViewPage.class);
-        if(name_t.equals("sofa")) {
-            Cartprods.name1 = "sofa";
-            Cartprods.name2 = "chair";
-        }
-        else if(name_t.equals("chair")){
-            Cartprods.name1 = "chair";
-            Cartprods.name2 = "sofa";
-        }
-        else{
-            Cartprods.name1 = "chair";
-            Cartprods.name2 = "sofa";
-            Cartprods.name3 = "chair";
-            Cartprods.name4 = "sofa";
-        }
+
+        intent.putExtra("p_id", this.docId_t);
+
+        Cartprods.name1 = "chair";
+        Cartprods.name2 = "sofa";
+        Cartprods.name3 = "chair";
+        Cartprods.name4 = "sofa";
         startActivity(intent);
     }
     public void Purchase (View view){

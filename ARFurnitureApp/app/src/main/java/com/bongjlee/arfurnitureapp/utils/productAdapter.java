@@ -51,9 +51,9 @@ public class productAdapter extends ArrayAdapter<Product> {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        StorageReference spaceRef = storageRef.child("images/space.jpg");
+        StorageReference spaceRef = storageRef.child("images/"+prod_t.photoId+".jpg");
         try{
-            File localFile = File.createTempFile("images", "jpg");
+            File localFile = File.createTempFile(prod_t.photoId, "jpg");
             spaceRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -70,4 +70,5 @@ public class productAdapter extends ArrayAdapter<Product> {
         }
         return convertView;
     }
+
 }

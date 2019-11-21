@@ -30,7 +30,7 @@ public class Product {
     public String style;
     public String shippingInfo;
     public String photoId;
-
+    public String iconId;
     public Product(String prod_id,FirebaseFirestore db)  {
         this.id = prod_id;
         DocumentReference docRef = db.collection("products").document(prod_id);
@@ -39,13 +39,13 @@ public class Product {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            photoId = documentSnapshot.getString("photoID");
+                            photoId = documentSnapshot.getString("photoId");
                             description = documentSnapshot.getString("productDescription");
                             name = documentSnapshot.getString("productName");
                             style = documentSnapshot.getString("productStyles");
                             shippingInfo = documentSnapshot.getString("shippingInfo");
                             price = documentSnapshot.getString("ProductPrice");
-
+                            iconId = documentSnapshot.getString("iconId");
                         }
                     }
                 })
