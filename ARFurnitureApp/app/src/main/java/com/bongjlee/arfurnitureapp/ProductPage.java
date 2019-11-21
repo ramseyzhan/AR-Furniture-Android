@@ -38,9 +38,7 @@ public class ProductPage extends AppCompatActivity {
 
         Intent intent = getIntent();
 //        String value = intent.getStringExtra("productPage");
-        String docId_t = getIntent().getStringExtra("name");
-
-
+        String docId_t = getIntent().getStringExtra("p_id");
 
         nameViewData = findViewById(R.id.product_name);
         DescriptionViewData = findViewById(R.id.product_description);

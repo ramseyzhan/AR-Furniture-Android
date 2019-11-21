@@ -149,20 +149,20 @@ public class HomePage extends AppCompatActivity {
     private void refreshTimeline() {
         prodAdapter.clear();
         for (int i = 0; i < 20; i++) {
-            prodAdapter.add(new Product("94623429",db));
+            if(i%2==0){
+                prodAdapter.add(new Product("94623429",db));
+            }
+            else{
+                prodAdapter.add(new Product("1939035510",db));
+            }
         }
 
     }
     public void generateProductPage(View view) {
         Intent intent = new Intent(this, ProductPage.class);
-        intent.putExtra("name", "94623429");
-
-        startActivity(intent);
-    }
-    public void generateProductPage2(View view) {
-        Intent intent = new Intent(this, ProductPage.class);
-        intent.putExtra("name", "94623429");
-
+        TextView p_id = (TextView) view.findViewById(R.id.product_id);
+        String product_id = p_id.getText().toString();
+        intent.putExtra("p_id", product_id);
         startActivity(intent);
     }
 
