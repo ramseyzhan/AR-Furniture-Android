@@ -14,6 +14,8 @@ import android.view.View;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
@@ -24,6 +26,9 @@ import android.widget.LinearLayout;
 
 
 import com.bongjlee.arfurnitureapp.data.Cartprods;
+import com.bongjlee.arfurnitureapp.data.Product;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
@@ -32,7 +37,15 @@ import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.Renderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ARViewPage extends AppCompatActivity {
@@ -42,6 +55,8 @@ public class ARViewPage extends AppCompatActivity {
     private MyArFragment arFragment;
     private Uri tarObject;
     private Anchor mainAnchor;
+    private ArrayList<String> docs_gallery;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,20 +64,25 @@ public class ARViewPage extends AppCompatActivity {
         if (!checkIsSupportedDeviceOrFinish(this)) {
             return;
         }
+        docs_gallery = new ArrayList<String>();
+        db = FirebaseFirestore.getInstance();
+
+        String doc_id = getIntent().getStringExtra("p_id");
+//        Log.e("ram","doc"+doc_id);
+        docs_gallery.add(doc_id);
+
+        for(int i=0;i<5;i++){
+            if(i%2==0){
+                docs_gallery.add("94623429");
+            }
+            else{
+                docs_gallery.add("1939035510");
+            }
+        }
 
         setContentView(R.layout.activity_ar_ui);
-
         arFragment = (MyArFragment) getSupportFragmentManager().findFragmentById(R.id.sceneform_fragment);
-
-//        Button clearButton = findViewById(R.id.clear_button);
-//        clearButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//            }
-//        });
-
         createGallery();
-
         arFragment.setOnTapArPlaneListener(
                 (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
                      if (plane.getType() != Plane.Type.HORIZONTAL_UPWARD_FACING) {
@@ -87,42 +107,42 @@ public class ARViewPage extends AppCompatActivity {
 
     private void createGallery() {
         LinearLayout gallery = findViewById(R.id.gallery_layout);
-        if(Cartprods.name1 != null){
-            ImageView product_t = new ImageView( this );
-            product_t.setImageResource(R.drawable.num1);
-            product_t.setContentDescription(Cartprods.name1);
-            product_t.setOnClickListener(view -> {tarObject = Uri.parse(Cartprods.name1+".sfb");});
-            gallery.addView(product_t);
-        }
 
-        if(Cartprods.name2!=null) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+
+        for(String prod_id_t : docs_gallery) {
             ImageView product_t = new ImageView(this);
-            product_t.setImageResource(R.drawable.num2);
-            product_t.setContentDescription(Cartprods.name2);
-            product_t.setOnClickListener(view -> {
-                tarObject = Uri.parse(Cartprods.name2+".sfb");
-            });
-            gallery.addView(product_t);
+
+            DocumentReference docRef = db.collection("products").document(prod_id_t);
+
+            docRef.get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()) {
+                                String iconId = documentSnapshot.getString("iconId");
+                                String modelId = documentSnapshot.getString("modelId");
+                                product_t.setOnClickListener(view -> {tarObject = Uri.parse(modelId+".sfb");});
+                                StorageReference spaceRef = storageRef.child("icon/AR/"+iconId+".jpg");
+                                try{
+                                    File localFile = File.createTempFile("images", "jpg");
+                                    spaceRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                            product_t.setImageURI(Uri.fromFile(localFile));
+                                        }
+                                    });
+                                }
+                                catch (IOException e){
+                                }
+
+                                gallery.addView(product_t);
+                            }
+                        }
+                    });
+
         }
-        if(Cartprods.name3!=null){
-            ImageView product_t = new ImageView(this);
-            product_t.setImageResource(R.drawable.sofa_thumb);
-            product_t.setContentDescription(Cartprods.name3);
-            product_t.setOnClickListener(view -> {
-                tarObject = Uri.parse(Cartprods.name3+".sfb");
-            });
-            gallery.addView(product_t);
-        }
-        if(Cartprods.name4!=null){
-            ImageView product_t = new ImageView(this);
-            product_t.setImageResource(R.drawable.sofa_thumb);
-            product_t.setContentDescription(Cartprods.name4);
-            product_t.setOnClickListener(view -> {
-                tarObject = Uri.parse(Cartprods.name4+".sfb");
-            });
-            gallery.addView(product_t);
-        }
-        
 
     }
 

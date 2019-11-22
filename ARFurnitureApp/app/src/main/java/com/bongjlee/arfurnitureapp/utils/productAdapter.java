@@ -7,16 +7,29 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 
 import com.bongjlee.arfurnitureapp.R;
 import com.bongjlee.arfurnitureapp.data.Product;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.io.File;
 
 
 public class productAdapter extends ArrayAdapter<Product> {
-    public productAdapter(Context context, ArrayList<Product> users) {
+    private StorageReference storageReference;
+    public productAdapter(Context context, ArrayList<Product> users,StorageReference store_ref) {
         super(context, 0, users);
+        storageReference = store_ref;
     }
 
     @Override
@@ -28,12 +41,34 @@ public class productAdapter extends ArrayAdapter<Product> {
         TextView nameViewData = (TextView) convertView.findViewById(R.id.product_name);
         TextView DescriptionViewData = (TextView) convertView.findViewById(R.id.product_price);
         TextView productLinkViewData = (TextView) convertView.findViewById(R.id.product_link);
+        TextView productIDViewData = (TextView) convertView.findViewById(R.id.product_id);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.product_photo);
+
         nameViewData.setText(prod_t.name);
         DescriptionViewData.setText(prod_t.description);
         productLinkViewData.setText(prod_t.shippingInfo);
+        productIDViewData.setText(prod_t.id);
 
-        ImageView photoViewData;
-
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference spaceRef = storageRef.child("images/"+prod_t.photoId+".jpg");
+        try{
+            File localFile = File.createTempFile("images", "jpg");
+            spaceRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    imageView.setImageURI(Uri.fromFile(localFile));
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+                }
+            });
+        }
+        catch (IOException e){
+        }
         return convertView;
     }
+
 }
