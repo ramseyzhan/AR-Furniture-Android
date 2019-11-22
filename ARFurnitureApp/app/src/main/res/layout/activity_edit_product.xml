@@ -37,7 +37,7 @@
             android:layout_marginLeft="0dp"
             tools:srcCompat="@tools:sample/avatars" />
         ​
-        <TextView
+        <EditText
             android:id="@+id/product_name"
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -45,7 +45,7 @@
             android:layout_marginTop="70dp"
             android:text="product name" />
         ​
-        <TextView
+        <EditText
             android:id="@+id/product_price"
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -53,7 +53,7 @@
             android:layout_marginTop="130dp"
             android:text="price" />
         ​
-        <TextView
+        <EditText
             android:id="@+id/product_styles"
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -61,7 +61,7 @@
             android:layout_marginTop="190dp"
             android:text="style" />
         ​
-        <TextView
+        <EditText
             android:id="@+id/shipping_info"
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -69,7 +69,7 @@
             android:layout_marginTop="250dp"
             android:text="shipping info" />
         ​
-        <TextView
+        <EditText
             android:id="@+id/product_description"
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -85,49 +85,13 @@
             android:onClick="back"
             android:text="back" />
         ​
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="400dp"
-            android:layout_marginRight="100dp"
-            android:onClick="GeneratAR"
-            android:text="AR" />
-        ​
-        <Button
-            android:id="@+id/purchase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="400dp"
-            android:onClick="Purchase"
-            android:text="Purchase" />
-        ​
-        <EditText
-            android:id="@+id/messageEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="500dp"
-            android:layout_marginRight="100dp"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:text="This is a sample review"
-            app:layout_constraintLeft_toLeftOf="parent" />
-        ​
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="550dp"
-            android:layout_marginRight="100dp"
-            android:onClick="GeneratAR"
-            android:text="Submit Review" />
-        ​
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="100dp"
             android:layout_marginTop="600dp"
-            android:onClick="addFavorites"
+            android:onClick="editproduct"
             android:text="Edit the product"
             />
         ​
