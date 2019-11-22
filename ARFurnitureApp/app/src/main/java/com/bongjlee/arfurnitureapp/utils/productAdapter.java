@@ -53,7 +53,7 @@ public class productAdapter extends ArrayAdapter<Product> {
         StorageReference storageRef = storage.getReference();
         StorageReference spaceRef = storageRef.child("images/"+prod_t.photoId+".jpg");
         try{
-            File localFile = File.createTempFile(prod_t.photoId, "jpg");
+            File localFile = File.createTempFile("images", "jpg");
             spaceRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {

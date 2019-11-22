@@ -106,11 +106,6 @@ public class ProductPage extends AppCompatActivity {
         Intent intent = new Intent(this, ARViewPage.class);
 
         intent.putExtra("p_id", this.docId_t);
-
-        Cartprods.name1 = "chair";
-        Cartprods.name2 = "sofa";
-        Cartprods.name3 = "chair";
-        Cartprods.name4 = "sofa";
         startActivity(intent);
     }
     public void Purchase (View view){

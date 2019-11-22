@@ -31,6 +31,8 @@ public class Product {
     public String shippingInfo;
     public String photoId;
     public String iconId;
+    public String modelId;
+
     public Product(String prod_id,FirebaseFirestore db)  {
         this.id = prod_id;
         DocumentReference docRef = db.collection("products").document(prod_id);
@@ -46,12 +48,8 @@ public class Product {
                             shippingInfo = documentSnapshot.getString("shippingInfo");
                             price = documentSnapshot.getString("ProductPrice");
                             iconId = documentSnapshot.getString("iconId");
+                            modelId = documentSnapshot.getString("modelId");
                         }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
                     }
                 });
     }
