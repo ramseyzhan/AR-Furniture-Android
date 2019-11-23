@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,36 +32,42 @@ public class UserEdit extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Object> newUser = new HashMap<>();
 
-        EditText text = findViewById(R.id.email);
-        newUser.put("Email", text.getText().toString());
+        String email_text = ((EditText)findViewById(R.id.email)).getText().toString();
+        newUser.put("Email", email_text);
 
         Map<String, Object> userDetails = new HashMap<>();
-        text = findViewById(R.id.person_name);
-        userDetails.put("Name", text.getText().toString());
-        text = findViewById(R.id.gender);
-        userDetails.put("Gender", text.getText().toString());
-        text = findViewById(R.id.age);
-        userDetails.put("Age", text.getText().toString());
-        text = findViewById(R.id.phone);
-        userDetails.put("PhoneNumber", text.getText().toString());
-        text = findViewById(R.id.postal_address);
-        userDetails.put("PostalAddress", text.getText().toString());
+
+        String person_name = ((EditText)findViewById(R.id.person_name)).getText().toString();
+        userDetails.put("Name", person_name);
+
+        String gender = ((EditText)findViewById(R.id.gender)).getText().toString();
+        userDetails.put("Gender", gender);
+
+        String age = ((EditText)findViewById(R.id.age)).getText().toString();
+        userDetails.put("Age", age);
+
+        String phone = ((EditText)findViewById(R.id.phone)).getText().toString();
+        userDetails.put("PhoneNumber", phone);
+
+        String postal = ((EditText)findViewById(R.id.postal_address)).getText().toString();
+        userDetails.put("PostalAddress", postal);
+
+        userDetails.put("favoriteList", Arrays.asList());
 
         // Store
         newUser.put("UserDetails", userDetails);
         db.collection("users")
-                .add(newUser)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
+                .document(email_text).set(newUser)
+                .addOnSuccessListener(
+                        documentReference -> Log.d(
+                                TAG,
+                                "DocumentSnapshot added with name: " + email_text
+                        )
+                )
+                .addOnFailureListener(
+                        e -> Log.w( TAG, "Error adding document", e )
+                );
+        Intent i = new Intent(UserEdit.this, HomePage.class);
+        startActivity(i);
     }
 }

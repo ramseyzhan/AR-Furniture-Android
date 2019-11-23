@@ -1,18 +1,21 @@
 package com.bongjlee.arfurnitureapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
-import android.util.Log;
+import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+
+import org.w3c.dom.Text;
 
 import static com.bongjlee.arfurnitureapp.UserLogin.loggedInUser;
 
@@ -25,10 +28,34 @@ public class UserAccountPage extends AppCompatActivity {
         Intent intent = getIntent();
         String value = intent.getStringExtra("toAccount");
         if (loggedInUser != null) {
-            EditText emailText = (EditText)findViewById(R.id.editText2);
+            TextView emailText = (TextView)findViewById(R.id.email);
             emailText.setText(loggedInUser.getEmail());
-            EditText nameText = (EditText)findViewById(R.id.editText);
-            nameText.setText(loggedInUser.getDisplayName());
+
         }
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference userRef = db.collection("users").document(loggedInUser.getEmail());
+        TextView addressText = (TextView)findViewById(R.id.address);
+        TextView phoneNumber = (TextView) findViewById((R.id.phone_number));
+        TextView nameText = (TextView)findViewById(R.id.name);
+        userRef.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String dbAdd = documentSnapshot.getString("UserDetails.PostalAddress");
+                            String dbPhone = documentSnapshot.getString("UserDetails.PhoneNumber");
+                            String dbName = documentSnapshot.getString("UserDetails.Name");
+                            nameText.setText(dbName);
+                            addressText.setText(dbAdd);
+                            phoneNumber.setText(dbPhone);
+                        }
+                    }
+                });
+    }
+    public void generateFav (View view){
+        startActivity(new Intent(UserAccountPage.this, favorite_page.class));
+    }
+    public void goHome (View view){
+        startActivity(new Intent(UserAccountPage.this, HomePage.class));
     }
 }

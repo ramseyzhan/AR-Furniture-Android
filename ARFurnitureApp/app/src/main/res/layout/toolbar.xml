@@ -7,12 +7,12 @@
     android:background="@color/colorPrimary"
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-    <SearchView
+    <!--<SearchView
         android:id="@+id/searchView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:iconifiedByDefault="false"
         android:queryHint="Search"
         android:layout_centerHorizontal="true" />
-
+-->
 </androidx.appcompat.widget.Toolbar>
