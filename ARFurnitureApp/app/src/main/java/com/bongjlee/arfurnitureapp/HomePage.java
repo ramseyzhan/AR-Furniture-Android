@@ -111,6 +111,11 @@ public class HomePage extends AppCompatActivity {
                 myIntent.putExtra("productPage", R.id.product_page);
                 HomePage.this.startActivity(myIntent);
                 return true;
+            case R.id.my_products_page:
+                myIntent = new Intent(HomePage.this, MyProductsPage.class);
+                myIntent.putExtra("myProductsPage", R.id.my_products_page);
+                HomePage.this.startActivity(myIntent);
+                return true;
             case R.id.login_page:
                 myIntent = new Intent(HomePage.this, UserLogin.class);
                 myIntent.putExtra("login", R.id.login_page);
