@@ -27,12 +27,12 @@
 
 
         <TextView
-            android:id="@+id/review_rank"
+            android:id="@+id/review_rating"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="20dp"
-            android:text="rank 1-5" />
+            android:text="ranting 1-5" />
 
         <TextView
             android:id="@+id/review_content"

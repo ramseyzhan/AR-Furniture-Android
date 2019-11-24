@@ -23,11 +23,43 @@ import androidx.annotation.NonNull;
 
 
 public class Reviews {
-    protected String review_id;
-    protected String userID;
-    protected String productID;
-    protected String review_rating;
-    protected String review_content;
+    private String review_id;
+    private String productID;
+    private String review_rating;
+    private String review_content;
+    private String userID;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getReview_rating() {
+        return review_rating;
+    }
+
+    public void setReview_rating(String review_rating) {
+        this.review_rating = review_rating;
+    }
+
+    public String getReview_content() {
+        return review_content;
+    }
+
+    public void setReview_content(String review_content) {
+        this.review_content = review_content;
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public void setProductID(String productID) {
+        this.productID = productID;
+    }
 
     public Reviews(String review_id,FirebaseFirestore db)  {
         this.review_id = review_id;
@@ -44,9 +76,7 @@ public class Reviews {
                         }
                     }
                 });
+
     }
-
-
-
 
 }

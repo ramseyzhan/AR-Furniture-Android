@@ -44,14 +44,14 @@ public class productAdapter extends ArrayAdapter<Product> {
         TextView productIDViewData = (TextView) convertView.findViewById(R.id.product_id);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.product_photo);
 
-        nameViewData.setText(prod_t.name);
-        DescriptionViewData.setText(prod_t.description);
-        productLinkViewData.setText(prod_t.shippingInfo);
-        productIDViewData.setText(prod_t.id);
+        nameViewData.setText(prod_t.getName());
+        DescriptionViewData.setText(prod_t.getDescription());
+        productLinkViewData.setText(prod_t.getShippingInfo());
+        productIDViewData.setText(prod_t.getId());
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        StorageReference spaceRef = storageRef.child("images/"+prod_t.photoId+".jpg");
+        StorageReference spaceRef = storageRef.child("images/"+prod_t.getPhotoId()+".jpg");
         try{
             File localFile = File.createTempFile("images", "jpg");
             spaceRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
@@ -70,5 +70,4 @@ public class productAdapter extends ArrayAdapter<Product> {
         }
         return convertView;
     }
-
 }
