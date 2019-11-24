@@ -19,17 +19,17 @@
 
         <ImageView
             android:id="@+id/product_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
             android:layout_marginLeft="0dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/product_name"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="70dp"
             android:layout_width="150dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="20dp"
             android:text="product name" />
 
         <TextView
@@ -43,17 +43,18 @@
 
         <TextView
             android:id="@+id/product_price"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="130dp"
             android:layout_width="150dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="100dp"
             android:text="price" />
+
         <TextView
             android:id="@+id/product_link"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="190dp"
             android:layout_width="150dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="190dp"
             android:text="link" />
 
     </androidx.cardview.widget.CardView>
