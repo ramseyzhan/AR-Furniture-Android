@@ -71,7 +71,7 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar myToolbar = (Toolbar)findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
 
         db = FirebaseFirestore.getInstance();

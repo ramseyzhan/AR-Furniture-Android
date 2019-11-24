@@ -2,8 +2,11 @@ package com.bongjlee.arfurnitureapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.bongjlee.arfurnitureapp.data.Product;
 import com.bongjlee.arfurnitureapp.utils.productAdapter;
@@ -26,7 +29,7 @@ public class MyProductsPage extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         prodArrayList = new ArrayList<Product>();
         prodAdapter = new productAdapter(this, prodArrayList,
-                        FirebaseStorage.getInstance().getReference());
+                FirebaseStorage.getInstance().getReference());
 
         ListView lView = (ListView) findViewById(R.id.chattListView);
         lView.setAdapter(prodAdapter);
@@ -36,4 +39,13 @@ public class MyProductsPage extends AppCompatActivity {
             prodAdapter.add(new Product("94623429", db));
         }
     }
+
+    public void generateProductPage(View view) {
+        Intent intent = new Intent(this, ProductPage.class);
+        TextView p_id = (TextView) view.findViewById(R.id.product_id);
+        String product_id = p_id.getText().toString();
+        intent.putExtra("p_id", product_id);
+        startActivity(intent);
+    }
+
 }
