@@ -106,22 +106,20 @@
             android:id="@+id/messageEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
             android:layout_marginTop="500dp"
+            android:layout_marginRight="100dp"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:text="This is a sample review"
-            app:layout_constraintLeft_toLeftOf="parent"
-         />
+            android:text="Overall ranking:"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
             android:layout_marginTop="550dp"
+            android:layout_marginRight="100dp"
             android:onClick="GeneratAR"
-            android:text="Submit Review"
-            />
+            android:text="See Review" />
 
     </androidx.cardview.widget.CardView>
 
