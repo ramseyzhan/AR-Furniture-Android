@@ -113,7 +113,7 @@ public class HomePage extends AppCompatActivity {
                 return true;
             case R.id.my_products_page:
                 myIntent = new Intent(HomePage.this, MyProductsPage.class);
-                myIntent.putExtra("myProductsPage", R.id.my_products_page);
+                myIntent.putExtra("myProducts", R.id.my_products_page);
                 HomePage.this.startActivity(myIntent);
                 return true;
             case R.id.login_page:
