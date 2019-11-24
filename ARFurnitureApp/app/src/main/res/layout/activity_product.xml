@@ -110,7 +110,6 @@
             android:layout_marginRight="100dp"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:text="This is a sample review"
             android:text="Overall ranking:"
             app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -133,7 +132,6 @@
             android:text=""
             android:textOff=""
             android:textOn="" />
-            android:text="See Review" />
 
     </androidx.cardview.widget.CardView>
 
