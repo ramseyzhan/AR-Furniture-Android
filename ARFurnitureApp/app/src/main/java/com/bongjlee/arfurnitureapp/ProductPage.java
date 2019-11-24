@@ -4,6 +4,7 @@ package com.bongjlee.arfurnitureapp;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.InetAddresses;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -73,7 +74,7 @@ public class ProductPage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DocumentReference userRef = db.collection("users").document(user.getEmail());
+        DocumentReference userRef = db.collection("users").document(Integer.toString(user.getEmail().hashCode()));
         userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -113,7 +114,7 @@ public class ProductPage extends AppCompatActivity {
                             priceViewData.setText("Price: " + price);
                             DescriptionViewData.setText("Description: " + productDescription);
                             styleViewData.setText("Style: " + style);
-                            shippingInfoViewData.setText("Connection information: " + shippinginfo);
+                            shippingInfoViewData.setText("Shipping information: " + shippinginfo);
                             FirebaseStorage storage = FirebaseStorage.getInstance();
                             StorageReference storageRef = storage.getReference();
 
@@ -152,25 +153,26 @@ public class ProductPage extends AppCompatActivity {
     public void addFavorites(View view){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userEmail = "";
+        String userEmailHash = "";
         if (user != null) {
-            userEmail = user.getEmail();
+            userEmailHash = (user.getEmail());
+            userEmailHash = Integer.toString(userEmailHash.hashCode());
         } else {
             // No user is signed in
         }
         if(((ToggleButton) view).isChecked()) {
-            if(userEmail == ""){
+            if(userEmailHash == ""){
 
             }
-            else{
+            else {
                 final Map<String, Object> addFavToArray = new HashMap<>();
                 addFavToArray.put("UserDetails.favoriteList", FieldValue.arrayUnion(docId_t));
-                db.collection("users").document(userEmail).update(addFavToArray);
+                db.collection("users").document(userEmailHash).update(addFavToArray);
             }
         } else {
             final Map<String, Object> addFavToArray = new HashMap<>();
             addFavToArray.put("UserDetails.favoriteList", FieldValue.arrayRemove(docId_t));
-            db.collection("users").document(userEmail).update(addFavToArray);
+            db.collection("users").document(userEmailHash).update(addFavToArray);
         }
     }
     public void Purchase (View view){

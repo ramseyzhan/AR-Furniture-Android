@@ -81,7 +81,7 @@ public class favorite_page extends AppCompatActivity {
     private void refreshTimeline() {
         prodAdapter.clear();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DocumentReference userRef = db.collection("users").document(user.getEmail());
+        DocumentReference userRef = db.collection("users").document(Integer.toString(user.getEmail().hashCode()));
         userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {

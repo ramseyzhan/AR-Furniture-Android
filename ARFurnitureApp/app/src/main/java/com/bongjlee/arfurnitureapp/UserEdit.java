@@ -57,7 +57,7 @@ public class UserEdit extends AppCompatActivity {
         // Store
         newUser.put("UserDetails", userDetails);
         db.collection("users")
-                .document(email_text).set(newUser)
+                .document(Integer.toString(email_text.hashCode())).set(newUser)
                 .addOnSuccessListener(
                         documentReference -> Log.d(
                                 TAG,

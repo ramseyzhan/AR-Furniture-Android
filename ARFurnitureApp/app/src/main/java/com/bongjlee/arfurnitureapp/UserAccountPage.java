@@ -33,7 +33,7 @@ public class UserAccountPage extends AppCompatActivity {
 
         }
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference userRef = db.collection("users").document(loggedInUser.getEmail());
+        DocumentReference userRef = db.collection("users").document(Integer.toString(loggedInUser.getEmail().hashCode()));
         TextView addressText = (TextView)findViewById(R.id.address);
         TextView phoneNumber = (TextView) findViewById((R.id.phone_number));
         TextView nameText = (TextView)findViewById(R.id.name);
