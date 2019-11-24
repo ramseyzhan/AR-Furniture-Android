@@ -24,7 +24,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".favorite_page"></activity>
+        <activity android:name=".MyProductsPage"></activity>
+        <activity android:name=".favorite_page" />
         <activity android:name=".BuyingPage" />
         <activity android:name=".UserEdit" />
         <activity android:name=".UserLogin" />
