@@ -22,36 +22,31 @@ import com.google.firebase.firestore.QuerySnapshot;
 import androidx.annotation.NonNull;
 
 
-public class Product {
-    protected String id;
-    protected String name;
-    protected String price;
-    protected String description;
-    protected String style;
-    protected String shippingInfo;
-    protected String photoId;
-    protected String iconId;
-    protected String modelId;
+public class Reviews {
+    protected String review_id;
+    protected String userID;
+    protected String productID;
+    protected String review_rating;
+    protected String review_content;
 
-    public Product(String prod_id,FirebaseFirestore db)  {
-        this.id = prod_id;
-        DocumentReference docRef = db.collection("products").document(prod_id);
+    public Reviews(String review_id,FirebaseFirestore db)  {
+        this.review_id = review_id;
+        DocumentReference docRef = db.collection("reviews").document(review_id);
         docRef.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            photoId = documentSnapshot.getString("photoId");
-                            description = documentSnapshot.getString("productDescription");
-                            name = documentSnapshot.getString("productName");
-                            style = documentSnapshot.getString("productStyles");
-                            shippingInfo = documentSnapshot.getString("shippingInfo");
-                            price = documentSnapshot.getString("ProductPrice");
-                            iconId = documentSnapshot.getString("iconId");
-                            modelId = documentSnapshot.getString("modelId");
+                            review_content = documentSnapshot.getString("review_content");
+                            review_rating = documentSnapshot.getString("review_rating");
+                            userID = documentSnapshot.getString("userID");
+                            productID = documentSnapshot.getString("productID");
                         }
                     }
                 });
     }
+
+
+
 
 }
