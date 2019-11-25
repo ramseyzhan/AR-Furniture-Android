@@ -178,6 +178,11 @@ public class ProductPage extends AppCompatActivity {
     public void Purchase (View view){
         startActivity(new Intent(ProductPage.this, BuyingPage.class));
     }
+
+    public void SeeReview (View view){
+        startActivity(new Intent(ProductPage.this, Seereview_page.class));
+    }
+
     public void back (View view) {
         this.finish();
     }

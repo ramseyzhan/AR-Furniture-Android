@@ -22,7 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import androidx.annotation.NonNull;
 
 
-public class Reviews {
+public class Review {
     private String review_id;
     private String productID;
     private String review_rating;
@@ -61,7 +61,7 @@ public class Reviews {
         this.productID = productID;
     }
 
-    public Reviews(String review_id,FirebaseFirestore db)  {
+    public Review(String review_id, FirebaseFirestore db)  {
         this.review_id = review_id;
         DocumentReference docRef = db.collection("reviews").document(review_id);
         docRef.get()
@@ -76,7 +76,6 @@ public class Reviews {
                         }
                     }
                 });
-
     }
 
 }

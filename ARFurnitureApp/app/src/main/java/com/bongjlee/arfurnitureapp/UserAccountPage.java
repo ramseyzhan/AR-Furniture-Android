@@ -52,6 +52,9 @@ public class UserAccountPage extends AppCompatActivity {
                     }
                 });
     }
+    public void generateOrder (View view){
+        startActivity(new Intent(UserAccountPage.this, order_page.class));
+    }
     public void generateFav (View view){
         startActivity(new Intent(UserAccountPage.this, favorite_page.class));
     }
