@@ -70,3 +70,18 @@ sceneform.asset('sampledata/sofa/Sofa_01.obj',
         'default',
         'sampledata/sofa/Sofa_01.sfa',
         'src/main/assets/sofa')
+
+sceneform.asset('sampledata/lamp/LampPost.obj',
+        'default',
+        'sampledata/lamp/LampPost.sfa',
+        'src/main/assets/lamp')
+
+sceneform.asset('sampledata/table/Table_Large_Rectangular_01.obj',
+        'default',
+        'sampledata/table/Table_Large_Rectangular_01.sfa',
+        'src/main/assets/table')
+
+sceneform.asset('sampledata/carpet/model.obj',
+        'default',
+        'sampledata/carpet/model.sfa',
+        'src/main/assets/carpet')

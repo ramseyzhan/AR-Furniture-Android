@@ -102,11 +102,13 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        if (loggedInUser != null) {
-            inflater.inflate(R.menu.post_menu, menu);
-        } else {
-            inflater.inflate(R.menu.pre_menu, menu);
-        }
+
+
+       if (loggedInUser != null) {
+           inflater.inflate(R.menu.post_menu, menu);
+       } else {
+           inflater.inflate(R.menu.pre_menu, menu);
+       }
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
