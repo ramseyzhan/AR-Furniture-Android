@@ -102,11 +102,13 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        if (loggedInUser != null) {
-            inflater.inflate(R.menu.post_menu, menu);
-        } else {
-            inflater.inflate(R.menu.pre_menu, menu);
-        }
+
+
+       if (loggedInUser != null) {
+           inflater.inflate(R.menu.post_menu, menu);
+       } else {
+           inflater.inflate(R.menu.pre_menu, menu);
+       }
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -159,12 +161,14 @@ public class HomePage extends AppCompatActivity {
 
     private void refreshTimeline() {
         prodAdapter.clear();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 5; i++) {
             if(i%2==0){
                 prodAdapter.add(new Product("94623429",db));
+                prodAdapter.add(new Product("20191124",db));
             }
             else{
                 prodAdapter.add(new Product("1939035510",db));
+                prodAdapter.add(new Product("24112019",db));
             }
         }
 

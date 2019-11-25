@@ -25,6 +25,7 @@ import android.app.ProgressDialog;
 import android.net.Uri;
 import android.widget.ImageView;
 import android.provider.MediaStore;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.storage.FirebaseStorage;
@@ -36,22 +37,43 @@ import com.google.firebase.storage.UploadTask;
 public class ProductSubmissionForm extends AppCompatActivity {
     private static final String TAG = ProductSubmissionForm.class.getSimpleName();
     private final int PICK_IMAGE_REQUEST = 71;
-    private Button btnChoose, btnUpload;
+    private final int ACTIVITY_CHOOSE_FILE = 1;
+    private Button btnChoose, btnUpload,btnModel;
     private ImageView graphView;
-    private Uri filePath;
+    private Uri prodImage;
+    private Uri modelobj;
+    private Uri modelmtl;
+    private Uri modelsfa;
+
     private FirebaseStorage storage;
     private StorageReference storageRef;
+    private TextView modelName;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_product_submission );
         btnChoose = (Button) findViewById(R.id.btnChoose);
+        btnModel = (Button) findViewById(R.id.modelChoose);
+        btnUpload = (Button) findViewById(R.id.btnUpload);
         graphView = (ImageView) findViewById(R.id.graphView);
+        modelName = (TextView) findViewById(R.id.modelName);
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
+            }
+        });
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendInfo();
+            }
+        });
+        btnModel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseModel(ACTIVITY_CHOOSE_FILE);
             }
         });
         storage = FirebaseStorage.getInstance();
@@ -59,7 +81,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
 
     }
 
-    public void sendInfo( View view ) {
+    public void sendInfo() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Product product = new Product("123",db);
@@ -92,18 +114,26 @@ public class ProductSubmissionForm extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-
         startActivityForResult(Intent.createChooser(intent, "Select Picture"),PICK_IMAGE_REQUEST);
     }
+
+    public void chooseModel(int resultCode) {
+        Intent intent = new Intent();
+        intent.setType("*/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Choose a file"),resultCode);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null )
         {
-            filePath = data.getData();
+            prodImage = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
                 graphView.setImageBitmap(bitmap);
             }
             catch (IOException e)
@@ -111,17 +141,23 @@ public class ProductSubmissionForm extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        if(requestCode == ACTIVITY_CHOOSE_FILE && resultCode == RESULT_OK
+                && data != null && data.getData() != null )
+        {
+            String filePath = data.getData().getLastPathSegment();;
+            modelName.setText("OBJ select as:"+filePath);
+        }
     }
 
     private void uploadImage() {
-        if(filePath != null)
+        if(prodImage != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
             StorageReference ref = storageRef.child("images/"+ UUID.randomUUID().toString());
-            ref.putFile(filePath)
+            ref.putFile(prodImage)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
