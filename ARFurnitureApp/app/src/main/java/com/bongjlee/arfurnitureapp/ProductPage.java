@@ -198,7 +198,8 @@ public class ProductPage extends AppCompatActivity {
         startActivity(new Intent(ProductPage.this, BuyingPage.class));
     }
     public void back (View view) {
-        this.finish();
+        Intent intent = new Intent(ProductPage.this, HomePage.class);
+        startActivity(intent);
     }
     public void editproduct (View view) {
         Intent intent = new Intent(ProductPage.this, EditPage.class);
