@@ -4,22 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductPage">
-    ​
-    ​
-    <!--    <android.support.design.widget.FloatingActionButton-->
-    <!--        android:id="@+id/postChattActionButton"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginBottom="16dp"-->
-    <!--        android:layout_marginEnd="16dp"-->
-    <!--        android:layout_marginRight="16dp"-->
-    <!--        android:clickable="true"-->
-    <!--        android:onClick="postChatt"-->
-    <!--        app:fabSize="mini"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintRight_toRightOf="parent"-->
-    <!--        app:srcCompat="@mipmap/ic_launcher_round" />-->
+    tools:context=".EditPage">
+
     ​
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -31,14 +17,14 @@
         tools:layout_editor_absoluteX="5dp">
         ​
         <ImageView
-            android:id="@+id/product_photo"
+            android:id="@+id/product_photo_edit"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginLeft="0dp"
             tools:srcCompat="@tools:sample/avatars" />
         ​
         <EditText
-            android:id="@+id/product_name"
+            android:id="@+id/product_name_edit"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
@@ -46,7 +32,7 @@
             android:text="product name" />
         ​
         <EditText
-            android:id="@+id/product_price"
+            android:id="@+id/product_price_edit"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
@@ -54,7 +40,7 @@
             android:text="price" />
         ​
         <EditText
-            android:id="@+id/product_styles"
+            android:id="@+id/product_styles_edit"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
@@ -62,7 +48,7 @@
             android:text="style" />
         ​
         <EditText
-            android:id="@+id/shipping_info"
+            android:id="@+id/shipping_info_edit"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
@@ -70,7 +56,7 @@
             android:text="shipping info" />
         ​
         <EditText
-            android:id="@+id/product_description"
+            android:id="@+id/product_description_edit"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
@@ -91,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="100dp"
             android:layout_marginTop="600dp"
-            android:onClick="editproduct"
+            android:onClick="edit"
             android:text="Edit the product"
             />
         ​

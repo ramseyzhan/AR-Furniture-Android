@@ -84,10 +84,8 @@ public class ProductPage extends AppCompatActivity {
         DescriptionViewData = findViewById(R.id.product_description);
         styleViewData = findViewById(R.id.product_styles);
         shippingInfoViewData = findViewById(R.id.shipping_info);
-        //productLinkViewData = findViewById(R.id.product_link);
         priceViewData = findViewById(R.id.product_price);
         photoViewData = findViewById(R.id.product_photo);
-//        productLinkViewData = findViewById(R.id.product_link);
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -113,11 +111,6 @@ public class ProductPage extends AppCompatActivity {
             }
         });
 
-
-
-        //DocumentReference userRef = db.collection("users").document(user.getEmail());
-        //DocumentSnapshot doc = userRef.get().getResult();
-        //doc.
         DocumentReference docRef = db.collection("products").document(docId_t);
         docRef.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -173,7 +166,7 @@ public class ProductPage extends AppCompatActivity {
     public void addFavorites(View view){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+        ToggleButton favButton = (ToggleButton) findViewById(R.id.button_favorite);
         String userEmailHash = "";
         if (user != null) {
             userEmailHash = (user.getEmail());
@@ -182,7 +175,7 @@ public class ProductPage extends AppCompatActivity {
         } else {
             // No user is signed in
         }
-        if(((ToggleButton) view).isChecked()) {
+        if(favButton.isChecked()) {
 
             if(userEmailHash == ""){
 
@@ -208,7 +201,9 @@ public class ProductPage extends AppCompatActivity {
         this.finish();
     }
     public void editproduct (View view) {
-        startActivity(new Intent(ProductPage.this, EditPage.class));
+        Intent intent = new Intent(ProductPage.this, EditPage.class);
+        intent.putExtra("p_id", this.docId_t);
+        startActivity(intent);
     }
 }
 

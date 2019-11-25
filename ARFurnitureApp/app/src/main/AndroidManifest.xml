@@ -29,6 +29,7 @@
         <activity android:name=".BuyingPage" />
         <activity android:name=".UserEdit" />
         <activity android:name=".UserLogin" />
+        <activity android:name=".EditPage" />
         <activity android:name=".HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
