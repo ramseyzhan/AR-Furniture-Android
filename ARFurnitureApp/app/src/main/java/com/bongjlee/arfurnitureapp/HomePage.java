@@ -70,8 +70,10 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar);
+
+        Toolbar myToolbar = (Toolbar)findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
+
         db = FirebaseFirestore.getInstance();
 
         db.collection("users")
@@ -118,6 +120,11 @@ public class HomePage extends AppCompatActivity {
             case R.id.product_page:
                 myIntent = new Intent(HomePage.this, ProductPage.class);
                 myIntent.putExtra("productPage", R.id.product_page);
+                HomePage.this.startActivity(myIntent);
+                return true;
+            case R.id.my_products_page:
+                myIntent = new Intent(HomePage.this, MyProductsPage.class);
+                myIntent.putExtra("myProducts", R.id.my_products_page);
                 HomePage.this.startActivity(myIntent);
                 return true;
             case R.id.login_page:

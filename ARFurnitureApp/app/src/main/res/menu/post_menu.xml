@@ -5,6 +5,9 @@
     <item android:id="@+id/product_page"
         android:title="Product Page"
         app:showAsAction="never"/>
+    <item android:id="@+id/my_products_page"
+        android:title="My Products"
+        app:showAsAction="never"/>
     <item android:id="@+id/company_registration"
         android:title="Company Registration"
         app:showAsAction="never"/>
