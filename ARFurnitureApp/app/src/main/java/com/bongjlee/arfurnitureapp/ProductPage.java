@@ -180,7 +180,10 @@ public class ProductPage extends AppCompatActivity {
     }
 
     public void SeeReview (View view){
-        startActivity(new Intent(ProductPage.this, Seereview_page.class));
+        Intent intent = new Intent(this, Seereview_page.class);
+
+        intent.putExtra("p_id", this.docId_t);
+        startActivity(intent);
     }
 
     public void back (View view) {

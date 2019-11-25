@@ -42,7 +42,7 @@ public class Seereview_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorite_page);
+        setContentView(R.layout.activity_review_page);
 
         Intent intent = getIntent();
         this.docId_t = getIntent().getStringExtra("p_id");
