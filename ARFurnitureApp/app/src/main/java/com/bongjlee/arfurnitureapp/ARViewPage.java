@@ -71,14 +71,10 @@ public class ARViewPage extends AppCompatActivity {
 //        Log.e("ram","doc"+doc_id);
         docs_gallery.add(doc_id);
 
-        for(int i=0;i<5;i++){
-            if(i%2==0){
-                docs_gallery.add("94623429");
-            }
-            else{
-                docs_gallery.add("1939035510");
-            }
-        }
+        docs_gallery.add("94623429");
+        docs_gallery.add("20191124");
+        docs_gallery.add("1939035510");
+        docs_gallery.add("24112019");
 
         setContentView(R.layout.activity_ar_ui);
         arFragment = (MyArFragment) getSupportFragmentManager().findFragmentById(R.id.sceneform_fragment);

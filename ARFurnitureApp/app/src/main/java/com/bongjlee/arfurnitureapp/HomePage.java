@@ -164,12 +164,14 @@ public class HomePage extends AppCompatActivity {
 
     private void refreshTimeline() {
         prodAdapter.clear();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 5; i++) {
             if(i%2==0){
                 prodAdapter.add(new Product("94623429",db));
+                prodAdapter.add(new Product("20191124",db));
             }
             else{
                 prodAdapter.add(new Product("1939035510",db));
+                prodAdapter.add(new Product("24112019",db));
             }
         }
 

@@ -42,7 +42,7 @@
       file: "sampledata/lamp/LampPost.obj",
       name: "LampPost",
       recenter: "root",
-      scale: 0.035885000000000002,
+      scale: 0.030885000000000002,
    },
    samplers: [
       {
