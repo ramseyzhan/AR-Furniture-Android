@@ -63,7 +63,7 @@ apply plugin: 'com.google.ar.sceneform.plugin'
 
 sceneform.asset('sampledata/chair/WoodChair_01(1).obj',
         'default',
-        'sampledata/sofa/WoodChair_01(1).sfa',
+        'sampledata/chair/WoodChair_01(1).sfa',
         'src/main/assets/chair')
 
 sceneform.asset('sampledata/sofa/Sofa_01.obj',
@@ -83,5 +83,5 @@ sceneform.asset('sampledata/table/Table_Large_Rectangular_01.obj',
 
 sceneform.asset('sampledata/carpet/model.obj',
         'default',
-        'sampledata/table/model.sfa',
+        'sampledata/carpet/model.sfa',
         'src/main/assets/carpet')
