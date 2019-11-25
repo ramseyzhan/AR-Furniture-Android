@@ -83,5 +83,5 @@ sceneform.asset('sampledata/table/Table_Large_Rectangular_01.obj',
 
 sceneform.asset('sampledata/carpet/model.obj',
         'default',
-        'sampledata/table/model.sfa',
+        'sampledata/carpet/model.sfa',
         'src/main/assets/carpet')
