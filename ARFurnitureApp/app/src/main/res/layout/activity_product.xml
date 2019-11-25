@@ -28,6 +28,8 @@
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
             android:layout_marginTop="70dp"
+            android:fontFamily="sans-serif-light"
+            android:textSize="16sp"
             android:text="product name" />
         ​
         <TextView
@@ -36,6 +38,8 @@
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
             android:layout_marginTop="130dp"
+            android:fontFamily="sans-serif-light"
+            android:textSize="16sp"
             android:text="price" />
         ​
         <TextView
@@ -44,6 +48,8 @@
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
             android:layout_marginTop="190dp"
+            android:fontFamily="sans-serif-light"
+            android:textSize="16sp"
             android:text="style" />
         ​
         <TextView
@@ -52,6 +58,8 @@
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
             android:layout_marginTop="250dp"
+            android:fontFamily="sans-serif-light"
+            android:textSize="16sp"
             android:text="shipping info" />
         ​
         <TextView
@@ -60,6 +68,8 @@
             android:layout_height="50dp"
             android:layout_marginLeft="170dp"
             android:layout_marginTop="310dp"
+            android:fontFamily="sans-serif-light"
+            android:textSize="16sp"
             android:text="description" />
         ​
         <Button
