@@ -10,28 +10,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bongjlee.arfurnitureapp.data.Product;
 import com.bongjlee.arfurnitureapp.data.Review;
-import com.bongjlee.arfurnitureapp.utils.productAdapter;
 import com.bongjlee.arfurnitureapp.utils.reviewAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
-public class Seereview_page extends AppCompatActivity {
-    private static final String TAG = Seereview_page.class.getSimpleName();
+public class See_review_page extends AppCompatActivity {
+    private static final String TAG = See_review_page.class.getSimpleName();
 
     private ArrayList<Review> reviewArrayList;
     private reviewAdapter reviewAdapter;

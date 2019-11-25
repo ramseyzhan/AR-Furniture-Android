@@ -1,19 +1,13 @@
 package com.bongjlee.arfurnitureapp;
 
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.InetAddresses;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,8 +23,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.bongjlee.arfurnitureapp.data.Cartprods;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -180,7 +172,7 @@ public class ProductPage extends AppCompatActivity {
     }
 
     public void SeeReview (View view){
-        Intent intent = new Intent(this, Seereview_page.class);
+        Intent intent = new Intent(this, See_review_page.class);
 
         intent.putExtra("p_id", this.docId_t);
         startActivity(intent);
