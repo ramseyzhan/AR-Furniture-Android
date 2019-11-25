@@ -12,9 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+
 import android.view.View;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -29,18 +32,33 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.bongjlee.arfurnitureapp.data.Cartprods;
 import com.google.firebase.firestore.Query;
+
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import android.widget.ToggleButton;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import com.google.firebase.firestore.FieldValue;
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 
 public class ProductPage extends AppCompatActivity {
@@ -74,6 +92,7 @@ public class ProductPage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         DocumentReference userRef = db.collection("users").document(Integer.toString(user.getEmail().hashCode()));
         userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -93,6 +112,7 @@ public class ProductPage extends AppCompatActivity {
                 }
             }
         });
+
 
 
         //DocumentReference userRef = db.collection("users").document(user.getEmail());
@@ -153,14 +173,17 @@ public class ProductPage extends AppCompatActivity {
     public void addFavorites(View view){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         String userEmailHash = "";
         if (user != null) {
             userEmailHash = (user.getEmail());
             userEmailHash = Integer.toString(userEmailHash.hashCode());
+
         } else {
             // No user is signed in
         }
         if(((ToggleButton) view).isChecked()) {
+
             if(userEmailHash == ""){
 
             }
@@ -168,11 +191,14 @@ public class ProductPage extends AppCompatActivity {
                 final Map<String, Object> addFavToArray = new HashMap<>();
                 addFavToArray.put("UserDetails.favoriteList", FieldValue.arrayUnion(docId_t));
                 db.collection("users").document(userEmailHash).update(addFavToArray);
+
             }
         } else {
             final Map<String, Object> addFavToArray = new HashMap<>();
             addFavToArray.put("UserDetails.favoriteList", FieldValue.arrayRemove(docId_t));
+
             db.collection("users").document(userEmailHash).update(addFavToArray);
+
         }
     }
     public void Purchase (View view){
@@ -181,4 +207,8 @@ public class ProductPage extends AppCompatActivity {
     public void back (View view) {
         this.finish();
     }
+    public void editproduct (View view) {
+        startActivity(new Intent(ProductPage.this, EditPage.class));
+    }
 }
+
