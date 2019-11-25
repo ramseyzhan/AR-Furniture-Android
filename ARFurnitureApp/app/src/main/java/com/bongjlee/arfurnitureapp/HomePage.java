@@ -112,11 +112,6 @@ public class HomePage extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent myIntent;
         switch (item.getItemId()) {
-            case R.id.product_page:
-                myIntent = new Intent(HomePage.this, ProductPage.class);
-                myIntent.putExtra("productPage", R.id.product_page);
-                HomePage.this.startActivity(myIntent);
-                return true;
             case R.id.my_products_page:
                 myIntent = new Intent(HomePage.this, MyProductsPage.class);
                 myIntent.putExtra("myProducts", R.id.my_products_page);
@@ -159,14 +154,20 @@ public class HomePage extends AppCompatActivity {
 
     private void refreshTimeline() {
         prodAdapter.clear();
-        for (int i = 0; i < 20; i++) {
-            if(i%2==0){
-                prodAdapter.add(new Product("94623429",db));
-            }
-            else{
-                prodAdapter.add(new Product("1939035510",db));
-            }
-        }
+        db.collection("products")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                prodAdapter.add(new Product(document.getId(),db));
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
 
     }
     public void generateProductPage(View view) {
