@@ -1,37 +1,30 @@
 package com.bongjlee.arfurnitureapp;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import android.content.Intent;
-
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bongjlee.arfurnitureapp.data.Product;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import android.widget.Button;
-import android.graphics.Bitmap;
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
-
-import android.app.ProgressDialog;
-import android.net.Uri;
-import android.widget.ImageView;
-import android.provider.MediaStore;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.io.IOException;
+import java.util.UUID;
 
 
 public class ProductSubmissionForm extends AppCompatActivity {
@@ -67,7 +60,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendInfo();
+                sendInfo(v);
             }
         });
         btnModel.setOnClickListener(new View.OnClickListener() {
@@ -81,32 +74,44 @@ public class ProductSubmissionForm extends AppCompatActivity {
 
     }
 
-    public void sendInfo() {
+    public void sendInfo( View view ) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        Product product = new Product("123",db);
+        Product product = new Product();
 
-//        TODO: set up the upload
-//        product.name=( (EditText) findViewById( R.id.product_name ) ).getText().toString();
+        String productID = UUID.randomUUID().toString();
+        String productName = ( (EditText) findViewById( R.id.product_name ) ).getText().toString();
+        String productDescription = ( (EditText) findViewById( R.id.product_description ) ).getText().toString();
+        String productPrice = ( (EditText) findViewById( R.id.product_price ) ).getText().toString();
+        String productStyles = ( (EditText) findViewById( R.id.product_styles ) ).getText().toString();
+        String shippingInfo = ( (EditText) findViewById( R.id.shipping_info ) ).getText().toString();
+
+        product.setId( productID );
+        product.setName( productName );
+        product.setDescription( productDescription );
+        product.setPrice( productPrice );
+        product.setStyle( productStyles );
+        product.setShippingInfo( shippingInfo );
+
+        String photoID = uploadImage();
+        product.setPhotoId( photoID );
 
 
-        uploadImage();
-
-//        db.collection( "products" )
-//                .document(
-//                        String.valueOf( productName.hashCode() )
-//                )
-//                .set( product )
-//                .addOnSuccessListener(
-//                        documentReference ->
-//                                Log.d(
-//                                        TAG,
-//                                        "DocumentSnapshot added with ID: " + documentReference.toString()
-//                                )
-//                )
-//                .addOnFailureListener(
-//                        e -> Log.w( TAG, "Error adding document", e )
-//                );
+        db.collection( "products" )
+                .document(
+                        productID
+                )
+                .set( product )
+                .addOnSuccessListener(
+                        documentReference ->
+                                Log.d(
+                                        TAG,
+                                        "DocumentSnapshot added with ID: " + documentReference.toString()
+                                )
+                )
+                .addOnFailureListener(
+                        e -> Log.w( TAG, "Error adding document", e )
+                );
 
     }
 
@@ -149,7 +154,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
         }
     }
 
-    private void uploadImage() {
+    private String uploadImage() {
         if(prodImage != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -173,6 +178,8 @@ public class ProductSubmissionForm extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                         }
                     });
+            return ref.toString();
         }
+        return null;
     }
 }
