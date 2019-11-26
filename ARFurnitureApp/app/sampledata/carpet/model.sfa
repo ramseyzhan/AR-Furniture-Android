@@ -67,7 +67,7 @@
       file: "sampledata/carpet/model.obj",
       name: "model",
       recenter: "root",
-      scale: 0.00002,
+      scale: 0.1,
    },
    version: "0.52:1",
 }
