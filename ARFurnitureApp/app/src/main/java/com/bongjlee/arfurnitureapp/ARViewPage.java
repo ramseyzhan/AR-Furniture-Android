@@ -75,6 +75,7 @@ public class ARViewPage extends AppCompatActivity {
         docs_gallery.add("20191124");
         docs_gallery.add("1939035510");
         docs_gallery.add("24112019");
+        docs_gallery.add("20191125");
 
         setContentView(R.layout.activity_ar_ui);
         arFragment = (MyArFragment) getSupportFragmentManager().findFragmentById(R.id.sceneform_fragment);
