@@ -13,7 +13,6 @@
         tools:layout_editor_absoluteX="232dp"
         android:id="@+id/card_view"
         android:layout_gravity="center"
-        android:onClick="generateProductPage"
         android:tag="N/A"
         app:cardCornerRadius="4dp">
 

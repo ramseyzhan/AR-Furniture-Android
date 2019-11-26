@@ -74,10 +74,12 @@ public class ProductPage extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if ( document.exists() ) {
                         List<String> favList = (ArrayList<String>) document.get( "UserDetails.favoriteList" );
-                        for ( int i = 0; i < favList.size(); ++i ) {
-                            if ( favList.get( i ).equals( docId_t ) ) {
-                                ToggleButton fav = (ToggleButton) findViewById( R.id.button_favorite );
-                                fav.setChecked( true );
+                        if(favList != null){
+                            for ( int i = 0; i < favList.size(); ++i ) {
+                                if ( favList.get( i ).equals( docId_t ) ) {
+                                    ToggleButton fav = (ToggleButton) findViewById( R.id.button_favorite );
+                                    fav.setChecked( true );
+                                }
                             }
                         }
 
@@ -189,6 +191,7 @@ public class ProductPage extends AppCompatActivity {
     public void SeeReview( View view ) {
         Intent intent = new Intent( this, See_review_page.class );
         intent.putExtra( "p_id", this.docId_t );
+        startActivity( intent );
     }
 
     public void SubmitReview( View view ) {

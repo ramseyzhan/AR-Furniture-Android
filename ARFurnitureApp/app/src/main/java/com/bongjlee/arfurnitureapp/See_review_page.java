@@ -3,9 +3,7 @@ package com.bongjlee.arfurnitureapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +12,6 @@ import com.bongjlee.arfurnitureapp.data.Review;
 import com.bongjlee.arfurnitureapp.utils.reviewAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -52,7 +48,7 @@ public class See_review_page extends AppCompatActivity {
 
     private void refreshTimeline() {
         reviewAdapter.clear();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         CollectionReference reviewRef = db.collection("reviews");
         reviewRef.whereEqualTo("productID",docId_t)
@@ -67,13 +63,5 @@ public class See_review_page extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    public void generateProductPage(View view) {
-        Intent intent = new Intent(this, ProductPage.class);
-        TextView p_id = (TextView) view.findViewById(R.id.product_id);
-        String product_id = p_id.getText().toString();
-        intent.putExtra("p_id", product_id);
-        startActivity(intent);
     }
 }
