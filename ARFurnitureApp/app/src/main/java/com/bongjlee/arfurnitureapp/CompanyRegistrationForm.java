@@ -46,19 +46,26 @@ public class CompanyRegistrationForm extends AppCompatActivity {
                 companyName
         );
 
-        db.collection( "company" )
-                .document(
-                        String.valueOf( companyName.hashCode() )
-                )
-                .set( company )
-                .addOnSuccessListener(
-                        documentReference -> Log.d(
-                                TAG,
-                                "DocumentSnapshot added with name: " + documentReference.toString()
-                        )
-                )
-                .addOnFailureListener(
-                        e -> Log.w( TAG, "Error adding document", e )
-                );
+        try {
+            db.collection( "company" )
+                    .document(
+                            String.valueOf( companyName.hashCode() )
+                    )
+                    .set( company )
+                    .addOnSuccessListener(
+                            documentReference -> Log.d(
+                                    TAG,
+                                    "DocumentSnapshot added with name: " + documentReference.toString()
+                            )
+                    )
+                    .addOnFailureListener(
+                            e -> Log.w( TAG, "Error adding document", e )
+                    );
+        } catch ( NullPointerException e ) {
+            Log.d(
+                    TAG,
+                    "No name DocumentSnapshot added."
+            );
+        }
     }
 }
