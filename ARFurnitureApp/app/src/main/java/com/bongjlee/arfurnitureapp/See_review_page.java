@@ -55,7 +55,7 @@ public class See_review_page extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         CollectionReference reviewRef = db.collection("reviews");
-        reviewRef.whereEqualTo("productID",docId_t).orderBy("timestamp")
+        reviewRef.whereEqualTo("productID",docId_t)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

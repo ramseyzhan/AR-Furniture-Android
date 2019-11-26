@@ -104,14 +104,14 @@
             android:text="Purchase" />
 
         <EditText
-            android:id="@+id/messageEditText"
+            android:id="@+id/input_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="500dp"
             android:layout_marginRight="100dp"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:text="Overall ranking:"
+            android:text="Input review"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <Button
@@ -133,6 +133,15 @@
             android:text=""
             android:textOff=""
             android:textOn="" />
+
+        <Button
+            android:id="@+id/SubmitReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="500dp"
+            android:layout_marginLeft="280dp"
+            android:onClick="SubmitReview"
+            android:text="Submit" />
 
     </androidx.cardview.widget.CardView>
 

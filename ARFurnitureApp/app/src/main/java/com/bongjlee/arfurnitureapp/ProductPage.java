@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -167,6 +168,7 @@ public class ProductPage extends AppCompatActivity {
             db.collection("users").document(userEmailHash).update(addFavToArray);
         }
     }
+
     public void Purchase (View view){
         startActivity(new Intent(ProductPage.this, BuyingPage.class));
     }
@@ -177,6 +179,21 @@ public class ProductPage extends AppCompatActivity {
         intent.putExtra("p_id", this.docId_t);
         startActivity(intent);
     }
+
+    public void SubmitReview (View view){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String Submit_content = ( (EditText) findViewById( R.id.input_text ) ).getText().toString();
+        String Submit_rating_hardcode = "3";
+
+        db = FirebaseFirestore.getInstance();
+        Map<String, Object> newReview = new HashMap<>();
+        newReview.put("review_content", Submit_content);
+        newReview.put("review_rating", Submit_rating_hardcode);
+        newReview.put("productID",this.docId_t);
+        newReview.put("userID",user.getEmail());
+        db.collection("reviews").document(this.docId_t + user.getEmail() + Submit_content).set(newReview);
+       }
 
     public void back (View view) {
         this.finish();
