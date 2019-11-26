@@ -96,28 +96,24 @@ public class ProductSubmissionForm extends AppCompatActivity {
         String photoID = uploadImage();
         product.setPhotoId( photoID );
 
-        try {
-            db.collection( "products" )
-                    .document(
-                            productID
-                    )
-                    .set( product )
-                    .addOnSuccessListener(
-                            documentReference ->
-                                    Log.d(
-                                            TAG,
-                                            "DocumentSnapshot added with ID: " + documentReference.toString()
-                                    )
-                    )
-                    .addOnFailureListener(
-                            e -> Log.w( TAG, "Error adding document", e )
-                    );
-        } catch ( NullPointerException e ) {
-            Log.d(
-                    TAG,
-                    "no name DocumentSnapshot added. "
-            );
-        }
+        db.collection( "products" )
+                .document(
+                        productID
+                )
+                .set( product )
+                .addOnSuccessListener(
+                        documentReference ->
+                                Log.d(
+                                        TAG,
+                                        "DocumentSnapshot added."
+                                )
+                )
+                .addOnFailureListener(
+                        e -> Log.w( TAG, "Error adding document", e )
+                );
+
+        Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
 
     }
 
