@@ -112,6 +112,9 @@ public class ProductSubmissionForm extends AppCompatActivity {
                         e -> Log.w( TAG, "Error adding document", e )
                 );
 
+        Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
+
     }
 
     public void chooseImage() {
