@@ -1,44 +1,27 @@
 package com.bongjlee.arfurnitureapp.data;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.FileDownloadTask;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import androidx.annotation.NonNull;
 
 
 public class Product {
-    private String id;
-    private String name;
-    private String price;
-    private String description;
-    private String style;
-    private String shippingInfo;
-    private String photoId;
-    private String iconId;
-    private String modelId;
-
+    protected String id;
+    protected String name;
+    protected String price;
+    protected String description;
+    protected String style;
+    protected String shippingInfo;
+    protected String photoId;
+    protected String iconId;
+    protected String modelId;
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId( String id ) {
         this.id = id;
     }
 
@@ -46,7 +29,7 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName( String name ) {
         this.name = name;
     }
 
@@ -54,7 +37,7 @@ public class Product {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice( String price ) {
         this.price = price;
     }
 
@@ -62,7 +45,7 @@ public class Product {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription( String description ) {
         this.description = description;
     }
 
@@ -70,7 +53,7 @@ public class Product {
         return style;
     }
 
-    public void setStyle(String style) {
+    public void setStyle( String style ) {
         this.style = style;
     }
 
@@ -78,7 +61,7 @@ public class Product {
         return shippingInfo;
     }
 
-    public void setShippingInfo(String shippingInfo) {
+    public void setShippingInfo( String shippingInfo ) {
         this.shippingInfo = shippingInfo;
     }
 
@@ -86,7 +69,7 @@ public class Product {
         return photoId;
     }
 
-    public void setPhotoId(String photoId) {
+    public void setPhotoId( String photoId ) {
         this.photoId = photoId;
     }
 
@@ -94,7 +77,7 @@ public class Product {
         return iconId;
     }
 
-    public void setIconId(String iconId) {
+    public void setIconId( String iconId ) {
         this.iconId = iconId;
     }
 
@@ -102,9 +85,11 @@ public class Product {
         return modelId;
     }
 
-    public void setModelId(String modelId) {
+    public void setModelId( String modelId ) {
         this.modelId = modelId;
     }
+
+    public Product(){}
 
     public Product(String prod_id,FirebaseFirestore db)  {
         this.id = prod_id;

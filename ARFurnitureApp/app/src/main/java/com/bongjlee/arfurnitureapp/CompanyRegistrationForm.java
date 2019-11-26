@@ -1,5 +1,6 @@
 package com.bongjlee.arfurnitureapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -54,11 +55,15 @@ public class CompanyRegistrationForm extends AppCompatActivity {
                 .addOnSuccessListener(
                         documentReference -> Log.d(
                                 TAG,
-                                "DocumentSnapshot added with name: " + documentReference.toString()
+                                "DocumentSnapshot added."
                         )
                 )
                 .addOnFailureListener(
                         e -> Log.w( TAG, "Error adding document", e )
                 );
+
+        Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
+
     }
 }

@@ -70,8 +70,10 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar);
+
+        Toolbar myToolbar = (Toolbar)findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
+
         db = FirebaseFirestore.getInstance();
 
         db.collection("users")
@@ -100,19 +102,21 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        if (loggedInUser != null) {
-            inflater.inflate(R.menu.post_menu, menu);
-        } else {
-            inflater.inflate(R.menu.pre_menu, menu);
-        }
+
+
+       if (loggedInUser != null) {
+           inflater.inflate(R.menu.post_menu, menu);
+       } else {
+           inflater.inflate(R.menu.pre_menu, menu);
+       }
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent myIntent;
         switch (item.getItemId()) {
-            case R.id.product_page:
-                myIntent = new Intent(HomePage.this, ProductPage.class);
-                myIntent.putExtra("productPage", R.id.product_page);
+            case R.id.my_products_page:
+                myIntent = new Intent(HomePage.this, MyProductsPage.class);
+                myIntent.putExtra("myProducts", R.id.my_products_page);
                 HomePage.this.startActivity(myIntent);
                 return true;
             case R.id.login_page:
@@ -152,14 +156,20 @@ public class HomePage extends AppCompatActivity {
 
     private void refreshTimeline() {
         prodAdapter.clear();
-        for (int i = 0; i < 20; i++) {
-            if(i%2==0){
-                prodAdapter.add(new Product("94623429",db));
-            }
-            else{
-                prodAdapter.add(new Product("1939035510",db));
-            }
-        }
+        db.collection("products")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                prodAdapter.add(new Product(document.getId(),db));
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
 
     }
     public void generateProductPage(View view) {

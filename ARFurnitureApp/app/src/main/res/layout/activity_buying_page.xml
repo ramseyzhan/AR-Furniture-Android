@@ -9,13 +9,13 @@
     <TextView
         android:id="@+id/CompanyName"
         android:layout_width="411dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="36dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="38dp"
         android:background="#03A9F4"
         android:gravity="center|center_horizontal"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/CompanyEmail"
@@ -25,11 +25,11 @@
 
     <TextView
         android:id="@+id/CompanyEmail"
-        android:layout_width="409dp"
+        android:layout_width="410dp"
         android:layout_height="80dp"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/CompanyPhone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CompanyName" />
@@ -40,7 +40,7 @@
         android:layout_height="80dp"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/CompanyWeb"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CompanyEmail" />
@@ -51,7 +51,7 @@
         android:layout_height="81dp"
         android:autoLink="all"
         android:gravity="center"
-        android:textSize="24sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/CompanyAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CompanyPhone" />
@@ -63,7 +63,7 @@
         android:layout_marginBottom="243dp"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CompanyWeb" />

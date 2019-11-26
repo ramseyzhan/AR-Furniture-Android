@@ -1,13 +1,15 @@
 package com.bongjlee.arfurnitureapp.utils;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.bumptech.glide.Glide;
+
+import androidx.annotation.NonNull;
 
 import com.bongjlee.arfurnitureapp.R;
 import com.bongjlee.arfurnitureapp.data.Product;
@@ -16,13 +18,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import android.net.Uri;
 
-import androidx.annotation.NonNull;
-
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.io.File;
 
 
 public class productAdapter extends ArrayAdapter<Product> {
