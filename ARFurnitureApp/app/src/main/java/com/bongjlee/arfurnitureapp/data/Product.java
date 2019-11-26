@@ -7,15 +7,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class Product {
-    public String id;
-    public String name;
-    public String price;
-    public String description;
-    public String style;
-    public String shippingInfo;
-    public String photoId;
-    public String iconId;
-    public String modelId;
+    protected String id;
+    protected String name;
+    protected String price;
+    protected String description;
+    protected String style;
+    protected String shippingInfo;
+    protected String photoId;
+    protected String iconId;
+    protected String modelId;
 
     public String getId() {
         return id;
