@@ -96,7 +96,6 @@ public class ProductSubmissionForm extends AppCompatActivity {
         String photoID = uploadImage();
         product.setPhotoId( photoID );
 
-
         db.collection( "products" )
                 .document(
                         productID
@@ -106,12 +105,15 @@ public class ProductSubmissionForm extends AppCompatActivity {
                         documentReference ->
                                 Log.d(
                                         TAG,
-                                        "DocumentSnapshot added with ID: " + documentReference.toString()
+                                        "DocumentSnapshot added."
                                 )
                 )
                 .addOnFailureListener(
                         e -> Log.w( TAG, "Error adding document", e )
                 );
+
+        Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
 
     }
 

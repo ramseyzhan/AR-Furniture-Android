@@ -55,7 +55,7 @@
             android:layout_height="20dp"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="50dp"
-            android:text="price" />
+            android:text="Store name" />
 
         <TextView
             android:id="@+id/product_link"
@@ -93,10 +93,10 @@
         <Button
             android:id="@+id/button"
             android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="320dp"
             android:layout_marginTop="250dp"
-            android:text="Submit Review" />
+            android:text="Submit" />
 
         <TextView
             android:id="@+id/rating"
