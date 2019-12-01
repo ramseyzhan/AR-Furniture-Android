@@ -191,11 +191,8 @@ public class ProductPage extends AppCompatActivity {
     public void SeeReview( View view ) {
         Intent intent = new Intent( this, See_review_page.class );
         intent.putExtra( "p_id", this.docId_t );
-<<<<<<< Updated upstream
-        startActivity( intent );
-=======
         startActivity(intent);
->>>>>>> Stashed changes
+
     }
 
     public void SubmitReview( View view ) {
