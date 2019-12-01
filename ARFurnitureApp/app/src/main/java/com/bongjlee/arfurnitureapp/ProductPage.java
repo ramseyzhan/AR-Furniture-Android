@@ -95,11 +95,11 @@ public class ProductPage extends AppCompatActivity {
                     public void onSuccess( DocumentSnapshot documentSnapshot ) {
                         if ( documentSnapshot.exists() ) {
                             String photoId = documentSnapshot.getString( "photoId" );
-                            String productDescription = documentSnapshot.getString( "productDescription" );
-                            String name = documentSnapshot.getString( "productName" );
-                            String style = documentSnapshot.getString( "productStyles" );
+                            String productDescription = documentSnapshot.getString( "description" );
+                            String name = documentSnapshot.getString( "name" );
+                            String style = documentSnapshot.getString( "style" );
                             String shippinginfo = documentSnapshot.getString( "shippingInfo" );
-                            String price = documentSnapshot.getString( "ProductPrice" );
+                            String price = documentSnapshot.getString( "price" );
                             nameViewData.setText( "Name: " + name );
                             priceViewData.setText( "Price: " + price );
                             DescriptionViewData.setText( "Description: " + productDescription );

@@ -162,8 +162,8 @@ public class ProductSubmissionForm extends AppCompatActivity {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-
-            StorageReference ref = storageRef.child("images/"+ UUID.randomUUID().toString());
+            String imageID = UUID.randomUUID().toString();
+            StorageReference ref = storageRef.child("images/"+ imageID);
             ref.putFile(prodImage)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -180,7 +180,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                         }
                     });
-            return ref.toString();
+            return imageID;
         }
         return null;
     }
