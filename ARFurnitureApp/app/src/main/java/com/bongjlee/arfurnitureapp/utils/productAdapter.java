@@ -69,5 +69,4 @@ public class productAdapter extends ArrayAdapter<Product> {
         }
         return convertView;
     }
-
 }
