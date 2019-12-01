@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class Product {
-    protected String id;
+    protected String DocId;
     protected String name;
     protected String price;
     protected String description;
@@ -18,11 +18,11 @@ public class Product {
     protected String modelId;
 
     public String getId() {
-        return id;
+        return DocId;
     }
 
     public void setId( String id ) {
-        this.id = id;
+        this.DocId = id;
     }
 
     public String getName() {
@@ -92,7 +92,7 @@ public class Product {
     public Product(){}
 
     public Product(String prod_id,FirebaseFirestore db)  {
-        this.id = prod_id;
+        this.DocId = prod_id;
         DocumentReference docRef = db.collection("products").document(prod_id);
         docRef.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -100,11 +100,11 @@ public class Product {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                             photoId = documentSnapshot.getString("photoId");
-                            description = documentSnapshot.getString("productDescription");
-                            name = documentSnapshot.getString("productName");
-                            style = documentSnapshot.getString("productStyles");
+                            description = documentSnapshot.getString("description");
+                            name = documentSnapshot.getString("name");
+                            style = documentSnapshot.getString("style");
                             shippingInfo = documentSnapshot.getString("shippingInfo");
-                            price = documentSnapshot.getString("ProductPrice");
+                            price = documentSnapshot.getString("price");
                             iconId = documentSnapshot.getString("iconId");
                             modelId = documentSnapshot.getString("modelId");
                         }
