@@ -140,7 +140,11 @@ public class ProductSubmissionForm extends AppCompatActivity {
         {
             prodImage = data.getData();
             try {
+
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
+                bitmap = Bitmap.createScaledBitmap(bitmap, 150, 200, true);
+                prodImage = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
+                        UUID.randomUUID().toString(),null));
                 graphView.setImageBitmap(bitmap);
             }
             catch (IOException e)
@@ -163,7 +167,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
             String imageID = UUID.randomUUID().toString();
-            StorageReference ref = storageRef.child("images/"+ imageID);
+            StorageReference ref = storageRef.child("images/"+ imageID+".jpg");
             ref.putFile(prodImage)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
