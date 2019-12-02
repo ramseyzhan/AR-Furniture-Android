@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class Product {
-    protected String DocId;
+    protected String id;
     protected String name;
     protected String price;
     protected String description;
@@ -18,11 +18,11 @@ public class Product {
     protected String modelId;
 
     public String getId() {
-        return DocId;
+        return id;
     }
 
     public void setId( String id ) {
-        this.DocId = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -92,7 +92,7 @@ public class Product {
     public Product(){}
 
     public Product(String prod_id,FirebaseFirestore db)  {
-        this.DocId = prod_id;
+        this.id = prod_id;
         DocumentReference docRef = db.collection("products").document(prod_id);
         docRef.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

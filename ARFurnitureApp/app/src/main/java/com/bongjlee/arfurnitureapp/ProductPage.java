@@ -4,6 +4,7 @@ package com.bongjlee.arfurnitureapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -65,8 +66,10 @@ public class ProductPage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        Log.e("ram",Integer.toString( user.getEmail().hashCode()));
 
         DocumentReference userRef = db.collection( "users" ).document( Integer.toString( user.getEmail().hashCode() ) );
+        Log.e("ram",Integer.toString( user.getEmail().hashCode()));
         userRef.get().addOnCompleteListener( new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete( @NonNull Task<DocumentSnapshot> task ) {

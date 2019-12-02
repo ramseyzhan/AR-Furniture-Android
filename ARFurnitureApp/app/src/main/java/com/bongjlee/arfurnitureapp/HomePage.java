@@ -176,6 +176,7 @@ public class HomePage extends AppCompatActivity {
         Intent intent = new Intent(this, ProductPage.class);
         TextView p_id = (TextView) view.findViewById(R.id.product_id);
         String product_id = p_id.getText().toString();
+        Log.e("ram",product_id);
         intent.putExtra("p_id", product_id);
         startActivity(intent);
     }
