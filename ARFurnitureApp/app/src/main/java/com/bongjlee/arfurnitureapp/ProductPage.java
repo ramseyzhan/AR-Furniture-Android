@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.bongjlee.arfurnitureapp.render.model3D.MainActivity;
 
 
 public class ProductPage extends AppCompatActivity {
@@ -198,7 +199,7 @@ public class ProductPage extends AppCompatActivity {
     }
 
     public void viewModel( View view ) {
-        Intent intent = new Intent( this, See_review_page.class );
+        Intent intent = new Intent( this, MainActivity.class );
         startActivity(intent);
 
     }
