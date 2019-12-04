@@ -15,6 +15,9 @@ import com.bongjlee.arfurnitureapp.R;
 import com.bongjlee.arfurnitureapp.data.Product;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -24,16 +27,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class productAdapter extends ArrayAdapter<Product> {
+public class productAdapter extends ArrayAdapter<String> {
     private StorageReference storageReference;
-    public productAdapter(Context context, ArrayList<Product> users,StorageReference store_ref) {
+    public productAdapter(Context context, ArrayList<String> users,StorageReference store_ref) {
         super(context, 0, users);
         storageReference = store_ref;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Product prod_t = getItem(position);
+        String prod_id = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.product_item, parent, false);
         }
@@ -42,31 +45,39 @@ public class productAdapter extends ArrayAdapter<Product> {
         TextView productLinkViewData = (TextView) convertView.findViewById(R.id.product_link);
         TextView productIDViewData = (TextView) convertView.findViewById(R.id.product_id);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.product_photo);
+        FirebaseFirestore db  = FirebaseFirestore.getInstance();
 
-        nameViewData.setText(prod_t.getName());
-        DescriptionViewData.setText(prod_t.getDescription());
-        productLinkViewData.setText(prod_t.getShippingInfo());
-        productIDViewData.setText(prod_t.getId());
+        DocumentReference docRef = db.collection("products").document(prod_id);
+        docRef.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String photoId = documentSnapshot.getString("photoId");
+                            productIDViewData.setText(prod_id);
+                            DescriptionViewData.setText(documentSnapshot.getString("description"));
+                            nameViewData.setText(documentSnapshot.getString("name"));
+                            productLinkViewData.setText(documentSnapshot.getString("shippingInfo"));
+                            FirebaseStorage storage = FirebaseStorage.getInstance();
+                            StorageReference storageRef = storage.getReference();
+                            StorageReference spaceRef = storageRef.child("images/"+photoId+".jpg");
+                            try{
+                                File localFile = File.createTempFile("images", "jpg");
+                                spaceRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                        imageView.setImageURI(Uri.fromFile(localFile));
+                                    }
+                                });
+                            }
+                            catch (IOException e){
+                            }
+                        }
+                    }
+                });
 
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        StorageReference spaceRef = storageRef.child("images/"+prod_t.getPhotoId()+".jpg");
-        try{
-            File localFile = File.createTempFile("images", "jpg");
-            spaceRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    imageView.setImageURI(Uri.fromFile(localFile));
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // Handle any errors
-                }
-            });
-        }
-        catch (IOException e){
-        }
+
+
         return convertView;
     }
 }

@@ -32,7 +32,7 @@ import java.util.List;
 public class order_page extends AppCompatActivity {
     private static final String TAG = order_page.class.getSimpleName();
 
-    private ArrayList<Product> prodArrayList;
+    private ArrayList<String> prodArrayList;
     private productAdapter prodAdapter;
     private FirebaseFirestore db;
 
@@ -44,7 +44,7 @@ public class order_page extends AppCompatActivity {
 
 
         db = FirebaseFirestore.getInstance();
-        prodArrayList = new ArrayList<Product>();
+        prodArrayList = new ArrayList<String>();
         prodAdapter = new productAdapter(this, prodArrayList,FirebaseStorage.getInstance().getReference());
         ListView lView = (ListView) findViewById(R.id.chattListView);
         lView.setAdapter(prodAdapter);
@@ -63,7 +63,7 @@ public class order_page extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
-                                prodAdapter.add(new Product(document.get("usrID").toString(),db));
+                                prodAdapter.add(document.get("usrID").toString());
                             }
                         }
                     }

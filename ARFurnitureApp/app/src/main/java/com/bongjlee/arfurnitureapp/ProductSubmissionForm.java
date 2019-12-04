@@ -24,6 +24,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.UUID;
 
 
@@ -93,9 +94,10 @@ public class ProductSubmissionForm extends AppCompatActivity {
         product.setStyle( productStyles );
         product.setShippingInfo( shippingInfo );
 
-        String photoID = uploadImage();
-        product.setPhotoId( photoID );
 
+        product.setPhotoId(uploadImage());
+        product.setIconId(uploadIcon());
+        product.setModelId(uploadModel());
         db.collection( "products" )
                 .document(
                         productID
@@ -119,7 +121,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
 
     public void chooseImage() {
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType("image/jpeg");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"),PICK_IMAGE_REQUEST);
     }
@@ -128,7 +130,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("*/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Choose a file"),resultCode);
+        startActivityForResult(Intent.createChooser(intent, "Choose a sfb file"),resultCode);
     }
 
     @Override
@@ -155,8 +157,8 @@ public class ProductSubmissionForm extends AppCompatActivity {
         if(requestCode == ACTIVITY_CHOOSE_FILE && resultCode == RESULT_OK
                 && data != null && data.getData() != null )
         {
-            String filePath = data.getData().getLastPathSegment();;
-            modelName.setText("OBJ select as:"+filePath);
+            modelobj = data.getData();
+            modelName.setText("Sfb select as:"+modelobj.getLastPathSegment());
         }
     }
 
@@ -175,27 +177,53 @@ public class ProductSubmissionForm extends AppCompatActivity {
                             progressDialog.dismiss();
                         }
 
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
-                                    .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
-                        }
                     });
             return imageID;
         }
         return null;
     }
+
+    private String uploadIcon() {
+        if(prodImage != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+            String iconID = UUID.randomUUID().toString();
+            StorageReference ref = storageRef.child("icon/AR/"+ iconID+".jpg");
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
+                bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+                Uri prodicon = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
+                        UUID.randomUUID().toString(),null));
+                ref.putFile(prodicon)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                progressDialog.dismiss();
+                            }
+
+                        });
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+
+            return iconID;
+        }
+        return null;
+    }
+
     private String uploadModel() {
         if(modelobj != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-
-            StorageReference ref = storageRef.child("model/"+ UUID.randomUUID().toString());
+            String modelId=UUID.randomUUID().toString();
+            StorageReference ref = storageRef.child("ARdata/"+ modelId+".sfb");
             ref.putFile(modelobj)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -212,7 +240,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                         }
                     });
-            return ref.toString();
+            return modelId;
         }
         return null;
     }

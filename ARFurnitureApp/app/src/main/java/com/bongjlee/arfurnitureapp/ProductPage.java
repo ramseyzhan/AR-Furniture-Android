@@ -66,10 +66,9 @@ public class ProductPage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        Log.e("ram",Integer.toString( user.getEmail().hashCode()));
 
         DocumentReference userRef = db.collection( "users" ).document( Integer.toString( user.getEmail().hashCode() ) );
-        Log.e("ram",Integer.toString( user.getEmail().hashCode()));
+        
         userRef.get().addOnCompleteListener( new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete( @NonNull Task<DocumentSnapshot> task ) {

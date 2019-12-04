@@ -60,7 +60,7 @@ import java.util.ArrayList;
 public class HomePage extends AppCompatActivity {
     private static final String TAG = HomePage.class.getSimpleName();
 
-    private ArrayList<Product> prodArrayList;
+    private ArrayList<String> prodArrayList;
     private productAdapter prodAdapter;
     private FirebaseFirestore db;
 
@@ -91,13 +91,12 @@ public class HomePage extends AppCompatActivity {
                     }
                 });
 
-        prodArrayList = new ArrayList<Product>();
+        prodArrayList = new ArrayList<String>();
         prodAdapter = new productAdapter(this, prodArrayList,FirebaseStorage.getInstance().getReference());
         ListView lView = (ListView) findViewById(R.id.chattListView);
         lView.setAdapter(prodAdapter);
         refreshTimeline();
-        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        //String test = user.getEmail();
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -163,7 +162,7 @@ public class HomePage extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                prodAdapter.add(new Product(document.getId(),db));
+                                prodAdapter.add(document.getId());
                             }
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
