@@ -14,7 +14,6 @@ import android.view.View;
 import com.bongjlee.arfurnitureapp.render.model3D.services.ExampleSceneLoader;
 import com.bongjlee.arfurnitureapp.render.model3D.services.SceneLoader;
 import com.bongjlee.arfurnitureapp.R;
-
 import java.io.File;
 
 /**

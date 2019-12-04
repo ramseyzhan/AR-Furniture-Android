@@ -9,11 +9,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-import org.andresoviedo.app.model3D.model.Object3DData;
-import org.andresoviedo.app.model3D.services.SceneLoader;
-import org.andresoviedo.app.model3D.view.ModelRenderer;
-import org.andresoviedo.app.model3D.view.ModelSurfaceView;
-import org.andresoviedo.app.util.math.Math3DUtils;
+import com.bongjlee.arfurnitureapp.render.model3D.model.Object3DData;
+import com.bongjlee.arfurnitureapp.render.model3D.services.SceneLoader;
+import com.bongjlee.arfurnitureapp.render.model3D.view.ModelRenderer;
+import com.bongjlee.arfurnitureapp.render.model3D.view.ModelSurfaceView;
+import com.bongjlee.arfurnitureapp.render.util.math.Math3DUtils;
 
 public class TouchController {
 

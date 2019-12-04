@@ -7,12 +7,12 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.andresoviedo.app.model3D.entities.Camera;
-import org.andresoviedo.app.model3D.model.Object3D;
-import org.andresoviedo.app.model3D.model.Object3DBuilder;
-import org.andresoviedo.app.model3D.model.Object3DData;
-import org.andresoviedo.app.model3D.services.SceneLoader;
-import org.andresoviedo.app.model3D.util.GLUtil;
+import com.bongjlee.arfurnitureapp.render.model3D.entities.Camera;
+import com.bongjlee.arfurnitureapp.render.model3D.model.Object3D;
+import com.bongjlee.arfurnitureapp.render.model3D.model.Object3DBuilder;
+import com.bongjlee.arfurnitureapp.render.model3D.model.Object3DData;
+import com.bongjlee.arfurnitureapp.render.model3D.services.SceneLoader;
+import com.bongjlee.arfurnitureapp.render.model3D.util.GLUtil;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

@@ -3,7 +3,7 @@ package com.bongjlee.arfurnitureapp.render.model3D.view;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
 
-import org.andresoviedo.app.model3D.controller.TouchController;
+import com.bongjlee.arfurnitureapp.render.model3D.controller.TouchController;
 
 /**
  * This is the actual opengl view. From here we can detect touch gestures for example

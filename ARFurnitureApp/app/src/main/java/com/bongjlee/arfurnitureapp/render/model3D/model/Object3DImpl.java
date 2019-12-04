@@ -4,7 +4,7 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
 
-import org.andresoviedo.app.model3D.util.GLUtil;
+import com.bongjlee.arfurnitureapp.render.model3D.util.GLUtil;
 
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;

@@ -8,10 +8,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
 
-import org.andresoviedo.app.model3D.view.MenuActivity;
-import org.andresoviedo.app.model3D.view.ModelActivity;
-import org.andresoviedo.app.util.Utils;
-import org.andresoviedo.dddmodel.R;
+import com.bongjlee.arfurnitureapp.render.model3D.view.MenuActivity;
+import com.bongjlee.arfurnitureapp.render.model3D.view.ModelActivity;
+import com.bongjlee.arfurnitureapp.render.util.Utils;
+import com.bongjlee.arfurnitureapp.R;
 
 import java.io.File;
 

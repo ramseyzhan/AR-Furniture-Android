@@ -103,6 +103,15 @@
             android:onClick="Purchase"
             android:text="Purchase" />
 
+        <Button
+            android:id="@+id/model"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="450dp"
+            android:onClick="viewModel"
+            android:text="View Model" />
+
         <EditText
             android:id="@+id/input_text"
             android:layout_width="wrap_content"

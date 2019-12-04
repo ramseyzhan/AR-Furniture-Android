@@ -197,6 +197,12 @@ public class ProductPage extends AppCompatActivity {
 
     }
 
+    public void viewModel( View view ) {
+        Intent intent = new Intent( this, See_review_page.class );
+        startActivity(intent);
+
+    }
+
     public void SubmitReview( View view ) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

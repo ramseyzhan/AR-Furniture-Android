@@ -7,13 +7,13 @@ import android.opengl.GLES20;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.andresoviedo.app.model3D.services.WavefrontLoader;
-import org.andresoviedo.app.model3D.services.WavefrontLoader.FaceMaterials;
-import org.andresoviedo.app.model3D.services.WavefrontLoader.Faces;
-import org.andresoviedo.app.model3D.services.WavefrontLoader.Material;
-import org.andresoviedo.app.model3D.services.WavefrontLoader.Materials;
-import org.andresoviedo.app.model3D.services.WavefrontLoader.Tuple3;
-import org.andresoviedo.app.util.math.Math3DUtils;
+import com.bongjlee.arfurnitureapp.render.model3D.services.WavefrontLoader;
+import com.bongjlee.arfurnitureapp.render.model3D.services.WavefrontLoader.FaceMaterials;
+import com.bongjlee.arfurnitureapp.render.model3D.services.WavefrontLoader.Faces;
+import com.bongjlee.arfurnitureapp.render.model3D.services.WavefrontLoader.Material;
+import com.bongjlee.arfurnitureapp.render.model3D.services.WavefrontLoader.Materials;
+import com.bongjlee.arfurnitureapp.render.model3D.services.WavefrontLoader.Tuple3;
+import com.bongjlee.arfurnitureapp.render.util.math.Math3DUtils;
 import org.apache.commons.io.IOUtils;
 
 import java.io.ByteArrayOutputStream;
