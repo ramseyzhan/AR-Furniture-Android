@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MyProductsPage extends AppCompatActivity {
 
-    private ArrayList<Product> prodArrayList;
+    private ArrayList<String> prodArrayList;
     private productAdapter prodAdapter;
     private FirebaseFirestore db;
 
@@ -27,7 +27,7 @@ public class MyProductsPage extends AppCompatActivity {
         setContentView(R.layout.activity_my_products_page);
 
         db = FirebaseFirestore.getInstance();
-        prodArrayList = new ArrayList<Product>();
+        prodArrayList = new ArrayList<String>();
         prodAdapter = new productAdapter(this, prodArrayList,
                 FirebaseStorage.getInstance().getReference());
 
@@ -36,7 +36,7 @@ public class MyProductsPage extends AppCompatActivity {
         prodAdapter.clear();
 
         for (int i = 0; i < 10; i++) {
-            prodAdapter.add(new Product("94623429", db));
+            prodAdapter.add("94623429");
         }
     }
 

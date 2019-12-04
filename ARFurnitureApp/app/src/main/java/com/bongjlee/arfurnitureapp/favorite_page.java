@@ -61,7 +61,7 @@ import java.util.List;
 public class favorite_page extends AppCompatActivity {
     private static final String TAG = favorite_page.class.getSimpleName();
 
-    private ArrayList<Product> prodArrayList;
+    private ArrayList<String> prodArrayList;
     private productAdapter prodAdapter;
     private FirebaseFirestore db;
 
@@ -71,7 +71,7 @@ public class favorite_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_page);
         db = FirebaseFirestore.getInstance();
-        prodArrayList = new ArrayList<Product>();
+        prodArrayList = new ArrayList<String>();
         prodAdapter = new productAdapter(this, prodArrayList,FirebaseStorage.getInstance().getReference());
         ListView lView = (ListView) findViewById(R.id.chattListView);
         lView.setAdapter(prodAdapter);
@@ -90,7 +90,7 @@ public class favorite_page extends AppCompatActivity {
                     if (document.exists()) {
                         List<String> favList = (ArrayList<String>) document.get("UserDetails.favoriteList");
                         for (int i = 0; i < favList.size(); ++i) {
-                            prodAdapter.add(new Product(favList.get(i),db));
+                            prodAdapter.add(prodArrayList.get(i));
                         }
                     }
                 }
