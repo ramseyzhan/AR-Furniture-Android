@@ -31,6 +31,28 @@
         <activity android:name=".UserEdit" />
         <activity android:name=".UserLogin" />
         <activity android:name=".EditPage" />
+
+        <activity
+            android:name=".render.model3D.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".render.model3D.view.MenuActivity"
+            android:parentActivityName=".render.model3D.MainActivity" >
+        </activity>
+        <activity
+            android:name=".render.model3D.view.DemoActivity"
+            android:parentActivityName=".render.model3D.MainActivity" >
+        </activity>
+        <activity
+            android:name=".render.util.view.TextActivity"
+            android:parentActivityName=".render.model3D.MainActivity" >
+        </activity>
+        <activity
+            android:name=".render.model3D.view.ModelActivity"
+            android:parentActivityName=".render.model3D.MainActivity" >
+        </activity>
+
         <activity android:name=".HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
