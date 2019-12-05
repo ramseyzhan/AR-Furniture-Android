@@ -14,8 +14,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
+
+
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
@@ -32,16 +35,20 @@ public class reviewAdapter extends ArrayAdapter<String> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        String review_t = getItem(position);
+
+
+        String review_id = getItem(position);
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.review_item, parent, false);
         }
         TextView reviewerViewData = (TextView) convertView.findViewById(R.id.reviewer_name);
         TextView contentViewData = (TextView) convertView.findViewById(R.id.review_content);
         TextView ratingViewData = (TextView) convertView.findViewById(R.id.review_rating);
-        FirebaseFirestore db  = FirebaseFirestore.getInstance();
 
-        DocumentReference docRef = db.collection("reviews").document(review_t);
+        FirebaseFirestore db  = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("reviews").document(review_id);
+
         docRef.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
