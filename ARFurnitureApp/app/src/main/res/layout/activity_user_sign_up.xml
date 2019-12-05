@@ -80,13 +80,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/btn_shad_blue"
         android:elevation="4dp"
         android:onClick="sendInfo"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
         android:text="Submit"
-        android:textColor="#fff" />
+        android:textColor="#000" />
 
 </LinearLayout>
 </ScrollView>
