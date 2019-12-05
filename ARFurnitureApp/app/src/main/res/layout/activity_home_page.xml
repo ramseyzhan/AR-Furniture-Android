@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEF8E7"
     tools:context=".HomePage">
 
     <include
@@ -17,7 +18,8 @@
         android:onClick="onChair"
         android:text="Chair"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tool_bar" />
+        app:layout_constraintTop_toBottomOf="@+id/tool_bar"
+        android:background="@drawable/btn_shad_yellow" />
 
     <Button
         android:id="@+id/button7"
@@ -28,7 +30,8 @@
         android:onClick="onTable"
         android:text="Table"
         app:layout_constraintStart_toEndOf="@+id/button6"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/btn_shad_yellow" />
 
     <Button
         android:id="@+id/button8"
@@ -41,7 +44,8 @@
         app:layout_constraintEnd_toStartOf="@+id/button9"
         app:layout_constraintStart_toEndOf="@+id/button7"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        android:background="@drawable/btn_shad_yellow" />
 
     <Button
         android:id="@+id/button9"
@@ -50,7 +54,8 @@
         android:onClick="onOther"
         android:text="Other"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tool_bar" />
+        app:layout_constraintTop_toBottomOf="@+id/tool_bar"
+        android:background="@drawable/btn_shad_yellow" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
