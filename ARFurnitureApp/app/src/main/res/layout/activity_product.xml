@@ -4,163 +4,170 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEF8E7"
     tools:context=".ProductPage">
 
-
-    <!--    <android.support.design.widget.FloatingActionButton-->
-    <!--        android:id="@+id/postChattActionButton"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginBottom="16dp"-->
-    <!--        android:layout_marginEnd="16dp"-->
-    <!--        android:layout_marginRight="16dp"-->
-    <!--        android:clickable="true"-->
-    <!--        android:onClick="postChatt"-->
-    <!--        app:fabSize="mini"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintRight_toRightOf="parent"-->
-    <!--        app:srcCompat="@mipmap/ic_launcher_round" />-->
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="455dp"
-        android:layout_height="731dp"
-        android:layout_gravity="center"
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        app:cardCornerRadius="4dp"
+        android:layout_marginTop="5dp"
+        android:background="#7CA7D7"
+        android:onClick="back"
+        android:text="back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/product_photo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="0dp"
-            tools:srcCompat="@tools:sample/avatars" />
+    <ImageView
+        android:id="@+id/product_photo"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_favorite"
+        tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/product_name"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="70dp"
-            android:text="product name" />
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="product name"
+        app:layout_constraintRight_toLeftOf="@+id/product_description"
+        app:layout_constraintStart_toStartOf="@+id/product_photo"
+        app:layout_constraintTop_toBottomOf="@+id/product_photo" />
 
-        <TextView
-            android:id="@+id/product_price"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="130dp"
-            android:text="price" />
+    <TextView
+        android:id="@+id/product_price"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="price"
+        app:layout_constraintStart_toStartOf="@+id/product_photo"
+        app:layout_constraintTop_toBottomOf="@+id/product_name" />
 
-        <TextView
-            android:id="@+id/product_styles"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="190dp"
-            android:text="style" />
+    <TextView
+        android:id="@+id/product_styles"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="style"
+        app:layout_constraintStart_toStartOf="@+id/product_photo"
+        app:layout_constraintTop_toBottomOf="@+id/product_price" />
 
-        <TextView
-            android:id="@+id/shipping_info"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="250dp"
-            android:text="shipping info" />
+    <TextView
+        android:id="@+id/shipping_info"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="shipping info"
+        app:layout_constraintStart_toStartOf="@+id/product_photo"
+        app:layout_constraintTop_toBottomOf="@+id/product_styles" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="400dp"
-            android:onClick="back"
-            android:text="back" />
+    <TextView
+        android:id="@+id/product_description"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="description"
+        app:layout_constraintStart_toEndOf="@+id/product_name"
+        app:layout_constraintTop_toBottomOf="@+id/product_photo" />
 
-        <TextView
-            android:id="@+id/product_description"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="310dp"
-            android:text="description" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#7CA7D7"
+        android:onClick="GeneratAR"
+        android:text="AR"
+        app:layout_constraintBottom_toBottomOf="@+id/product_photo"
+        app:layout_constraintEnd_toEndOf="@+id/product_photo" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="400dp"
-            android:layout_marginRight="100dp"
-            android:onClick="GeneratAR"
-            android:text="AR" />
+    <!--***-->
 
-        <Button
-            android:id="@+id/purchase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="400dp"
-            android:onClick="Purchase"
-            android:text="Purchase" />
+    <Button
+        android:id="@+id/purchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="#7CA7D7"
+        android:onClick="Purchase"
+        android:text="Purchase"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/product_photo" />
 
-        <Button
-            android:id="@+id/model"
-            android:layout_width="96dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="450dp"
-            android:onClick="viewModel"
-            android:text="View Model" />
+    <Button
+        android:id="@+id/model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#7CA7D7"
+        android:onClick="viewModel"
+        android:text="  View Model  "
+        app:layout_constraintBottom_toBottomOf="@+id/product_photo"
+        app:layout_constraintStart_toStartOf="@+id/product_photo" />
 
-        <EditText
-            android:id="@+id/input_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="500dp"
-            android:layout_marginRight="100dp"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:text="Input review"
-            app:layout_constraintLeft_toLeftOf="parent" />
+    <EditText
+        android:id="@+id/input_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="Input review"
+        app:layout_constraintStart_toStartOf="@+id/product_photo"
+        app:layout_constraintTop_toBottomOf="@+id/shipping_info" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="550dp"
-            android:layout_marginRight="100dp"
-            android:onClick="SeeReview"
-            android:text="See Review" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="#7CA7D7"
+        android:onClick="SeeReview"
+        android:text="  See Review  "
+        app:layout_constraintStart_toStartOf="@+id/input_text"
+        app:layout_constraintTop_toBottomOf="@+id/input_text" />
 
-        <ToggleButton
-            android:id="@+id/button_favorite"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="350dp"
-            android:background="@drawable/button_favorite"
-            android:checked="false"
-            android:onClick="addFavorites"
-            android:text=""
-            android:textOff=""
-            android:textOn="" />
+    <ToggleButton
+        android:id="@+id/button_favorite"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/button_favorite"
+        android:checked="false"
+        android:onClick="addFavorites"
+        android:text=""
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/SubmitReview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="500dp"
-            android:layout_marginLeft="280dp"
-            android:onClick="SubmitReview"
-            android:text="Submit" />
+    <Button
+        android:id="@+id/SubmitReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#7CA7D7"
+        android:onClick="SubmitReview"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="@+id/input_text"
+        app:layout_constraintEnd_toEndOf="@+id/product_photo" />
 
-        <Button
-            android:id="@+id/edit"
-            android:layout_width="143dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="260dp"
-            android:layout_marginTop="680dp"
-            android:onClick="editproduct"
-            android:text="Edit Product" />
+    <Button
+        android:id="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="#7CA7D7"
+        android:onClick="editproduct"
+        android:text="  Edit Product  "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/product_photo" />
 
-    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
