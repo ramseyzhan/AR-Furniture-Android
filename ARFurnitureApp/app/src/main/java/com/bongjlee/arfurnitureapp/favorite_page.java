@@ -90,7 +90,7 @@ public class favorite_page extends AppCompatActivity {
                     if (document.exists()) {
                         List<String> favList = (ArrayList<String>) document.get("UserDetails.favoriteList");
                         for (int i = 0; i < favList.size(); ++i) {
-                            prodAdapter.add(prodArrayList.get(i));
+                            prodAdapter.add(favList.get(i));
                         }
                     }
                 }
