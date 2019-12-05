@@ -4,7 +4,6 @@ package com.bongjlee.arfurnitureapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,6 +13,7 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bongjlee.arfurnitureapp.render.model3D.view.ModelActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,8 +34,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.bongjlee.arfurnitureapp.render.model3D.MainActivity;
 
 
 public class ProductPage extends AppCompatActivity {
@@ -199,9 +197,8 @@ public class ProductPage extends AppCompatActivity {
     }
 
     public void viewModel( View view ) {
-        Intent intent = new Intent( this, MainActivity.class );
+        Intent intent = new Intent(this, ModelActivity.class);
         startActivity(intent);
-
     }
 
     public void SubmitReview( View view ) {
