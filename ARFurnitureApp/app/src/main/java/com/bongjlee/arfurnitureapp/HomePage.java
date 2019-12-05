@@ -169,8 +169,84 @@ public class HomePage extends AppCompatActivity {
                         }
                     }
                 });
-
     }
+
+    public void onChair(View view) {
+        prodAdapter.clear();
+        db.collection("products")
+                .whereEqualTo("style", "chair")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                prodAdapter.add(document.getId());
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void onTable(View view) {
+        prodAdapter.clear();
+        db.collection("products")
+                .whereEqualTo("style", "table")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                prodAdapter.add(document.getId());
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void onDesk(View view) {
+        prodAdapter.clear();
+        db.collection("products")
+                .whereEqualTo("style", "desk")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                prodAdapter.add(document.getId());
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void onOther(View view) {
+        prodAdapter.clear();
+        db.collection("products")
+                .whereEqualTo("style", "other")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                prodAdapter.add(document.getId());
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+    }
+
     public void generateProductPage(View view) {
         Intent intent = new Intent(this, ProductPage.class);
         TextView p_id = (TextView) view.findViewById(R.id.product_id);
