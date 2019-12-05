@@ -5,16 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="232dp"
-        android:id="@+id/card_view"
         android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:tag="N/A"
-        app:cardCornerRadius="4dp">
+        app:cardCornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#000000"
+        app:strokeWidth="2dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="232dp">
 
 
         <TextView
@@ -23,9 +30,9 @@
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:typeface="serif"
+            android:text="review name"
             android:textStyle="bold"
-            android:text="review name" />
+            android:typeface="serif" />
 
         <TextView
             android:id="@+id/review_rating"
@@ -33,9 +40,9 @@
             android:layout_height="50dp"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="20dp"
-            android:typeface="serif"
+            android:text="ranting 1-5"
             android:textStyle="bold"
-            android:text="ranting 1-5" />
+            android:typeface="serif" />
 
         <TextView
             android:id="@+id/review_content"
@@ -43,10 +50,10 @@
             android:layout_height="100dp"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="80dp"
-            android:typeface="serif"
+            android:text="review_content"
             android:textStyle="bold"
-            android:text="review_content" />
+            android:typeface="serif" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

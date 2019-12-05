@@ -4,84 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEF8E7"
     tools:context=".EditPage">
-
-    ​
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="460dp"
-        android:layout_height="730dp"
-        android:layout_gravity="center"
-        app:cardCornerRadius="4dp"
+        ​
+    <ImageView
+        android:id="@+id/product_photo_edit"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="5dp">
+        tools:srcCompat="@tools:sample/avatars" />
         ​
-        <ImageView
-            android:id="@+id/product_photo_edit"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="0dp"
-            tools:srcCompat="@tools:sample/avatars" />
+    <EditText
+        android:id="@+id/product_name_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
+        app:layout_constraintTop_toTopOf="@+id/product_photo_edit"
+        android:text="product name" />
         ​
-        <EditText
-            android:id="@+id/product_name_edit"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="70dp"
-            android:text="product name" />
+    <EditText
+        android:id="@+id/product_price_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
+        app:layout_constraintTop_toBottomOf="@+id/product_name_edit"
+        android:text="price" />
         ​
-        <EditText
-            android:id="@+id/product_price_edit"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="130dp"
-            android:text="price" />
-        ​
-        <EditText
-            android:id="@+id/product_styles_edit"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="190dp"
-            android:text="style" />
-        ​
-        <EditText
-            android:id="@+id/shipping_info_edit"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="250dp"
-            android:text="shipping info" />
-        ​
-        <EditText
-            android:id="@+id/product_description_edit"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="310dp"
-            android:text="description" />
-        ​
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="400dp"
-            android:onClick="back"
-            android:text="back" />
-        ​
+    <EditText
+        android:id="@+id/product_styles_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
+        app:layout_constraintTop_toBottomOf="@+id/product_price_edit"
+        android:text="style" />
+    ​
+    <EditText
+        android:id="@+id/shipping_info_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
+        app:layout_constraintTop_toBottomOf="@+id/product_styles_edit"
+        android:text="shipping info" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
-            android:layout_marginTop="600dp"
-            android:onClick="edit"
-            android:text="Edit the product"
-            />
-        ​
-    </androidx.cardview.widget.CardView>
+    <EditText
+        android:id="@+id/product_description_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
+        app:layout_constraintTop_toBottomOf="@+id/shipping_info_edit"
+        android:text="description" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_shad_blue"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
+        app:layout_constraintTop_toBottomOf="@+id/product_description_edit"
+        android:onClick="edit"
+        android:text="  Confirm edit  " />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_shad_blue"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="back"
+        android:text="back" />
     ​
 </androidx.constraintlayout.widget.ConstraintLayout>
 
