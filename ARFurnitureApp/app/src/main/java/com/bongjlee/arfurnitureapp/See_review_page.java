@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class See_review_page extends AppCompatActivity {
     private static final String TAG = See_review_page.class.getSimpleName();
 
-    private ArrayList<Review> reviewArrayList;
+    private ArrayList<String> reviewArrayList;
     private reviewAdapter reviewAdapter;
     private FirebaseFirestore db;
 
@@ -39,7 +39,7 @@ public class See_review_page extends AppCompatActivity {
         this.docId_t = getIntent().getStringExtra("p_id");
 
         db = FirebaseFirestore.getInstance();
-        reviewArrayList = new ArrayList<Review>();
+        reviewArrayList = new ArrayList<String>();
         reviewAdapter = new reviewAdapter(this, reviewArrayList,FirebaseStorage.getInstance().getReference());
         ListView lView = (ListView) findViewById(R.id.chattListView);
         lView.setAdapter(reviewAdapter);
@@ -58,7 +58,7 @@ public class See_review_page extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
-                                reviewAdapter.add(new Review(document.getId(),db));
+                                reviewAdapter.add(document.getId());
                             }
                         }
                     }
