@@ -35,6 +35,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.bongjlee.arfurnitureapp.UserLogin.loggedInUser;
+
 
 public class ProductPage extends AppCompatActivity {
     private TextView nameViewData;
@@ -66,28 +68,35 @@ public class ProductPage extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        DocumentReference userRef = db.collection( "users" ).document( Integer.toString( user.getEmail().hashCode() ) );
-        
-        userRef.get().addOnCompleteListener( new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete( @NonNull Task<DocumentSnapshot> task ) {
-                if ( task.isSuccessful() ) {
-                    DocumentSnapshot document = task.getResult();
-                    if ( document.exists() ) {
-                        List<String> favList = (ArrayList<String>) document.get( "UserDetails.favoriteList" );
-                        if(favList != null){
-                            for ( int i = 0; i < favList.size(); ++i ) {
-                                if ( favList.get( i ).equals( docId_t ) ) {
-                                    ToggleButton fav = (ToggleButton) findViewById( R.id.button_favorite );
-                                    fav.setChecked( true );
+        ToggleButton fav = (ToggleButton) findViewById( R.id.button_favorite );
+
+        if (loggedInUser != null) {
+            DocumentReference userRef = db.collection( "users" ).document( Integer.toString( user.getEmail().hashCode() ) );
+
+            userRef.get().addOnCompleteListener( new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete( @NonNull Task<DocumentSnapshot> task ) {
+                    if ( task.isSuccessful() ) {
+                        DocumentSnapshot document = task.getResult();
+                        if ( document.exists() ) {
+                            List<String> favList = (ArrayList<String>) document.get( "UserDetails.favoriteList" );
+                            if(favList != null){
+                                for ( int i = 0; i < favList.size(); ++i ) {
+                                    if ( favList.get( i ).equals( docId_t ) ) {
+                                        fav.setChecked( true );
+                                    }
                                 }
                             }
-                        }
 
+                        }
                     }
                 }
-            }
-        } );
+            } );
+        } else {
+            fav.setVisibility(View.GONE);
+        }
+
+
 
         DocumentReference docRef = db.collection( "products" ).document( docId_t );
         docRef.get()
