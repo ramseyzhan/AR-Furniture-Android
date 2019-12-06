@@ -26,7 +26,9 @@
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_favorite"
+        android:layout_marginTop="10dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/button2"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -100,17 +102,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/product_photo" />
 
-<!--    <Button-->
-<!--        android:id="@+id/model"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginBottom="5dp"-->
-<!--        android:background="@drawable/btn_shad_blue"-->
-<!--        android:onClick="viewModel"-->
-<!--        android:text="  View Model  "-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/product_photo"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/product_photo" />-->
+    <Button
+        android:id="@+id/model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/btn_shad_blue"
+        android:onClick="viewModel"
+        android:text="  View Model  "
+        app:layout_constraintBottom_toBottomOf="@+id/product_photo"
+        app:layout_constraintStart_toStartOf="@+id/product_photo" />
 
     <EditText
         android:id="@+id/input_text"
