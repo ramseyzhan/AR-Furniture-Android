@@ -65,8 +65,6 @@ public final class Object3DBuilder {
 
 
 
-	final static short[] cubeDrawOrder = new short[] {};
-
 	private Object3DV0 object3dv0;
 	private Object3DV1 object3dv1;
 	private Object3DV2 object3dv2;

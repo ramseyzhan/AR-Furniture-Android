@@ -2,6 +2,7 @@ package com.bongjlee.arfurnitureapp.render.model3D.view;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,10 +37,14 @@ public class ModelActivity extends Activity {
 
 	private Handler handler;
 
+	private String modelId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		this.modelId = getIntent().getStringExtra( "modelId" );
+		Log.e("ram",this.modelId);
 
 		// Try to get input parameters
 		Bundle b = getIntent().getExtras();
@@ -62,7 +67,7 @@ public class ModelActivity extends Activity {
 
 		// Create our 3D sceneario
 		if (paramFilename == null && paramAssetFilename == null) {
-			scene = new ExampleSceneLoader(this);
+			scene = new ExampleSceneLoader(this,modelId);
 		} else {
 			scene = new SceneLoader(this);
 		}
