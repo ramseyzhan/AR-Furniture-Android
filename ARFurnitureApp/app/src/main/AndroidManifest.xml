@@ -36,9 +36,6 @@
             android:name=".render.model3D.view.DemoActivity">
         </activity>
         <activity
-            android:name=".render.util.view.TextActivity">
-        </activity>
-        <activity
             android:name=".render.model3D.view.ModelActivity" >
         </activity>
 
