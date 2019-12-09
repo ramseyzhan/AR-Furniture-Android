@@ -104,4 +104,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="emailLabel">Email Address</string>
+    <string name="PhoneLabel">Phone Number</string>
+    <string name="websiteLabel">Website</string>
+    <string name="adressLabel">Street Address</string>
 </resources>
