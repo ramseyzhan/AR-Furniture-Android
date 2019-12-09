@@ -50,6 +50,7 @@ public class ProductPage extends AppCompatActivity {
 
     private String modelId;
     private String docId_t;
+    private String photoId;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -105,7 +106,7 @@ public class ProductPage extends AppCompatActivity {
                     @Override
                     public void onSuccess( DocumentSnapshot documentSnapshot ) {
                         if ( documentSnapshot.exists() ) {
-                            String photoId = documentSnapshot.getString( "photoId" );
+                            photoId = documentSnapshot.getString( "photoId" );
                             String productDescription = documentSnapshot.getString( "description" );
                             String name = documentSnapshot.getString( "name" );
                             String style = documentSnapshot.getString( "style" );
@@ -117,7 +118,6 @@ public class ProductPage extends AppCompatActivity {
                             DescriptionViewData.setText( "Description: " + productDescription );
                             styleViewData.setText( "Style: " + style );
                             shippingInfoViewData.setText( "Shipping information: " + shippinginfo );
-
                             FirebaseStorage storage = FirebaseStorage.getInstance();
                             StorageReference storageRef = storage.getReference();
 
@@ -197,6 +197,9 @@ public class ProductPage extends AppCompatActivity {
     public void editproduct( View view ) {
         Intent intent = new Intent( ProductPage.this, EditPage.class );
         intent.putExtra( "p_id", this.docId_t );
+        Log.e("ram product",this.photoId );
+        intent.putExtra( "photoId", this.photoId );
+
         startActivity( intent );
     }
 
