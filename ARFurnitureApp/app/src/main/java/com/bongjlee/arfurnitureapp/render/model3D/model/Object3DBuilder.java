@@ -64,8 +64,6 @@ public final class Object3DBuilder {
 	};
 
 
-
-	private Object3DV0 object3dv0;
 	private Object3DV1 object3dv1;
 	private Object3DV2 object3dv2;
 	private Object3DV3 object3dv3;
@@ -296,20 +294,6 @@ public final class Object3DBuilder {
 		return obj;
 	}
 
-	public Object3D getBoundingBoxDrawer() {
-		return object3dv2;
-	}
-
-	public Object3D getFaceNormalsDrawer() {
-		return object3dv1;
-	}
-
-	public Object3D getPointDrawer() {
-		if (object3dv0 == null) {
-			object3dv0 = new Object3DV0();
-		}
-		return object3dv0;
-	}
 
 	public static Object3DData buildBoundingBox(Object3DData obj) {
 		BoundingBox boundingBox = new BoundingBox(

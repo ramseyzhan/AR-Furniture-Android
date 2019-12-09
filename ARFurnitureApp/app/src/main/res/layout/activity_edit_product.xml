@@ -77,13 +77,50 @@
         android:text="description" />
 
     <Button
+        android:id="@+id/btnChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_shad_blue"
+        app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
+        app:layout_constraintTop_toBottomOf="@+id/product_description_edit"
+        android:elevation="4dp"
+
+        android:text="Select Image"
+        android:textColor="#000" />
+
+    <Button
+        android:id="@+id/modelChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_shad_blue"
+        android:elevation="4dp"
+        app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
+        app:layout_constraintTop_toBottomOf="@+id/btnChoose"
+        android:text="Select Model"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/modelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
+        app:layout_constraintTop_toBottomOf="@+id/modelChoose"
+        />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_shad_blue"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/product_photo_edit"
-        app:layout_constraintTop_toBottomOf="@+id/product_description_edit"
+        app:layout_constraintTop_toBottomOf="@+id/modelName"
         android:onClick="edit"
         android:text="  Confirm edit  " />
 
@@ -97,6 +134,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:onClick="back"
         android:text="back" />
+
+
     ​
 </androidx.constraintlayout.widget.ConstraintLayout>
 

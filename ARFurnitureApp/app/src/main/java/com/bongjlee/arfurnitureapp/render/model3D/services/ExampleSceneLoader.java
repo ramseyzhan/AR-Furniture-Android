@@ -46,9 +46,9 @@ public class ExampleSceneLoader extends SceneLoader {
 			protected Void doInBackground(Void... params) {
 				try {
 					// 3D Axis
-//					Object3DData axis = Object3DBuilder.buildAxis().setId("axis");
-//					axis.setColor(new float[] { 1.0f, 0, 0, 1.0f });
-//					addObject(axis);
+					Object3DData axis = Object3DBuilder.buildAxis().setId("axis");
+					axis.setColor(new float[] { 1.0f, 0, 0, 1.0f });
+					addObject(axis);
 
 					Object3DData mymodel = Object3DBuilder.loadV5(parent.getAssets(), "models/", modelId+".obj");
 					mymodel.setPosition(new float[] { 0f, 0f, 0f });

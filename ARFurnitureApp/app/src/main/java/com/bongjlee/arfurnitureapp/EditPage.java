@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -43,21 +44,39 @@ public class EditPage extends AppCompatActivity {
     private ImageView photoViewData;
 
     private String docId_t;
-
+    private String photoId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_product);
 
-        Intent intent = getIntent();
         this.docId_t = getIntent().getStringExtra("p_id");
-
+        photoId = getIntent().getStringExtra("photoId");
         nameViewData = findViewById(R.id.product_name);
         DescriptionViewData = findViewById(R.id.product_description);
         styleViewData = findViewById(R.id.product_styles);
         shippingInfoViewData = findViewById(R.id.shipping_info);
         priceViewData = findViewById(R.id.product_price);
-        photoViewData = findViewById(R.id.product_photo);
+        photoViewData = findViewById(R.id.product_photo_edit);
+        Log.e("ram",photoId);
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference spaceRef = storageRef.child( "images/" + photoId + ".jpg" );
+        try {
+            File localFile = File.createTempFile( "images", "jpg" );
+            spaceRef.getFile( localFile ).addOnSuccessListener( new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess( FileDownloadTask.TaskSnapshot taskSnapshot ) {
+                    photoViewData.setImageURI( Uri.fromFile( localFile ) );
+                }
+            } ).addOnFailureListener( new OnFailureListener() {
+                @Override
+                public void onFailure( @NonNull Exception exception ) {
+                }
+            } );
+        } catch ( IOException e ) {
+        }
+
     }
     public void edit (View view) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();

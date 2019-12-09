@@ -119,13 +119,6 @@ public class Object3DData {
 		this.materials = materials;
 	}
 
-	public boolean isVisible() {
-		return isVisible;
-	}
-
-	public void setVisible(boolean isVisible) {
-		this.isVisible = isVisible;
-	}
 
 	public int getVersion() {
 		return version;
@@ -153,12 +146,6 @@ public class Object3DData {
 		return color;
 	}
 
-	public float[] getColorInverted() {
-		if (getColor() == null || getColor().length != 4) {
-			return null;
-		}
-		return new float[] { 1 - getColor()[0], 1 - getColor()[1], 1 - getColor()[2], 1 };
-	}
 
 	public Object3DData setColor(float[] color) {
 		this.color = color;
@@ -222,10 +209,6 @@ public class Object3DData {
 		return rotation != null ? rotation[2] : 0;
 	}
 
-	public void setRotation(float[] rotation) {
-		this.rotation = rotation;
-	}
-
 	public ShortBuffer getDrawOrder() {
 		return drawOrderBuffer;
 	}
@@ -257,14 +240,6 @@ public class Object3DData {
 
 	public boolean isFlipTextCoords() {
 		return flipTextCoords;
-	}
-
-	public void setFlipTextCoords(boolean flipTextCoords) {
-		this.flipTextCoords = flipTextCoords;
-	}
-
-	public void setDrawUsingArrays(boolean drawUsingArrays) {
-		this.drawUsingArrays = drawUsingArrays;
 	}
 
 	public ArrayList<Tuple3> getVerts() {
@@ -301,17 +276,11 @@ public class Object3DData {
 		this.vertexBuffer = vertexBuffer;
 	}
 
-	public FloatBuffer getVertexNormalsBuffer() {
-		return vertexNormalsBuffer;
-	}
 
 	public void setVertexNormalsBuffer(FloatBuffer vertexNormalsBuffer) {
 		this.vertexNormalsBuffer = vertexNormalsBuffer;
 	}
 
-	public FloatBuffer getTextureCoordsBuffer() {
-		return textureCoordsBuffer;
-	}
 
 	public void setTextureCoordsBuffer(FloatBuffer textureCoordsBuffer) {
 		this.textureCoordsBuffer = textureCoordsBuffer;
@@ -379,13 +348,6 @@ public class Object3DData {
 		return textureStreams.get(0);
 	}
 
-	public List<InputStream> getTextureStreams() {
-		return textureStreams;
-	}
-
-	public void setTextureStreams(List<InputStream> textureStreams) {
-		this.textureStreams = textureStreams;
-	}
 
 	public Object3DData centerAndScale(float maxSize) {
 		float leftPt = Float.MAX_VALUE, rightPt = Float.MIN_VALUE; // on x-axis
