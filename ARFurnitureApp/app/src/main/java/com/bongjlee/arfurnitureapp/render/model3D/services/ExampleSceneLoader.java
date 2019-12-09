@@ -21,9 +21,10 @@ import java.util.List;
  *
  */
 public class ExampleSceneLoader extends SceneLoader {
-
-	public ExampleSceneLoader(ModelActivity modelActivity) {
+	private String modelId;
+	public ExampleSceneLoader(ModelActivity modelActivity,String modelId) {
 		super(modelActivity);
+		this.modelId=modelId;
 	}
 
 	public void init() {
@@ -45,48 +46,16 @@ public class ExampleSceneLoader extends SceneLoader {
 			protected Void doInBackground(Void... params) {
 				try {
 					// 3D Axis
-					Object3DData axis = Object3DBuilder.buildAxis().setId("axis");
-					axis.setColor(new float[] { 1.0f, 0, 0, 1.0f });
-					addObject(axis);
+//					Object3DData axis = Object3DBuilder.buildAxis().setId("axis");
+//					axis.setColor(new float[] { 1.0f, 0, 0, 1.0f });
+//					addObject(axis);
 
-					Object3DData mymodel = Object3DBuilder.loadV5(parent.getAssets(), "models/", "chair.obj");
-					mymodel.generateVertexColorsArrayBuffer();
+					Object3DData mymodel = Object3DBuilder.loadV5(parent.getAssets(), "models/", modelId+".obj");
 					mymodel.setPosition(new float[] { 0f, 0f, 0f });
+					mymodel.setColor(new float[] { 1.0f, 1.0f, 1f, 1.0f });
+					mymodel.setDrawMode(GLES20.GL_TRIANGLE_FAN);
 					addObject(mymodel);
 
-					Object3DData mymodel2 = Object3DBuilder.loadV5(parent.getAssets(), "models/", "sofa.obj");
-					mymodel2.generateVertexColorsArrayBuffer();
-					mymodel2.setPosition(new float[] { 0f, 1f, 0f });
-					addObject(mymodel2);
-
-					Object3DData mymodel3 = Object3DBuilder.loadV5(parent.getAssets(), "models/", "table.obj");
-					mymodel3.generateVertexColorsArrayBuffer();
-					mymodel3.setPosition(new float[] { 0f, -1f, 0f });
-					addObject(mymodel3);
-
-					Object3DData mymodel4 = Object3DBuilder.loadV5(parent.getAssets(), "models/", "carpet.obj");
-					mymodel4.generateVertexColorsArrayBuffer();
-					mymodel4.setPosition(new float[] { 0f, -1f, 1f });
-					addObject(mymodel4);
-
-					Object3DData mymodel5 = Object3DBuilder.loadV5(parent.getAssets(), "models/", "lamp.obj");
-					mymodel5.generateVertexColorsArrayBuffer();
-					mymodel5.setPosition(new float[] { 0f, -1f, -1f });
-					addObject(mymodel5);
-
-
-					// test loading object made of polygonal faces
-					try {
-						// this has heterogeneous faces
-						Object3DData obj53 = Object3DBuilder.loadV5(parent.getAssets(), "models/", "ToyPlane.obj");
-						obj53.centerAndScale(2.0f);
-						obj53.setPosition(new float[] { 2f, 0f, 0f });
-						obj53.setColor(new float[] { 1.0f, 1.0f, 1f, 1.0f });
-						obj53.setDrawMode(GLES20.GL_TRIANGLE_FAN);
-						addObject(obj53);
-					} catch (Exception ex) {
-						errors.add(ex);
-					}
 				} catch (Exception ex) {
 					errors.add(ex);
 				}

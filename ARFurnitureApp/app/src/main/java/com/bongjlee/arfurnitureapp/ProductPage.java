@@ -4,6 +4,7 @@ package com.bongjlee.arfurnitureapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -47,6 +48,7 @@ public class ProductPage extends AppCompatActivity {
     private TextView priceViewData;
     private ImageView photoViewData;
 
+    private String modelId;
     private String docId_t;
 
     @Override
@@ -54,7 +56,6 @@ public class ProductPage extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_product );
 
-        Intent intent = getIntent();
         this.docId_t = getIntent().getStringExtra( "p_id" );
 
         nameViewData = findViewById( R.id.product_name );
@@ -110,11 +111,13 @@ public class ProductPage extends AppCompatActivity {
                             String style = documentSnapshot.getString( "style" );
                             String shippinginfo = documentSnapshot.getString( "shippingInfo" );
                             String price = documentSnapshot.getString( "price" );
+                            modelId= documentSnapshot.getString("modelId");
                             nameViewData.setText( "Name: " + name );
                             priceViewData.setText( "Price: " + price );
                             DescriptionViewData.setText( "Description: " + productDescription );
                             styleViewData.setText( "Style: " + style );
                             shippingInfoViewData.setText( "Shipping information: " + shippinginfo );
+
                             FirebaseStorage storage = FirebaseStorage.getInstance();
                             StorageReference storageRef = storage.getReference();
 
@@ -206,7 +209,10 @@ public class ProductPage extends AppCompatActivity {
     }
 
     public void viewModel( View view ) {
+        Log.e("ram",modelId);
         Intent intent = new Intent(this, ModelActivity.class);
+        intent.putExtra( "modelId", this.modelId );
+
         startActivity(intent);
     }
 
