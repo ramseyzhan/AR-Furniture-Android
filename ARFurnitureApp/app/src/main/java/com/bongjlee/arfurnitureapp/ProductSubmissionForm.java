@@ -144,11 +144,11 @@ public class ProductSubmissionForm extends AppCompatActivity {
             prodImage = data.getData();
             try {
 
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
-                bitmap = Bitmap.createScaledBitmap(bitmap, 150, 200, true);
-                prodImage = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
-                        null,null));
-                graphView.setImageBitmap(bitmap);
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
+//                bitmap = Bitmap.createScaledBitmap(bitmap, 150, 200, true);
+//                prodImage = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
+//                        null,null));
+                graphView.setImageURI(prodImage);
             }
             catch (IOException e)
             {
@@ -194,11 +194,11 @@ public class ProductSubmissionForm extends AppCompatActivity {
             StorageReference ref = storageRef.child("icon/AR/"+ iconID+".jpg");
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
-                bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
-                Uri prodicon = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
-                        null,null));
-                ref.putFile(prodicon)
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
+//                bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+//                Uri prodicon = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
+//                        null,null));
+                ref.putFile(prodImage)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
