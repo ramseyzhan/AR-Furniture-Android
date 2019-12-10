@@ -4,6 +4,7 @@ package com.bongjlee.arfurnitureapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.bongjlee.arfurnitureapp.UserLogin.loggedInUser;
+
 
 public class ProductPage extends AppCompatActivity {
     private TextView nameViewData;
@@ -45,14 +48,16 @@ public class ProductPage extends AppCompatActivity {
     private TextView priceViewData;
     private ImageView photoViewData;
 
+    private String companyId;
+    private String modelId;
     private String docId_t;
+    private String photoId;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_product );
 
-        Intent intent = getIntent();
         this.docId_t = getIntent().getStringExtra( "p_id" );
 
         nameViewData = findViewById( R.id.product_name );
@@ -66,28 +71,35 @@ public class ProductPage extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        DocumentReference userRef = db.collection( "users" ).document( Integer.toString( user.getEmail().hashCode() ) );
-        
-        userRef.get().addOnCompleteListener( new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete( @NonNull Task<DocumentSnapshot> task ) {
-                if ( task.isSuccessful() ) {
-                    DocumentSnapshot document = task.getResult();
-                    if ( document.exists() ) {
-                        List<String> favList = (ArrayList<String>) document.get( "UserDetails.favoriteList" );
-                        if(favList != null){
-                            for ( int i = 0; i < favList.size(); ++i ) {
-                                if ( favList.get( i ).equals( docId_t ) ) {
-                                    ToggleButton fav = (ToggleButton) findViewById( R.id.button_favorite );
-                                    fav.setChecked( true );
+        ToggleButton fav = (ToggleButton) findViewById( R.id.button_favorite );
+
+        if (loggedInUser != null) {
+            DocumentReference userRef = db.collection( "users" ).document( Integer.toString( user.getEmail().hashCode() ) );
+
+            userRef.get().addOnCompleteListener( new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete( @NonNull Task<DocumentSnapshot> task ) {
+                    if ( task.isSuccessful() ) {
+                        DocumentSnapshot document = task.getResult();
+                        if ( document.exists() ) {
+                            List<String> favList = (ArrayList<String>) document.get( "UserDetails.favoriteList" );
+                            if(favList != null){
+                                for ( int i = 0; i < favList.size(); ++i ) {
+                                    if ( favList.get( i ).equals( docId_t ) ) {
+                                        fav.setChecked( true );
+                                    }
                                 }
                             }
-                        }
 
+                        }
                     }
                 }
-            }
-        } );
+            } );
+        } else {
+            fav.setVisibility(View.GONE);
+        }
+
+
 
         DocumentReference docRef = db.collection( "products" ).document( docId_t );
         docRef.get()
@@ -95,12 +107,14 @@ public class ProductPage extends AppCompatActivity {
                     @Override
                     public void onSuccess( DocumentSnapshot documentSnapshot ) {
                         if ( documentSnapshot.exists() ) {
-                            String photoId = documentSnapshot.getString( "photoId" );
+                            photoId = documentSnapshot.getString( "photoId" );
                             String productDescription = documentSnapshot.getString( "description" );
                             String name = documentSnapshot.getString( "name" );
                             String style = documentSnapshot.getString( "style" );
                             String shippinginfo = documentSnapshot.getString( "shippingInfo" );
                             String price = documentSnapshot.getString( "price" );
+                            companyId =  documentSnapshot.getString("companyId");
+                            modelId= documentSnapshot.getString("modelId");
                             nameViewData.setText( "Name: " + name );
                             priceViewData.setText( "Price: " + price );
                             DescriptionViewData.setText( "Description: " + productDescription );
@@ -174,7 +188,9 @@ public class ProductPage extends AppCompatActivity {
     }
 
     public void Purchase( View view ) {
-        startActivity( new Intent( ProductPage.this, BuyingPage.class ) );
+        Intent intent =  new Intent( ProductPage.this, BuyingPage.class );
+        intent.putExtra("companyId",companyId);
+        startActivity(intent );
     }
 
     public void back( View view ) {
@@ -185,6 +201,9 @@ public class ProductPage extends AppCompatActivity {
     public void editproduct( View view ) {
         Intent intent = new Intent( ProductPage.this, EditPage.class );
         intent.putExtra( "p_id", this.docId_t );
+        Log.e("ram product",this.photoId );
+        intent.putExtra( "photoId", this.photoId );
+
         startActivity( intent );
     }
 
@@ -197,7 +216,10 @@ public class ProductPage extends AppCompatActivity {
     }
 
     public void viewModel( View view ) {
+        Log.e("ram",modelId);
         Intent intent = new Intent(this, ModelActivity.class);
+        intent.putExtra( "modelId", this.modelId );
+
         startActivity(intent);
     }
 

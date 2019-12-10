@@ -120,21 +120,39 @@ public class ARViewPage extends AppCompatActivity {
                             if (documentSnapshot.exists()) {
                                 String iconId = documentSnapshot.getString("iconId");
                                 String modelId = documentSnapshot.getString("modelId");
-                                product_t.setOnClickListener(view -> {tarObject = Uri.parse(modelId+".sfb");});
                                 StorageReference spaceRef = storageRef.child("icon/AR/"+iconId+".jpg");
                                 try{
                                     File localFile = File.createTempFile("images", "jpg");
                                     spaceRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+
                                         @Override
                                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                            Log.e("ram","icon done");
+
+                                            StorageReference ARmodel = storageRef.child("ARdata/"+modelId+".sfb");
                                             product_t.setImageURI(Uri.fromFile(localFile));
+                                            try{
+                                                File localModel = File.createTempFile("armodel", "sfb");
+                                                ARmodel.getFile(localModel).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                                        Log.e("ram","model done");
+                                                        product_t.setOnClickListener(view -> {tarObject = Uri.fromFile(localModel);});
+                                                        Log.e("ram","set done");
+
+                                                        gallery.addView(product_t);
+
+                                                    }
+                                                });
+                                            }
+                                            catch (IOException e){
+                                            }
                                         }
                                     });
                                 }
                                 catch (IOException e){
                                 }
 
-                                gallery.addView(product_t);
                             }
                         }
                     });

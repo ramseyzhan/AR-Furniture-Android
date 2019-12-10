@@ -9,16 +9,15 @@
     <TextView
         android:id="@+id/CompanyName"
         android:layout_width="411dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="38dp"
-        android:background="#03A9F4"
+        android:layout_height="wrap_content"
+        android:background="#6DAAD9"
         android:gravity="center|center_horizontal"
+        android:padding="10dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="40sp"
         android:textStyle="bold"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/CompanyEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,45 +25,110 @@
     <TextView
         android:id="@+id/CompanyEmail"
         android:layout_width="410dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/CompanyPhone"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CompanyName" />
+        app:layout_constraintTop_toBottomOf="@+id/Label1" />
 
     <TextView
         android:id="@+id/CompanyPhone"
-        android:layout_width="411dp"
-        android:layout_height="80dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/CompanyWeb"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Label2" />
+
+    <TextView
+        android:id="@+id/CompanyWeb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autoLink="all"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Label3" />
+
+    <TextView
+        android:id="@+id/CompanyAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Label4" />
+
+    <TextView
+        android:id="@+id/Label1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/emailLabel"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CompanyName"
+        tools:text="@string/emailLabel" />
+
+    <TextView
+        android:id="@+id/Label2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/PhoneLabel"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CompanyEmail" />
 
     <TextView
-        android:id="@+id/CompanyWeb"
-        android:layout_width="406dp"
-        android:layout_height="81dp"
-        android:autoLink="all"
-        android:gravity="center"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/CompanyAddress"
+        android:id="@+id/Label3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/websiteLabel"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CompanyPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/CompanyPhone"
+        tools:text="@string/websiteLabel" />
 
     <TextView
-        android:id="@+id/CompanyAddress"
-        android:layout_width="410dp"
-        android:layout_height="84dp"
-        android:layout_marginBottom="243dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/Label4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/adressLabel"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CompanyWeb" />
+        app:layout_constraintTop_toBottomOf="@+id/CompanyWeb"
+        tools:text="@string/adressLabel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

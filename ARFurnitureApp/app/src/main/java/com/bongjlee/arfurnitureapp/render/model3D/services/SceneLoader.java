@@ -49,17 +49,8 @@ public class SceneLoader {
 	 * Whether to draw using lights
 	 */
 	private boolean drawLighting = true;
-	/**
-	 * Default draw mode when loading models from files
-	 */
+
 	private int defaultDrawMode = GLES20.GL_TRIANGLE_FAN;
-	/**
-	 * Light position
-	 */
-//	private float[] lightPos = new float[] { 0, 0, 3, 1 };
-	/**
-	 * Object selected by the user
-	 */
 	private Object3DData selectedObject = null;
 
 	public SceneLoader(ModelActivity main) {

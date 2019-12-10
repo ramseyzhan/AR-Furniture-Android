@@ -184,8 +184,7 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
 						boundingBoxData = Object3DBuilder.buildBoundingBox(objData);
 						boundingBoxes.put(objData, boundingBoxData);
 					}
-					Object3D boundingBoxDrawer = drawer.getBoundingBoxDrawer();
-					boundingBoxDrawer.draw(boundingBoxData, modelProjectionMatrix, modelViewMatrix, -1, null);
+
 				}
 
 				// Draw bounding box
@@ -198,10 +197,7 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
 							normals.put(objData, normalData);
 						}
 					}
-					if (normalData != null) {
-						Object3D normalsDrawer = drawer.getFaceNormalsDrawer();
-						normalsDrawer.draw(normalData, modelProjectionMatrix, modelViewMatrix, -1, null);
-					}
+
 				}
 				// TODO: enable this only when user wants it
 				// obj3D.drawVectorNormals(result, modelViewMatrix);

@@ -98,8 +98,6 @@ class CustomListViewAdapter extends ArrayAdapter<RowItem> {
 	/* private view holder class */
 	private class ViewHolder {
 		ImageView imageView;
-		TextView txtTitle;
-		TextView txtDesc;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -110,15 +108,11 @@ class CustomListViewAdapter extends ArrayAdapter<RowItem> {
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.activity_demo_item, null);
 			holder = new ViewHolder();
-			// holder.txtDesc = (TextView) convertView.findViewById(R.id.desc);
-			holder.txtTitle = (TextView) convertView.findViewById(R.id.demo_item_title);
 			holder.imageView = (ImageView) convertView.findViewById(R.id.demo_item_icon);
 			convertView.setTag(holder);
 		} else
 			holder = (ViewHolder) convertView.getTag();
 
-		// holder.txtDesc.setText(rowItem.getDesc());
-		holder.txtTitle.setText(rowItem.name);
 		try {
 			Bitmap bitmap = BitmapFactory.decodeStream(context.getAssets().open(rowItem.image));
 			holder.imageView.setImageBitmap(bitmap);
