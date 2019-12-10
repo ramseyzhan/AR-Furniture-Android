@@ -48,6 +48,7 @@ public class ProductPage extends AppCompatActivity {
     private TextView priceViewData;
     private ImageView photoViewData;
 
+    private String companyId;
     private String modelId;
     private String docId_t;
     private String photoId;
@@ -112,6 +113,7 @@ public class ProductPage extends AppCompatActivity {
                             String style = documentSnapshot.getString( "style" );
                             String shippinginfo = documentSnapshot.getString( "shippingInfo" );
                             String price = documentSnapshot.getString( "price" );
+                            companyId =  documentSnapshot.getString("companyId");
                             modelId= documentSnapshot.getString("modelId");
                             nameViewData.setText( "Name: " + name );
                             priceViewData.setText( "Price: " + price );
@@ -186,7 +188,9 @@ public class ProductPage extends AppCompatActivity {
     }
 
     public void Purchase( View view ) {
-        startActivity( new Intent( ProductPage.this, BuyingPage.class ) );
+        Intent intent =  new Intent( ProductPage.this, BuyingPage.class );
+        intent.putExtra("companyId",companyId);
+        startActivity(intent );
     }
 
     public void back( View view ) {

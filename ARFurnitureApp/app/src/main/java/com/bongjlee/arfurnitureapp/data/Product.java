@@ -16,10 +16,13 @@ public class Product {
     protected String photoId;
     protected String iconId;
     protected String modelId;
+    protected String companyId;
 
     public String getId() {
         return id;
     }
+
+    public void setCompanyId(String t) {this.companyId = t;}
 
     public void setId( String id ) {
         this.id = id;
