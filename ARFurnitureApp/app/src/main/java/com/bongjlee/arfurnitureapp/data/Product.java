@@ -22,6 +22,7 @@ public class Product {
         return id;
     }
 
+    public String getCompanyId() {return companyId;}
     public void setCompanyId(String t) {this.companyId = t;}
 
     public void setId( String id ) {

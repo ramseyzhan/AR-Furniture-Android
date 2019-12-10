@@ -95,10 +95,10 @@ public class ProductSubmissionForm extends AppCompatActivity {
         product.setShippingInfo( shippingInfo );
         product.setCompanyId(CompanyId);
 
-
         product.setPhotoId(uploadImage());
         product.setIconId(uploadIcon());
         product.setModelId(uploadModel());
+
         db.collection( "products" )
                 .document(
                         productID
@@ -147,7 +147,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
                 bitmap = Bitmap.createScaledBitmap(bitmap, 150, 200, true);
                 prodImage = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
-                        UUID.randomUUID().toString(),null));
+                        null,null));
                 graphView.setImageBitmap(bitmap);
             }
             catch (IOException e)
@@ -197,7 +197,7 @@ public class ProductSubmissionForm extends AppCompatActivity {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
                 bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
                 Uri prodicon = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
-                        UUID.randomUUID().toString(),null));
+                        null,null));
                 ref.putFile(prodicon)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
