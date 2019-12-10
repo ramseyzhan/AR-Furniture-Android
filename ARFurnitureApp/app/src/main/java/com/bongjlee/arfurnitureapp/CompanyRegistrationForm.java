@@ -43,8 +43,8 @@ public class CompanyRegistrationForm extends AppCompatActivity {
         companyDetails.put( "CompanyWebsite", companyWebsite );
 
         Company company = new Company(
-                companyDetails,
-                companyName
+                companyName,
+                companyDetails
         );
 
         db.collection( "company" )

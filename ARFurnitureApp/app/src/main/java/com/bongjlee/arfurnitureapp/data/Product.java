@@ -95,7 +95,7 @@ public class Product {
 
     public Product(){}
 
-    public Product(String prod_id,FirebaseFirestore db)  {
+    public Product(String prod_id, FirebaseFirestore db)  {
         this.id = prod_id;
         DocumentReference docRef = db.collection("products").document(prod_id);
         docRef.get()

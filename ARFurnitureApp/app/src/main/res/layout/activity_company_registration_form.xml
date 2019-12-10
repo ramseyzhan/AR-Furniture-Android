@@ -1,90 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FEF8E7"
-    android:orientation="vertical"
-    android:padding="30dp">
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/contact_form_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="5dp"
-        android:text="Register Your Company"
-        android:textSize="35sp" />
-
-
-    <EditText
-        android:id="@+id/company_name"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Company Name"
-        android:inputType="textPersonName" />
+        android:layout_height="match_parent"
+        android:background="#FEF8E7"
+        android:orientation="vertical"
+        android:padding="30dp">
 
-    <EditText
-        android:id="@+id/company_office_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Registered Office Address"
-        android:inputType="textPostalAddress" />
+        <TextView
+            android:id="@+id/contact_form_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="5dp"
+            android:text="Register Your Company"
+            android:textSize="35sp" />
 
-    <EditText
-        android:id="@+id/company_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
 
-    <EditText
-        android:id="@+id/company_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Phone"
-        android:inputType="phone" />
+        <EditText
+            android:id="@+id/company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:hint="Company Name"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/company_postal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Postal Address (if applicable)"
-        android:inputType="textPostalAddress" />
+        <EditText
+            android:id="@+id/company_office_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:hint="Registered Office Address"
+            android:inputType="textPostalAddress" />
 
-    <EditText
-        android:id="@+id/company_website"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Website (if applicable)"
-        android:inputType="textWebEditText" />
+        <EditText
+            android:id="@+id/company_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/btn_shad_blue"
-        android:elevation="4dp"
-        android:onClick="sendInfo"
-        android:paddingLeft="70dp"
-        android:paddingRight="70dp"
-        android:text="Submit"
-        android:textColor="#000" />
-</LinearLayout>
+        <EditText
+            android:id="@+id/company_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:hint="Phone"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/company_postal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:hint="Postal Address (if applicable)"
+            android:inputType="textPostalAddress" />
+
+        <EditText
+            android:id="@+id/company_website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:hint="Website (if applicable)"
+            android:inputType="textWebEditText" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_shad_blue"
+            android:elevation="4dp"
+            android:onClick="sendInfo"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="Submit"
+            android:textColor="#000" />
+    </LinearLayout>
+
+</ScrollView>
