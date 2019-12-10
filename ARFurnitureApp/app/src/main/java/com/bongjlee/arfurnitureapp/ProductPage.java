@@ -14,6 +14,7 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bongjlee.arfurnitureapp.data.Product;
 import com.bongjlee.arfurnitureapp.render.model3D.view.ModelActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,6 +41,8 @@ import static com.bongjlee.arfurnitureapp.UserLogin.loggedInUser;
 
 
 public class ProductPage extends AppCompatActivity {
+    private static final String TAG = ProductPage.class.getSimpleName();
+
     private TextView nameViewData;
     private TextView DescriptionViewData;
     private TextView styleViewData;
@@ -47,18 +50,22 @@ public class ProductPage extends AppCompatActivity {
     private TextView productLinkViewData;
     private TextView priceViewData;
     private ImageView photoViewData;
-
     private String companyId;
+    private String companyName;
     private String modelId;
     private String docId_t;
     private String photoId;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_product );
 
         this.docId_t = getIntent().getStringExtra( "p_id" );
+        Product this_product = new Product( docId_t, db );
 
         nameViewData = findViewById( R.id.product_name );
         DescriptionViewData = findViewById( R.id.product_description );
@@ -66,10 +73,6 @@ public class ProductPage extends AppCompatActivity {
         shippingInfoViewData = findViewById( R.id.shipping_info );
         priceViewData = findViewById( R.id.product_price );
         photoViewData = findViewById( R.id.product_photo );
-
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         ToggleButton fav = (ToggleButton) findViewById( R.id.button_favorite );
 
@@ -188,8 +191,51 @@ public class ProductPage extends AppCompatActivity {
     }
 
     public void Purchase( View view ) {
+        /*
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        Order new_order = new Order();
+        //generate current time
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        String timestamp = dateFormat.format(date);
+        //find company name by product company_id
+        String product_store = this.companyId;
+
+        String user_id = Integer.toString( user.getEmail().hashCode() );
+        String product_id = this.docId_t;
+        String product_name = ( (EditText) findViewById( R.id.product_name ) ).getText().toString();
+        String product_price = ( (EditText) findViewById( R.id.product_price ) ).getText().toString();
+
+        new_order.setTimestamp( timestamp );
+        new_order.setProduct_store( product_store );
+        new_order.setUser_id( user_id );
+        new_order.setProduct_id( product_id );
+        new_order.setProduct_name( product_name );
+        new_order.setProduct_price( product_price );
+
+        String order_id = Integer.toString( new_order.hashCode() );
+        new_order.setOrder_id( order_id );
+
+        db.collection( "orders" )
+                .document(
+                        order_id
+                )
+                .set( new_order )
+                .addOnSuccessListener(
+                        documentReference ->
+                                Log.d(
+                                        TAG,
+                                        "DocumentSnapshot added."
+                                )
+                )
+                .addOnFailureListener(
+                        e -> Log.w( TAG, "Error adding document", e )
+                );
+
+         */
         Intent intent =  new Intent( ProductPage.this, BuyingPage.class );
-        intent.putExtra("companyId",companyId);
+        intent.putExtra("companyId", companyId);
         startActivity(intent );
     }
 
@@ -228,8 +274,6 @@ public class ProductPage extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String Submit_content = ( (EditText) findViewById( R.id.input_text ) ).getText().toString();
         String Submit_rating_hardcode = "3";
-
-        db = FirebaseFirestore.getInstance();
         Map<String, Object> newReview = new HashMap<>();
         newReview.put( "review_content", Submit_content );
         newReview.put( "review_rating", Submit_rating_hardcode );

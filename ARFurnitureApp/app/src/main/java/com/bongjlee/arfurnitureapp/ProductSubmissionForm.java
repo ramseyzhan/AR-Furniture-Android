@@ -142,18 +142,12 @@ public class ProductSubmissionForm extends AppCompatActivity {
                 && data != null && data.getData() != null )
         {
             prodImage = data.getData();
-            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
+//                bitmap = Bitmap.createScaledBitmap(bitmap, 150, 200, true);
+//                prodImage = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
+//                        null,null));
+                graphView.setImageURI(prodImage);
 
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
-                bitmap = Bitmap.createScaledBitmap(bitmap, 150, 200, true);
-                prodImage = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
-                        null,null));
-                graphView.setImageBitmap(bitmap);
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
         }
         if(requestCode == ACTIVITY_CHOOSE_FILE && resultCode == RESULT_OK
                 && data != null && data.getData() != null )
@@ -193,12 +187,11 @@ public class ProductSubmissionForm extends AppCompatActivity {
             String iconID = UUID.randomUUID().toString();
             StorageReference ref = storageRef.child("icon/AR/"+ iconID+".jpg");
 
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
-                bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
-                Uri prodicon = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
-                        null,null));
-                ref.putFile(prodicon)
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), prodImage);
+//                bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+//                Uri prodicon = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
+//                        null,null));
+                ref.putFile(prodImage)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -206,11 +199,6 @@ public class ProductSubmissionForm extends AppCompatActivity {
                             }
 
                         });
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
 
             return iconID;
         }

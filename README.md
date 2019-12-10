@@ -9,8 +9,7 @@ AR Furniture
 `Java` `Android` `Firebase`
 
 * [ARFurnitureApp]
-* [Database Generate]
-* [ProAR]
+* [model_for_test]
 ****
 
 
@@ -34,6 +33,15 @@ File Structure:
                 |-- UserEdit.java
                 |-- UserLogin.java
                 |-- UserLogout.java
+                |-- render
+                        |-- model3D
+                                |-- controller
+                                |-- entities
+                                |-- model
+                                |-- services
+                                |-- util
+                                |-- view
+                        |-- util
         |-- res
             |-- layout
                 |-- activity_ar_ui.xml
@@ -69,12 +77,7 @@ We have done the users sign-up and sign in system in the UserLogin.java and User
 
 After sign-in and register at CompanyRegistrationForm.java, you can upload the furniture details to our database.
 
+## model_for_test
 
-## Database Generate
+Here there are some sample models for you to choose.
 
-This is the place where we arrange our Firebase and generate sample data for testing.
-
-
-## ProAR
-
-This is a simple version that only contains the basic functions of the AR.
