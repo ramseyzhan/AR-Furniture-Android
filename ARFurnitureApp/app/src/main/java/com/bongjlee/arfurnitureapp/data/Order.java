@@ -77,10 +77,11 @@ public class Order {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp( String timestamp ) {
         this.timestamp = timestamp;
     }
 
+    public Order(){}
 
     public Order(String order_id, FirebaseFirestore db)  {
         this.order_id = order_id;

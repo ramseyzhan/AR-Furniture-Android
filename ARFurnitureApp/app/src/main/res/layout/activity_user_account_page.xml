@@ -68,6 +68,7 @@
         android:typeface="serif"
         android:textStyle="bold"
         android:textColor="#000"
+        android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/phone_number"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
@@ -83,6 +84,7 @@
         android:typeface="serif"
         android:textStyle="bold"
         android:textColor="#000"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/phone_number"
         app:layout_constraintTop_toBottomOf="@+id/phone_number" />
@@ -99,6 +101,7 @@
         android:textStyle="bold"
         android:typeface="serif"
         android:textColor="#000"
+        android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -113,6 +116,7 @@
         android:typeface="serif"
         android:textStyle="bold"
         android:textColor="#000"
+        android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/address"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email" />
